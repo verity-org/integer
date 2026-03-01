@@ -84,10 +84,21 @@ jobs:
           # apko publish resolves the latest Wolfi packages at build time.
           # No lock file — integer's value is always-fresh CVE patches from Wolfi.
           # The SBOM attestation (below) records exactly what was installed.
+          #
+          # apko resolves include: paths relative to the CWD, so cd into the
+          # config file's directory before publishing.
+          config="${{ steps.config.outputs.path }}"
+          configdir=$(dirname "$config")
+          configfile=$(basename "$config")
+
+          pushd "$configdir"
           apko publish \
             --arch amd64,arm64 \
-            "${{ steps.config.outputs.path }}" \
+            "$configfile" \
             ${{ steps.config.outputs.refs }}
+          # Move SBOM to workspace root for the attestation step
+          [ -f sbom-amd64.spdx.json ] && mv sbom-amd64.spdx.json "$GITHUB_WORKSPACE/sbom-amd64.spdx.json" || true
+          popd
 
           # Capture the digest of the published index for signing
           digest=$(crane digest "${{ inputs.registry }}/${{ inputs.image }}:${{ steps.config.outputs.primary_tag }}")
