@@ -1,4 +1,5 @@
 name: Build Image
+run-name: "Build ${{ inputs.image }}:${{ inputs.version }}-${{ inputs.type }}"
 
 on:
   workflow_dispatch:
@@ -46,6 +47,30 @@ jobs:
 
       # ── Setup ──────────────────────────────────────────────────────────────
 
+      - name: Validate inputs
+        env:
+          INPUT_IMAGE: ${{ inputs.image }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_TYPE: ${{ inputs.type }}
+          INPUT_TAGS: ${{ inputs.tags }}
+          INPUT_REGISTRY: ${{ inputs.registry }}
+        run: |
+          # Guard against shell injection via workflow_dispatch inputs.
+          # Inputs are passed through env vars (not interpolated into the script)
+          # and validated against their expected character sets before any use.
+          check() {
+            local label="$1" value="$2" pattern="$3"
+            if [[ ! "$value" =~ $pattern ]]; then
+              echo "Invalid ${label}: ${value}" >&2
+              exit 1
+            fi
+          }
+          check image    "$INPUT_IMAGE"    '^[a-z][a-z0-9-]*$'
+          check version  "$INPUT_VERSION"  '^[a-zA-Z0-9][a-zA-Z0-9._-]*$'
+          check type     "$INPUT_TYPE"     '^[a-z][a-z0-9-]*$'
+          check tags     "$INPUT_TAGS"     '^[a-zA-Z0-9.,_-]+$'
+          check registry "$INPUT_REGISTRY" '^[a-zA-Z0-9./:_-]+$'
+
       - name: Log in to GHCR
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
         with:
@@ -55,8 +80,14 @@ jobs:
 
       - name: Set apko config path
         id: config
+        env:
+          INPUT_IMAGE: ${{ inputs.image }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_TYPE: ${{ inputs.type }}
+          INPUT_TAGS: ${{ inputs.tags }}
+          INPUT_REGISTRY: ${{ inputs.registry }}
         run: |
-          config="images/${{ inputs.image }}/versions/${{ inputs.version }}/${{ inputs.type }}.apko.yaml"
+          config="images/${INPUT_IMAGE}/versions/${INPUT_VERSION}/${INPUT_TYPE}.apko.yaml"
           if [ ! -f "$config" ]; then
             echo "Config not found: $config"
             exit 1
@@ -64,12 +95,11 @@ jobs:
           echo "path=$config" >> "$GITHUB_OUTPUT"
 
           # Build space-separated image refs for all tags.
-          # Passed unquoted to apko publish so each ref becomes a separate positional arg.
           refs=""
-          IFS=',' read -ra TAGS <<< "${{ inputs.tags }}"
+          IFS=',' read -ra TAGS <<< "$INPUT_TAGS"
           for tag in "${TAGS[@]}"; do
             tag="${tag// /}"
-            ref="${{ inputs.registry }}/${{ inputs.image }}:${tag}"
+            ref="${INPUT_REGISTRY}/${INPUT_IMAGE}:${tag}"
             refs="${refs:+$refs }$ref"
           done
           echo "refs=$refs" >> "$GITHUB_OUTPUT"
@@ -79,22 +109,45 @@ jobs:
 
       - name: Build and publish multi-arch image
         id: build
+        env:
+          INPUT_IMAGE: ${{ inputs.image }}
+          INPUT_REGISTRY: ${{ inputs.registry }}
+          PRIMARY_TAG: ${{ steps.config.outputs.primary_tag }}
+          REFS: ${{ steps.config.outputs.refs }}
         run: |
           # apko publish resolves the latest Wolfi packages at build time.
           # No lock file — integer's value is always-fresh CVE patches from Wolfi.
           # The SBOM attestation (below) records exactly what was installed.
+          #
+          # apko resolves include: paths relative to the CWD, so cd into the
+          # config file's directory before publishing.
+          config="${{ steps.config.outputs.path }}"
+          configdir=$(dirname "$config")
+          configfile=$(basename "$config")
+
+          # Split refs into an array for safe expansion (one arg per ref).
+          read -ra REFSARR <<< "$REFS"
+
+          pushd "$configdir"
           apko publish \
             --arch amd64,arm64 \
-            "${{ steps.config.outputs.path }}" \
-            ${{ steps.config.outputs.refs }}
+            "$configfile" \
+            "${REFSARR[@]}"
+          # Move SBOM to workspace root for the attestation step
+          [ -f sbom-amd64.spdx.json ] && mv sbom-amd64.spdx.json "$GITHUB_WORKSPACE/sbom-amd64.spdx.json" || true
+          popd
 
           # Capture the digest of the published index for signing
-          digest=$(crane digest "${{ inputs.registry }}/${{ inputs.image }}:${{ steps.config.outputs.primary_tag }}")
+          digest=$(crane digest "${INPUT_REGISTRY}/${INPUT_IMAGE}:${PRIMARY_TAG}")
           echo "digest=$digest" >> "$GITHUB_OUTPUT"
 
       # ── Security scan ──────────────────────────────────────────────────────
 
       - name: Trivy zero-CVE quality gate
+        env:
+          INPUT_IMAGE: ${{ inputs.image }}
+          INPUT_REGISTRY: ${{ inputs.registry }}
+          PRIMARY_TAG: ${{ steps.config.outputs.primary_tag }}
         run: |
           trivy image \
             --exit-code 1 \
@@ -102,7 +155,7 @@ jobs:
             --vuln-type os,library \
             --format json \
             --output trivy-report.json \
-            "${{ inputs.registry }}/${{ inputs.image }}:${{ steps.config.outputs.primary_tag }}"
+            "${INPUT_REGISTRY}/${INPUT_IMAGE}:${PRIMARY_TAG}"
         continue-on-error: false  # Hard failure — zero CVE policy
 
       - name: Upload Trivy report
@@ -116,12 +169,19 @@ jobs:
       # ── Sign & attest ──────────────────────────────────────────────────────
 
       - name: Sign image with cosign (keyless)
+        env:
+          INPUT_IMAGE: ${{ inputs.image }}
+          INPUT_REGISTRY: ${{ inputs.registry }}
+          DIGEST: ${{ steps.build.outputs.digest }}
         run: |
           # Sign by digest — immutable reference that covers all tags pointing to this image.
-          cosign sign --yes \
-            "${{ inputs.registry }}/${{ inputs.image }}@${{ steps.build.outputs.digest }}"
+          cosign sign --yes "${INPUT_REGISTRY}/${INPUT_IMAGE}@${DIGEST}"
 
       - name: Generate and attach SBOM
+        env:
+          INPUT_IMAGE: ${{ inputs.image }}
+          INPUT_REGISTRY: ${{ inputs.registry }}
+          DIGEST: ${{ steps.build.outputs.digest }}
         run: |
           # apko generates per-arch SBOM files during publish.
           # Attach the amd64 SBOM as a cosign attestation; sign by digest for immutability.
@@ -130,7 +190,7 @@ jobs:
               --yes \
               --predicate sbom-amd64.spdx.json \
               --type spdxjson \
-              "${{ inputs.registry }}/${{ inputs.image }}@${{ steps.build.outputs.digest }}"
+              "${INPUT_REGISTRY}/${INPUT_IMAGE}@${DIGEST}"
           else
             echo "No SBOM file found (sbom-amd64.spdx.json); skipping attestation"
           fi
@@ -141,29 +201,36 @@ jobs:
         if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_IMAGE: ${{ inputs.image }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_TYPE: ${{ inputs.type }}
+          INPUT_TAGS: ${{ inputs.tags }}
+          INPUT_REGISTRY: ${{ inputs.registry }}
+          DIGEST: ${{ steps.build.outputs.digest }}
+          JOB_STATUS: ${{ job.status }}
+          RUN_ID: ${{ github.run_id }}
         run: |
-          # Build a compact report JSON
           status="success"
-          if [ "${{ job.status }}" != "success" ]; then
+          if [ "$JOB_STATUS" != "success" ]; then
             status="failure"
           fi
 
           report=$(jq -n \
-            --arg image "${{ inputs.image }}" \
-            --arg version "${{ inputs.version }}" \
-            --arg type "${{ inputs.type }}" \
-            --arg tags "${{ inputs.tags }}" \
-            --arg registry "${{ inputs.registry }}" \
-            --arg digest "${{ steps.build.outputs.digest }}" \
-            --arg status "$status" \
+            --arg image    "$INPUT_IMAGE" \
+            --arg version  "$INPUT_VERSION" \
+            --arg type     "$INPUT_TYPE" \
+            --arg tags     "$INPUT_TAGS" \
+            --arg registry "$INPUT_REGISTRY" \
+            --arg digest   "$DIGEST" \
+            --arg status   "$status" \
             --arg built_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-            --arg run_id "${{ github.run_id }}" \
+            --arg run_id   "$RUN_ID" \
             '{image: $image, version: $version, type: $type, tags: ($tags | split(",")),
               registry: $registry, digest: $digest, status: $status,
               built_at: $built_at, run_id: $run_id}')
 
           echo "$report" > report.json
           bash .github/scripts/push-reports.sh \
-            "${{ inputs.image }}" \
-            "${{ inputs.version }}/${{ inputs.type }}" \
+            "$INPUT_IMAGE" \
+            "$INPUT_VERSION/$INPUT_TYPE" \
             report.json

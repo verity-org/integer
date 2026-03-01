@@ -1,0 +1,89 @@
+name: PR Smoke Test
+
+# Builds a representative subset of images locally (no push) to catch
+# config/include breakage early. Two images are chosen to exercise the
+# most common failure modes:
+#   - golang:1.24-fips  → three-level include chain (fips → wolfi-fips → wolfi-base)
+#   - node:22-dev       → dev variant with an expanded package set
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "images/**"
+      - "integer.yaml"
+      - ".github/workflows/build-image.yaml"
+      - ".github/workflows/pr-test.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    name: "Smoke test ${{ matrix.image }}:${{ matrix.version }}-${{ matrix.type }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Three-level include chain: fips.apko.yaml → wolfi-fips.yaml → wolfi-base.yaml
+          - image: golang
+            version: "1.24"
+            type: fips
+          # Dev variant — exercises the larger package set path
+          - image: node
+            version: "22"
+            type: dev
+
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install mise
+        uses: step-security/mise-action@d65cf9dcb78b983ae2530c89fd28e72286713505 # v3.5.1
+        with:
+          install: true
+          cache: true
+
+      - name: Build image (local, no push)
+        run: |
+          config="images/${{ matrix.image }}/versions/${{ matrix.version }}/${{ matrix.type }}.apko.yaml"
+          if [ ! -f "$config" ]; then
+            echo "Config not found: $config"
+            exit 1
+          fi
+          configdir=$(dirname "$config")
+          configfile=$(basename "$config")
+
+          # apko resolves include: paths relative to the CWD, so cd into the
+          # config file's directory before building.
+          pushd "$configdir"
+          apko build \
+            --arch amd64 \
+            "$configfile" \
+            "${{ matrix.image }}:smoke-test" \
+            "$GITHUB_WORKSPACE/image.tar"
+          popd
+
+      - name: Scan with Trivy (zero-CVE gate)
+        run: |
+          trivy image \
+            --exit-code 1 \
+            --severity CRITICAL,HIGH,MEDIUM,LOW \
+            --vuln-type os,library \
+            --format json \
+            --output trivy-report.json \
+            --input image.tar
+        continue-on-error: false
+
+      - name: Upload Trivy report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: "trivy-${{ matrix.image }}-${{ matrix.version }}-${{ matrix.type }}"
+          path: trivy-report.json
+          retention-days: 7

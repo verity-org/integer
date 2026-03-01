@@ -1,4 +1,4 @@
-include: wolfi-base.yaml
+include: ../../../_base/wolfi-base.yaml
 
 contents:
   packages:
