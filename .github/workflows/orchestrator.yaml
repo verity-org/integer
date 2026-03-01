@@ -27,7 +27,8 @@ jobs:
     name: Discover images
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.discover.outputs.matrix }}
+      images: ${{ steps.discover.outputs.images }}
+      count: ${{ steps.discover.outputs.count }}
     steps:
       - name: Harden the runner (Audit all outbound calls)
         uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
@@ -65,34 +66,47 @@ jobs:
             all=$(echo "$all" | jq --arg f "$filter" '[.[] | select(.name == $f)]')
           fi
 
-          echo "Discovered images:"
-          echo "$all" | jq -r '.[] | "\(.name):\(.version)-\(.type) → \(.registry)/\(.name):\(.tags[0])"'
-          echo "matrix=$(echo "$all" | jq -c .)" >> "$GITHUB_OUTPUT"
+          count=$(echo "$all" | jq 'length')
+          echo "count=${count}" >> "$GITHUB_OUTPUT"
+          echo "images=$(echo "$all" | jq -c .)" >> "$GITHUB_OUTPUT"
+
+          echo "✓ Discovered ${count} image+version+type combos"
+          echo "$all" | jq -r '.[] | "  - \(.name):\(.version)-\(.type) → \(.registry)/\(.name):\(.tags[0])"'
 
   dispatch:
     name: Dispatch builds
     needs: discover
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include: ${{ fromJson(needs.discover.outputs.matrix) }}
-      # Allow other images to build even if one fails
-      fail-fast: false
+    if: needs.discover.outputs.count != '0'
     steps:
       - name: Harden the runner (Audit all outbound calls)
         uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
         with:
           egress-policy: audit
 
-      - name: Dispatch build-image.yaml
+      - name: Dispatch build-image.yaml for each image
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IMAGES: ${{ needs.discover.outputs.images }}
         run: |
-          gh workflow run build-image.yaml \
-            --repo "${{ github.repository }}" \
-            --ref "${{ github.ref }}" \
-            --field "image=${{ matrix.name }}" \
-            --field "version=${{ matrix.version }}" \
-            --field "type=${{ matrix.type }}" \
-            --field "tags=$(echo '${{ toJson(matrix.tags) }}' | jq -r 'join(",")')" \
-            --field "registry=${{ matrix.registry }}"
+          echo "$IMAGES" | jq -c '.[]' | while IFS= read -r image; do
+            NAME=$(echo "$image" | jq -r '.name')
+            VERSION=$(echo "$image" | jq -r '.version')
+            TYPE=$(echo "$image" | jq -r '.type')
+            TAGS=$(echo "$image" | jq -r '[.tags[]] | join(",")')
+            REGISTRY=$(echo "$image" | jq -r '.registry')
+
+            echo "Dispatching build for ${NAME}:${VERSION}-${TYPE}..."
+            gh workflow run build-image.yaml \
+              --repo "${{ github.repository }}" \
+              --ref "${{ github.ref_name }}" \
+              --field "image=${NAME}" \
+              --field "version=${VERSION}" \
+              --field "type=${TYPE}" \
+              --field "tags=${TAGS}" \
+              --field "registry=${REGISTRY}"
+
+            # Throttle to avoid GitHub API rate limits
+            sleep 1
+          done
+          echo "✓ Dispatched ${{ needs.discover.outputs.count }} build runs"
