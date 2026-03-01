@@ -9,7 +9,7 @@ apko = "0.27.0"
 melange = "0.23.0"
 
 # Security & signing tools
-trivy = "0.68.2"
+trivy = "0.69.2"
 cosign = "2.6.2"
 syft = "1.21.0"
 
