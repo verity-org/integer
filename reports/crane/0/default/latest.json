@@ -1,0 +1,14 @@
+{
+  "image": "crane",
+  "version": "0",
+  "type": "default",
+  "tags": [
+    "0",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:0aff3eb85ed9fe9dcfe6983bfe0995ea30708fcf1ec20dd9a504312a83e7cc61",
+  "status": "success",
+  "built_at": "2026-03-01T22:37:35Z",
+  "run_id": "22554451109"
+}
