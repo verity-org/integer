@@ -1,0 +1,13 @@
+{
+  "image": "erlang",
+  "version": "27",
+  "type": "default",
+  "tags": [
+    "27"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:ce2a0f830c237e3227f72fcc34456829df19a3bf281849176a7686183735c009",
+  "status": "success",
+  "built_at": "2026-03-01T22:38:33Z",
+  "run_id": "22554462884"
+}
