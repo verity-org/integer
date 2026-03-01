@@ -1,0 +1,14 @@
+{
+  "image": "git",
+  "version": "2",
+  "type": "default",
+  "tags": [
+    "2",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:38:35Z",
+  "run_id": "22554469268"
+}
