@@ -96,6 +96,18 @@ jobs:
             TAGS=$(echo "$image" | jq -r '[.tags[]] | join(",")')
             REGISTRY=$(echo "$image" | jq -r '.registry')
 
+            # Validate field values before shell interpolation
+            for field in "$NAME" "$VERSION" "$TYPE" "$REGISTRY"; do
+              if [[ ! "$field" =~ ^[a-zA-Z0-9][a-zA-Z0-9.:/_-]*$ ]]; then
+                echo "Unsafe field value rejected: ${field}" >&2
+                exit 1
+              fi
+            done
+            if [[ ! "$TAGS" =~ ^[a-zA-Z0-9.,_-]+$ ]]; then
+              echo "Unsafe tags value rejected: ${TAGS}" >&2
+              exit 1
+            fi
+
             echo "Dispatching build for ${NAME}:${VERSION}-${TYPE}..."
             gh workflow run build-image.yaml \
               --repo "${{ github.repository }}" \
