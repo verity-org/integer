@@ -1,0 +1,14 @@
+{
+  "image": "etcd",
+  "version": "3",
+  "type": "fips",
+  "tags": [
+    "3-fips",
+    "latest-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:38:20Z",
+  "run_id": "22554467210"
+}
