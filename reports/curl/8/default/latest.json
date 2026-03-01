@@ -1,0 +1,14 @@
+{
+  "image": "curl",
+  "version": "8",
+  "type": "default",
+  "tags": [
+    "8",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:37:28Z",
+  "run_id": "22554451738"
+}
