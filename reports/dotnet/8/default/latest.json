@@ -1,0 +1,14 @@
+{
+  "image": "dotnet",
+  "version": "8",
+  "type": "default",
+  "tags": [
+    "8",
+    "latest-8"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:c976e79bf90bb9d3b465f29cb5be8767a8cf9bfd00e4b2804087b32ad49d040e",
+  "status": "success",
+  "built_at": "2026-03-01T22:37:47Z",
+  "run_id": "22554452982"
+}
