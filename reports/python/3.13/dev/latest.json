@@ -1,0 +1,13 @@
+{
+  "image": "python",
+  "version": "3.13",
+  "type": "dev",
+  "tags": [
+    "3.13-dev"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:1c3e315fb37121c97f0c65e6d0bde840c1c9bd79bc592fb075cc7dba3cc3e31a",
+  "status": "success",
+  "built_at": "2026-03-01T22:43:37Z",
+  "run_id": "22554542722"
+}
