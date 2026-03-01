@@ -1,0 +1,14 @@
+{
+  "image": "cosign",
+  "version": "2",
+  "type": "default",
+  "tags": [
+    "2",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:61da79830d6a59bf5be4bd0ac648cea93f51ea628f6508b2ae239b0b7a60ec62",
+  "status": "success",
+  "built_at": "2026-03-01T22:37:38Z",
+  "run_id": "22554450435"
+}
