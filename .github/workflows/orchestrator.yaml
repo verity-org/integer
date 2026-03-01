@@ -67,7 +67,7 @@ jobs:
 
           echo "Discovered images:"
           echo "$all" | jq -r '.[] | "\(.name):\(.version)-\(.type) → \(.registry)/\(.name):\(.tags[0])"'
-          echo "matrix=$all" >> "$GITHUB_OUTPUT"
+          echo "matrix=$(echo "$all" | jq -c .)" >> "$GITHUB_OUTPUT"
 
   dispatch:
     name: Dispatch builds
