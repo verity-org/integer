@@ -71,8 +71,9 @@ jobs:
 
       - name: Run markdownlint
         run: |
-          if ls *.md 2>/dev/null | grep -q .; then
-            markdownlint "*.md" --ignore node_modules
+          set -- ./*.md
+          if [ -f "$1" ]; then
+            markdownlint ./*.md --ignore node_modules
           else
             echo "No markdown files to lint."
           fi
