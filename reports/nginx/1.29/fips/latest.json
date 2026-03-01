@@ -1,0 +1,15 @@
+{
+  "image": "nginx",
+  "version": "1.29",
+  "type": "fips",
+  "tags": [
+    "1.29-fips",
+    "latest-fips",
+    "mainline-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:40:44Z",
+  "run_id": "22554503705"
+}
