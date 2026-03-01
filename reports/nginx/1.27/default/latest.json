@@ -1,0 +1,13 @@
+{
+  "image": "nginx",
+  "version": "1.27",
+  "type": "default",
+  "tags": [
+    "1.27"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:7fc4e30e9cd939c62193f23e73bdafaffcd0239adfde9ad8ad6ae8b5c1d15ed1",
+  "status": "success",
+  "built_at": "2026-03-01T22:41:02Z",
+  "run_id": "22554500699"
+}
