@@ -1,0 +1,14 @@
+{
+  "image": "dotnet",
+  "version": "8",
+  "type": "sdk",
+  "tags": [
+    "8-sdk",
+    "latest-8-sdk"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:896c662c618b3919edb391d7312653a2a060b2c67426c6e43c1ea4e5240be8a3",
+  "status": "success",
+  "built_at": "2026-03-01T22:38:09Z",
+  "run_id": "22554453667"
+}
