@@ -1,0 +1,14 @@
+{
+  "image": "minio",
+  "version": "RELEASE",
+  "type": "default",
+  "tags": [
+    "RELEASE",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:e55073dbf76b2af7e999fc71f591b833bd75ffa1cf71f571c00363eb8e15606e",
+  "status": "success",
+  "built_at": "2026-03-01T22:40:34Z",
+  "run_id": "22554498745"
+}
