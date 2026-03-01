@@ -1,0 +1,13 @@
+{
+  "image": "redis",
+  "version": "6",
+  "type": "default",
+  "tags": [
+    "6"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:42:51Z",
+  "run_id": "22554546880"
+}
