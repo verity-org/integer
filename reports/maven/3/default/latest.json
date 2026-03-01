@@ -1,0 +1,14 @@
+{
+  "image": "maven",
+  "version": "3",
+  "type": "default",
+  "tags": [
+    "3",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:75647efa91ff95916b23e07d2c0d52d21498d57e466c4b5202f5ae278839bfa3",
+  "status": "failure",
+  "built_at": "2026-03-01T22:41:07Z",
+  "run_id": "22554496814"
+}
