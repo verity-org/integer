@@ -1,0 +1,13 @@
+{
+  "image": "postgres",
+  "version": "15",
+  "type": "default",
+  "tags": [
+    "15"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:f42a82e8766eb880a99de59640decca70c5a62bf162ab54d6928edea978a80b0",
+  "status": "failure",
+  "built_at": "2026-03-01T22:42:24Z",
+  "run_id": "22554530306"
+}
