@@ -1,0 +1,13 @@
+{
+  "image": "node",
+  "version": "20",
+  "type": "default",
+  "tags": [
+    "20"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:5bfeafaf46a8bbc7eee25f183a8b076d37536d759121f9cfee72ffe6f15ceb14",
+  "status": "success",
+  "built_at": "2026-03-01T22:41:10Z",
+  "run_id": "22554504351"
+}
