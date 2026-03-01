@@ -1,0 +1,14 @@
+{
+  "image": "dotnet",
+  "version": "10",
+  "type": "aspnet",
+  "tags": [
+    "10-aspnet",
+    "latest-aspnet"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:358ad320158d37b00edd061de8d3566f893beeb13ce9442638b4647d7addc84b",
+  "status": "success",
+  "built_at": "2026-03-01T22:38:16Z",
+  "run_id": "22554459199"
+}
