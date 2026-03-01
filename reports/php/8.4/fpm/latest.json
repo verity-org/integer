@@ -1,0 +1,13 @@
+{
+  "image": "php",
+  "version": "8.4",
+  "type": "fpm",
+  "tags": [
+    "8.4-fpm"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:41:58Z",
+  "run_id": "22554524575"
+}
