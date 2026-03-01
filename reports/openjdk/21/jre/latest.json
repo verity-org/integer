@@ -1,0 +1,13 @@
+{
+  "image": "openjdk",
+  "version": "21",
+  "type": "jre",
+  "tags": [
+    "21-jre"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:e74fd464126d95f445f878c4c44b8f0ec6a8fd304c73375d429f70ab9ef494eb",
+  "status": "success",
+  "built_at": "2026-03-01T22:41:51Z",
+  "run_id": "22554514683"
+}
