@@ -1,0 +1,14 @@
+{
+  "image": "httpd",
+  "version": "2.4",
+  "type": "default",
+  "tags": [
+    "2.4",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:afb3ae15dc52d7b1d7a2b4c7820f4d550b4ece9b0066221c7088f975a0eff015",
+  "status": "success",
+  "built_at": "2026-03-01T22:41:04Z",
+  "run_id": "22554486793"
+}
