@@ -1,0 +1,14 @@
+{
+  "image": "python",
+  "version": "3.14",
+  "type": "fips",
+  "tags": [
+    "3.14-fips",
+    "latest-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:42:51Z",
+  "run_id": "22554545561"
+}
