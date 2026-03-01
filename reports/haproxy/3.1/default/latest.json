@@ -1,0 +1,13 @@
+{
+  "image": "haproxy",
+  "version": "3.1",
+  "type": "default",
+  "tags": [
+    "3.1"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:da53bfc3d8eab12640b372e886856fa4aa7da4079457dc42eaa35983f4027902",
+  "status": "success",
+  "built_at": "2026-03-01T22:39:58Z",
+  "run_id": "22554482249"
+}
