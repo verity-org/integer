@@ -1,0 +1,13 @@
+{
+  "image": "erlang",
+  "version": "27",
+  "type": "fips",
+  "tags": [
+    "27-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:38:12Z",
+  "run_id": "22554464070"
+}
