@@ -1,0 +1,15 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: redis
+description: "Redis in-memory data store — minimal Wolfi-based image, zero CVE guarantee"
+upstream:
+  package: redis
+versions:
+  - version: "6"
+    eol: "2026-12-31"
+    tags: ["6"]
+    types: [default, fips]
+  - version: "7"
+    latest: true
+    tags: ["7", "latest"]
+    types: [default, fips]

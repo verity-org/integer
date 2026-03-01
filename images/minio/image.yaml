@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: minio
+description: "MinIO object storage server — Wolfi rebuild eliminates CVEs from official image"
+upstream:
+  package: minio
+versions:
+  - version: "RELEASE"
+    latest: true
+    tags: ["RELEASE", "latest"]
+    types: [default]

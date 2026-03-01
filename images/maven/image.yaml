@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: maven
+description: "Apache Maven build tool — Wolfi rebuild on top of OpenJDK 21"
+upstream:
+  package: maven
+versions:
+  - version: "3"
+    latest: true
+    tags: ["3", "latest"]
+    types: [default]

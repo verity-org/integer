@@ -1,0 +1,98 @@
+name: Orchestrator
+
+on:
+  schedule:
+    # Daily at 03:00 UTC (offset from verity's 02:00 to avoid resource contention)
+    - cron: "0 3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "images/**"
+      - "integer.yaml"
+      - ".github/workflows/orchestrator.yaml"
+      - ".github/workflows/build-image.yaml"
+  workflow_dispatch:
+    inputs:
+      image:
+        description: "Image name to build (empty = all)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  actions: write    # required to dispatch build-image.yaml
+
+jobs:
+  discover:
+    name: Discover images
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.discover.outputs.matrix }}
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install mise
+        uses: step-security/mise-action@d65cf9dcb78b983ae2530c89fd28e72286713505 # v3.5.1
+        with:
+          install: true
+          cache: true
+
+      - name: Cache Go modules
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
+        with:
+          path: |
+            ~/dev/go/pkg/mod
+            ~/.cache/go-build
+          key: go-${{ runner.os }}-${{ hashFiles('go.sum') }}
+          restore-keys: go-${{ runner.os }}-
+
+      - name: Build integer CLI
+        run: go build -o integer .
+
+      - name: Discover image×version×type combos
+        id: discover
+        run: |
+          all=$(./integer discover)
+
+          # Filter to a single image if requested via workflow_dispatch
+          filter="${{ github.event.inputs.image }}"
+          if [ -n "$filter" ]; then
+            all=$(echo "$all" | jq --arg f "$filter" '[.[] | select(.name == $f)]')
+          fi
+
+          echo "Discovered images:"
+          echo "$all" | jq -r '.[] | "\(.name):\(.version)-\(.type) → \(.registry)/\(.name):\(.tags[0])"'
+          echo "matrix=$all" >> "$GITHUB_OUTPUT"
+
+  dispatch:
+    name: Dispatch builds
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include: ${{ fromJson(needs.discover.outputs.matrix) }}
+      # Allow other images to build even if one fails
+      fail-fast: false
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
+        with:
+          egress-policy: audit
+
+      - name: Dispatch build-image.yaml
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run build-image.yaml \
+            --repo "${{ github.repository }}" \
+            --ref "${{ github.ref }}" \
+            --field "image=${{ matrix.name }}" \
+            --field "version=${{ matrix.version }}" \
+            --field "type=${{ matrix.type }}" \
+            --field "tags=$(echo '${{ toJson(matrix.tags) }}' | jq -r 'join(",")')" \
+            --field "registry=${{ matrix.registry }}"

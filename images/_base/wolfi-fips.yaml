@@ -1,0 +1,9 @@
+include: wolfi-base.yaml
+
+contents:
+  packages:
+    - openssl-provider-fips
+
+environment:
+  OPENSSL_MODULES: /usr/lib/ossl-modules
+  OPENSSL_CONF: /etc/ssl/openssl-fips.cnf

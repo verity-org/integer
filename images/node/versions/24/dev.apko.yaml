@@ -1,0 +1,25 @@
+include: ../../../_base/wolfi-dev.yaml
+
+contents:
+  packages:
+    - nodejs-24
+    - npm
+    - libstdc++
+    - python3
+    - build-base
+    - git
+
+entrypoint:
+  command: /usr/bin/node
+
+work-dir: /app
+
+environment:
+  NODE_ENV: development
+
+paths:
+  - path: /app
+    type: directory
+    uid: 0
+    gid: 0
+    permissions: 0o755

@@ -1,0 +1,26 @@
+include: ../../../_base/wolfi-dev.yaml
+
+contents:
+  packages:
+    - php-8.4
+    - php-8.4-dev
+    - php-8.4-mbstring
+    - php-8.4-openssl
+    - php-8.4-curl
+    - php-8.4-json
+    - php-8.4-pdo
+    - composer
+    - build-base
+    - git
+
+entrypoint:
+  command: /usr/bin/php
+
+work-dir: /app
+
+paths:
+  - path: /app
+    type: directory
+    uid: 0
+    gid: 0
+    permissions: 0o755

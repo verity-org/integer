@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: pgbouncer
+description: "PgBouncer PostgreSQL connection pooler — Wolfi rebuild eliminates Debian CVEs"
+upstream:
+  package: pgbouncer
+versions:
+  - version: "1"
+    latest: true
+    tags: ["1", "latest"]
+    types: [default]

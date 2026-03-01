@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: alertmanager
+description: "Prometheus Alertmanager — Copa uses -distroless variant but leaves unfixable CVEs; Wolfi rebuild"
+upstream:
+  package: prometheus-alertmanager
+versions:
+  - version: "0"
+    latest: true
+    tags: ["0", "latest"]
+    types: [default]

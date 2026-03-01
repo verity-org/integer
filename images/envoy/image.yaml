@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: envoy
+description: "Envoy proxy — Wolfi rebuild; official image ships with unfixable CVEs"
+upstream:
+  package: envoy
+versions:
+  - version: "1"
+    latest: true
+    tags: ["1", "latest"]
+    types: [default]

@@ -1,0 +1,8 @@
+include: ../../../_base/wolfi-base.yaml
+
+contents:
+  packages:
+    - kubectl
+
+entrypoint:
+  command: /usr/bin/kubectl

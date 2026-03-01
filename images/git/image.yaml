@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: git
+description: "Git — Copa can't patch Alpine-based official image (alpine/git); Wolfi rebuild"
+upstream:
+  package: git
+versions:
+  - version: "2"
+    latest: true
+    tags: ["2", "latest"]
+    types: [default]

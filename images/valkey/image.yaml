@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: valkey
+description: "Valkey (Redis fork) — Wolfi rebuild eliminates persistent Debian CVEs"
+upstream:
+  package: valkey
+versions:
+  - version: "8"
+    latest: true
+    tags: ["8", "latest"]
+    types: [default, fips]

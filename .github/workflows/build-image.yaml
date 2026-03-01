@@ -1,0 +1,169 @@
+name: Build Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: "Image name (e.g., node)"
+        required: true
+      version:
+        description: "Version (e.g., 22)"
+        required: true
+      type:
+        description: "Type (e.g., default, dev, fips)"
+        required: true
+        default: "default"
+      tags:
+        description: "Comma-separated tags to publish (e.g., 22,latest)"
+        required: true
+      registry:
+        description: "Target registry"
+        required: true
+        default: "ghcr.io/verity-org"
+
+permissions:
+  contents: write          # push-reports.sh writes to reports branch via GitHub API
+  packages: write          # push to GHCR
+  id-token: write          # keyless cosign signing
+
+jobs:
+  build:
+    name: "Build ${{ inputs.image }}:${{ inputs.version }}-${{ inputs.type }}"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install mise
+        uses: step-security/mise-action@d65cf9dcb78b983ae2530c89fd28e72286713505 # v3.5.1
+        with:
+          install: true
+          cache: true
+
+      # ── Setup ──────────────────────────────────────────────────────────────
+
+      - name: Log in to GHCR
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set apko config path
+        id: config
+        run: |
+          config="images/${{ inputs.image }}/versions/${{ inputs.version }}/${{ inputs.type }}.apko.yaml"
+          if [ ! -f "$config" ]; then
+            echo "Config not found: $config"
+            exit 1
+          fi
+          echo "path=$config" >> "$GITHUB_OUTPUT"
+
+          # Build space-separated image refs for all tags.
+          # Passed unquoted to apko publish so each ref becomes a separate positional arg.
+          refs=""
+          IFS=',' read -ra TAGS <<< "${{ inputs.tags }}"
+          for tag in "${TAGS[@]}"; do
+            tag="${tag// /}"
+            ref="${{ inputs.registry }}/${{ inputs.image }}:${tag}"
+            refs="${refs:+$refs }$ref"
+          done
+          echo "refs=$refs" >> "$GITHUB_OUTPUT"
+          echo "primary_tag=${TAGS[0]// /}" >> "$GITHUB_OUTPUT"
+
+      # ── Build ──────────────────────────────────────────────────────────────
+
+      - name: Build and publish multi-arch image
+        id: build
+        run: |
+          # apko publish resolves the latest Wolfi packages at build time.
+          # No lock file — integer's value is always-fresh CVE patches from Wolfi.
+          # The SBOM attestation (below) records exactly what was installed.
+          apko publish \
+            --arch amd64,arm64 \
+            "${{ steps.config.outputs.path }}" \
+            ${{ steps.config.outputs.refs }}
+
+          # Capture the digest of the published index for signing
+          digest=$(crane digest "${{ inputs.registry }}/${{ inputs.image }}:${{ steps.config.outputs.primary_tag }}")
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+
+      # ── Security scan ──────────────────────────────────────────────────────
+
+      - name: Trivy zero-CVE quality gate
+        run: |
+          trivy image \
+            --exit-code 1 \
+            --severity CRITICAL,HIGH,MEDIUM,LOW \
+            --vuln-type os,library \
+            --format json \
+            --output trivy-report.json \
+            "${{ inputs.registry }}/${{ inputs.image }}:${{ steps.config.outputs.primary_tag }}"
+        continue-on-error: false  # Hard failure — zero CVE policy
+
+      - name: Upload Trivy report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: "trivy-${{ inputs.image }}-${{ inputs.version }}-${{ inputs.type }}"
+          path: trivy-report.json
+          retention-days: 30
+
+      # ── Sign & attest ──────────────────────────────────────────────────────
+
+      - name: Sign image with cosign (keyless)
+        run: |
+          # Sign by digest — immutable reference that covers all tags pointing to this image.
+          cosign sign --yes \
+            "${{ inputs.registry }}/${{ inputs.image }}@${{ steps.build.outputs.digest }}"
+
+      - name: Generate and attach SBOM
+        run: |
+          # apko generates per-arch SBOM files during publish.
+          # Attach the amd64 SBOM as a cosign attestation; sign by digest for immutability.
+          if [ -f sbom-amd64.spdx.json ]; then
+            cosign attest \
+              --yes \
+              --predicate sbom-amd64.spdx.json \
+              --type spdxjson \
+              "${{ inputs.registry }}/${{ inputs.image }}@${{ steps.build.outputs.digest }}"
+          else
+            echo "No SBOM file found (sbom-amd64.spdx.json); skipping attestation"
+          fi
+
+      # ── Report ─────────────────────────────────────────────────────────────
+
+      - name: Push build report to reports branch
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Build a compact report JSON
+          status="success"
+          if [ "${{ job.status }}" != "success" ]; then
+            status="failure"
+          fi
+
+          report=$(jq -n \
+            --arg image "${{ inputs.image }}" \
+            --arg version "${{ inputs.version }}" \
+            --arg type "${{ inputs.type }}" \
+            --arg tags "${{ inputs.tags }}" \
+            --arg registry "${{ inputs.registry }}" \
+            --arg digest "${{ steps.build.outputs.digest }}" \
+            --arg status "$status" \
+            --arg built_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg run_id "${{ github.run_id }}" \
+            '{image: $image, version: $version, type: $type, tags: ($tags | split(",")),
+              registry: $registry, digest: $digest, status: $status,
+              built_at: $built_at, run_id: $run_id}')
+
+          echo "$report" > report.json
+          bash .github/scripts/push-reports.sh \
+            "${{ inputs.image }}" \
+            "${{ inputs.version }}/${{ inputs.type }}" \
+            report.json

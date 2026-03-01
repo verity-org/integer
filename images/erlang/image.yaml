@@ -1,0 +1,20 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: erlang
+description: "Erlang/OTP runtime — Wolfi rebuild; official image is Debian-based with persistent unfixable CVEs"
+upstream:
+  package: erlang
+versions:
+  - version: "26"
+    eol: "2026-05-15"
+    tags: ["26"]
+    types: [default, dev, fips]
+  - version: "27"
+    eol: "2027-05-20"
+    tags: ["27"]
+    types: [default, dev, fips]
+  - version: "28"
+    eol: "2028-05-20"
+    latest: true
+    tags: ["28", "latest"]
+    types: [default, dev, fips]

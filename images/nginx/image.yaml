@@ -1,0 +1,17 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: nginx
+description: "Nginx web server — Copa leaves unfixable CVEs in Debian nginx; Wolfi rebuild from source"
+upstream:
+  package: nginx
+versions:
+  - version: "1.27"
+    tags: ["1.27"]
+    types: [default, fips]
+  - version: "1.28"
+    tags: ["1.28", "stable"]
+    types: [default, fips]
+  - version: "1.29"
+    latest: true
+    tags: ["1.29", "latest", "mainline"]
+    types: [default, fips]

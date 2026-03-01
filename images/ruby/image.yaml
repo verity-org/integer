@@ -1,0 +1,24 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: ruby
+description: "Ruby runtime — Copa leaves unfixable CVEs in Debian base; Wolfi rebuilds from source"
+upstream:
+  package: ruby-3.3
+versions:
+  - version: "3.2"
+    eol: "2026-03-31"
+    tags: ["3.2"]
+    types: [default, dev, fips]
+  - version: "3.3"
+    eol: "2027-03-31"
+    tags: ["3.3"]
+    types: [default, dev, fips]
+  - version: "3.4"
+    eol: "2028-03-31"
+    tags: ["3.4"]
+    types: [default, dev, fips]
+  - version: "4.0"
+    eol: "2029-03-31"
+    latest: true
+    tags: ["4.0", "latest"]
+    types: [default, dev, fips]

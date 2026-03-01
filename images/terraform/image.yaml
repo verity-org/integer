@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: terraform
+description: "OpenTofu (Terraform-compatible) — Copa can't patch Alpine; Wolfi rebuild of BSL-free fork"
+upstream:
+  package: opentofu
+versions:
+  - version: "1"
+    latest: true
+    tags: ["1", "latest"]
+    types: [default]

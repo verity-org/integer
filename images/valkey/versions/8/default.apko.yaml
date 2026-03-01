@@ -1,0 +1,15 @@
+include: ../../../_base/wolfi-base.yaml
+
+contents:
+  packages:
+    - valkey
+
+entrypoint:
+  command: /usr/bin/valkey-server
+
+paths:
+  - path: /data
+    type: directory
+    uid: 65532
+    gid: 65532
+    permissions: 0o755

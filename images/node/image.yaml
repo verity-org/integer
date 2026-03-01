@@ -1,0 +1,20 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: node
+description: "Node.js runtime — minimal Wolfi-based image, zero CVE guarantee"
+upstream:
+  package: nodejs-22
+versions:
+  - version: "20"
+    eol: "2026-04-30"
+    tags: ["20"]
+    types: [default, dev, fips]
+  - version: "22"
+    eol: "2027-04-30"
+    tags: ["22"]
+    types: [default, dev, fips]
+  - version: "24"
+    eol: "2028-04-30"
+    latest: true
+    tags: ["24", "latest"]
+    types: [default, dev, fips]

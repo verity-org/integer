@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: vector
+description: "Vector observability pipeline — Copa can't patch Alpine variant; Wolfi rebuild covers both"
+upstream:
+  package: vector
+versions:
+  - version: "0"
+    latest: true
+    tags: ["0", "latest"]
+    types: [default]

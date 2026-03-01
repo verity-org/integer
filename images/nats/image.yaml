@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: nats
+description: "NATS messaging server — Wolfi rebuild eliminates persistent Debian CVEs"
+upstream:
+  package: nats-server
+versions:
+  - version: "2"
+    latest: true
+    tags: ["2", "latest"]
+    types: [default]

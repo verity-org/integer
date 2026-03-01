@@ -1,0 +1,11 @@
+apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: coredns
+description: "CoreDNS — Copa can't patch scratch-based official image; Wolfi rebuild"
+upstream:
+  package: coredns
+versions:
+  - version: "1"
+    latest: true
+    tags: ["1", "latest"]
+    types: [default]

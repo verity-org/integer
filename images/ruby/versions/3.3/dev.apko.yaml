@@ -1,0 +1,30 @@
+include: ../../../_base/wolfi-dev.yaml
+
+contents:
+  packages:
+    - ruby-3.3
+    - ruby-3.3-dev
+    - libstdc++
+    - build-base
+    - git
+
+entrypoint:
+  command: /usr/bin/ruby
+
+work-dir: /app
+
+paths:
+  - path: /app
+    type: directory
+    uid: 0
+    gid: 0
+    permissions: 0o755
+  - path: /usr/local/bundle
+    type: directory
+    uid: 0
+    gid: 0
+    permissions: 0o755
+
+environment:
+  BUNDLE_SILENCE_ROOT_WARNING: "1"
+  BUNDLE_APP_CONFIG: /usr/local/bundle

@@ -1,0 +1,22 @@
+include: ../../../_base/wolfi-dev.yaml
+
+contents:
+  packages:
+    - python-3.11
+    - py3-pip
+    - python-3.11-dev
+    - libstdc++
+    - build-base
+    - git
+
+entrypoint:
+  command: /usr/bin/python3
+
+work-dir: /app
+
+paths:
+  - path: /app
+    type: directory
+    uid: 0
+    gid: 0
+    permissions: 0o755

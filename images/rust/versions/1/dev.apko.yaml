@@ -1,0 +1,32 @@
+include: ../../../_base/wolfi-dev.yaml
+
+contents:
+  packages:
+    - rust
+    - cargo
+    - build-base
+    - git
+    - pkg-config
+    - openssl-dev
+
+entrypoint:
+  command: /usr/bin/rustc
+
+work-dir: /app
+
+environment:
+  RUST_BACKTRACE: "1"
+  CARGO_HOME: /usr/local/cargo
+  PATH: /usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+paths:
+  - path: /app
+    type: directory
+    uid: 0
+    gid: 0
+    permissions: 0o755
+  - path: /usr/local/cargo
+    type: directory
+    uid: 0
+    gid: 0
+    permissions: 0o755

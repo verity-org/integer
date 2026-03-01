@@ -1,0 +1,15 @@
+# Built binary
+/integer
+
+# Test coverage
+coverage.out
+coverage.html
+
+# apko lock files — not committed; integer builds always use latest Wolfi packages
+*.lock.yaml
+
+# melange signing keys (generated per-build, never commit private keys)
+packages/**/melange.rsa
+
+# macOS
+.DS_Store
