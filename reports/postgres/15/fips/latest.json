@@ -1,0 +1,13 @@
+{
+  "image": "postgres",
+  "version": "15",
+  "type": "fips",
+  "tags": [
+    "15-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-01T22:42:14Z",
+  "run_id": "22554530871"
+}
