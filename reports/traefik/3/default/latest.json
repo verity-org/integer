@@ -1,0 +1,14 @@
+{
+  "image": "traefik",
+  "version": "3",
+  "type": "default",
+  "tags": [
+    "3",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:2977abbe7d9d353ec5c90ebd1c1a66c24a40aa7e77b42f2d21b32ec25fb8e527",
+  "status": "success",
+  "built_at": "2026-03-02T04:53:25Z",
+  "run_id": "22561628958"
+}
