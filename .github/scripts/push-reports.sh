@@ -35,13 +35,13 @@ curl_with_retry() {
       return 0
     fi
     local rc=$?
-    if [ $attempt -ge $max ]; then
+    if [ "$attempt" -ge "$max" ]; then
       echo "curl failed after ${max} attempts (exit ${rc})" >&2
-      return $rc
+      return "$rc"
     fi
     local wait=$(( attempt * 5 + RANDOM % 5 ))
     echo "curl attempt ${attempt} failed (exit ${rc}), retrying in ${wait}s..." >&2
-    sleep $wait
+    sleep "$wait"
     attempt=$(( attempt + 1 ))
   done
 }
