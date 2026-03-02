@@ -7,8 +7,8 @@
     "latest-17-jre"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "",
-  "status": "failure",
-  "built_at": "2026-03-02T20:02:29Z",
-  "run_id": "22593402173"
+  "digest": "sha256:57ae9042e34fb6770253c3349743bfe6228576a0068942a891f272c994f27f01",
+  "status": "success",
+  "built_at": "2026-03-02T20:21:17Z",
+  "run_id": "22593855736"
 }
