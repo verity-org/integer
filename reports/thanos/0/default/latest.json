@@ -1,0 +1,14 @@
+{
+  "image": "thanos",
+  "version": "0",
+  "type": "default",
+  "tags": [
+    "0",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:8dbf454f4064081279fc7f280c3aebeab39a7c57d94b34f3961275c827cf42da",
+  "status": "success",
+  "built_at": "2026-03-02T04:53:15Z",
+  "run_id": "22561628220"
+}
