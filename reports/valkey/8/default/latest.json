@@ -1,0 +1,14 @@
+{
+  "image": "valkey",
+  "version": "8",
+  "type": "default",
+  "tags": [
+    "8",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:29b0e97ac4eea585fdc034244a04ad1458dc57292bc3d2cd0c9cf5b82850d735",
+  "status": "success",
+  "built_at": "2026-03-02T04:53:43Z",
+  "run_id": "22561629760"
+}
