@@ -8,7 +8,7 @@ entrypoint:
   command: /usr/sbin/nginx -g "daemon off;"
 
 environment:
-  NGINX_VERSION: "1.28"
+  NGINX_VERSION: "1.29"
   OPENSSL_MODULES: /usr/lib/ossl-modules
   OPENSSL_CONF: /etc/ssl/openssl-fips.cnf
 

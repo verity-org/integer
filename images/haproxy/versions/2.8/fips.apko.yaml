@@ -2,7 +2,7 @@ include: ../../../_base/wolfi-fips.yaml
 
 contents:
   packages:
-    - haproxy-2.8
+    - haproxy-3.0
     - libssl3
 
 entrypoint:

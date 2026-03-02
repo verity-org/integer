@@ -6,7 +6,7 @@ contents:
     - php-8.3-mbstring
     - php-8.3-openssl
     - php-8.3-curl
-    - php-8.3-json
+
 
 entrypoint:
   command: /usr/bin/php

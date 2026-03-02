@@ -6,6 +6,9 @@ upstream:
   package: helm
 versions:
   - version: "3"
+    tags: ["3"]
+    types: [default]
+  - version: "4"
     latest: true
-    tags: ["3", "latest"]
+    tags: ["4", "latest"]
     types: [default]

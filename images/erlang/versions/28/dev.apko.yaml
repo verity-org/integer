@@ -3,7 +3,7 @@ include: ../../../_base/wolfi-dev.yaml
 contents:
   packages:
     - erlang-28
-    - erlang-dev
+    - erlang-28-dev
     - rebar3
     - build-base
     - git

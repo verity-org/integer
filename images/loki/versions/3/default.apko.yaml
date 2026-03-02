@@ -2,7 +2,7 @@ include: ../../../_base/wolfi-base.yaml
 
 contents:
   packages:
-    - grafana-loki
+    - loki-3.4
 
 entrypoint:
   command: /usr/bin/loki

@@ -2,7 +2,7 @@ include: ../../../_base/wolfi-base.yaml
 
 contents:
   packages:
-    - coredns
+    - coredns-1.14
 
 entrypoint:
   command: /usr/bin/coredns

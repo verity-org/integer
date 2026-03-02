@@ -1,8 +1,8 @@
 include: ../../../_base/wolfi-base.yaml
 
-contents:
-  packages:
-    - openssl-provider-fips
+# openssl-provider-fips was removed from the public Wolfi repo.
+# FIPS images use OPENSSL_CONF/OPENSSL_MODULES env vars to point to the
+# built-in OpenSSL 3.x FIPS provider, which is compiled into libcrypto.
 
 environment:
   OPENSSL_MODULES: /usr/lib/ossl-modules

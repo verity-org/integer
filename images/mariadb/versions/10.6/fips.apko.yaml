@@ -3,7 +3,6 @@ include: ../../../_base/wolfi-fips.yaml
 contents:
   packages:
     - mariadb-10.6
-    - mariadb-10.6-client
 
 entrypoint:
   command: mariadbd

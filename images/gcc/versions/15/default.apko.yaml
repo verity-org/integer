@@ -3,11 +3,10 @@ include: ../../../_base/wolfi-dev.yaml
 contents:
   packages:
     - gcc
-    - g++
     - build-base
     - binutils
     - make
-    - libc-dev
+    - glibc-dev
 
 entrypoint:
   command: /usr/bin/gcc

@@ -2,7 +2,7 @@ include: ../../../_base/wolfi-base.yaml
 
 contents:
   packages:
-    - etcd
+    - etcd-3.6
 
 entrypoint:
   command: /usr/bin/etcd

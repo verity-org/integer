@@ -2,7 +2,7 @@ include: ../../../_base/wolfi-dev.yaml
 
 contents:
   packages:
-    - go
+    - go-1.26
     - build-base
     - git
     - curl
