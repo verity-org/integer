@@ -1,0 +1,14 @@
+{
+  "image": "ruby",
+  "version": "4.0",
+  "type": "dev",
+  "tags": [
+    "4.0-dev",
+    "latest-dev"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-02T18:20:15Z",
+  "run_id": "22589620612"
+}
