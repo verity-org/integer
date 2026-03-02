@@ -26,6 +26,7 @@ permissions:
   contents: write          # push-reports.sh writes to reports branch via GitHub API
   packages: write          # push to GHCR
   id-token: write          # keyless cosign signing
+  attestations: write      # actions/attest SBOM
 
 jobs:
   build:
@@ -131,10 +132,9 @@ jobs:
           pushd "$configdir"
           apko publish \
             --arch amd64,arm64 \
+            --sbom-path "$GITHUB_WORKSPACE" \
             "$configfile" \
             "${REFSARR[@]}"
-          # Move SBOM to workspace root for the attestation step
-          [ -f sbom-amd64.spdx.json ] && mv sbom-amd64.spdx.json "$GITHUB_WORKSPACE/sbom-amd64.spdx.json" || true
           popd
 
           # Capture the digest of the published index for signing
@@ -177,23 +177,15 @@ jobs:
           # Sign by digest — immutable reference that covers all tags pointing to this image.
           cosign sign --yes "${INPUT_REGISTRY}/${INPUT_IMAGE}@${DIGEST}"
 
-      - name: Generate and attach SBOM
-        env:
-          INPUT_IMAGE: ${{ inputs.image }}
-          INPUT_REGISTRY: ${{ inputs.registry }}
-          DIGEST: ${{ steps.build.outputs.digest }}
-        run: |
-          # apko generates per-arch SBOM files during publish.
-          # Attach the amd64 SBOM as a cosign attestation; sign by digest for immutability.
-          if [ -f sbom-amd64.spdx.json ]; then
-            cosign attest \
-              --yes \
-              --predicate sbom-amd64.spdx.json \
-              --type spdxjson \
-              "${INPUT_REGISTRY}/${INPUT_IMAGE}@${DIGEST}"
-          else
-            echo "No SBOM file found (sbom-amd64.spdx.json); skipping attestation"
-          fi
+      - name: Attest SBOM
+        if: hashFiles('sbom-amd64.spdx.json') != ''
+        uses: actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26 # v4.1.0
+        with:
+          subject-name: ${{ inputs.registry }}/${{ inputs.image }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          predicate-type: https://spdx.dev/Document
+          predicate-path: sbom-amd64.spdx.json
+          push-to-registry: true
 
       # ── Report ─────────────────────────────────────────────────────────────
 
