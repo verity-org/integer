@@ -1,0 +1,14 @@
+{
+  "image": "dotnet",
+  "version": "10",
+  "type": "sdk-fips",
+  "tags": [
+    "10-sdk-fips",
+    "latest-sdk-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-02T04:35:00Z",
+  "run_id": "22561508507"
+}
