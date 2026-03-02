@@ -1,0 +1,14 @@
+{
+  "image": "alertmanager",
+  "version": "0",
+  "type": "default",
+  "tags": [
+    "0",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:c8140a220845fb5bfb68cf3c83996d03d56cc7e56c1cd2109e4e7c416dfdb5ca",
+  "status": "success",
+  "built_at": "2026-03-02T04:32:17Z",
+  "run_id": "22561495846"
+}
