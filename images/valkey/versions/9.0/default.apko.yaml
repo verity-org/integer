@@ -2,13 +2,10 @@ include: ../../../_base/wolfi-base.yaml
 
 contents:
   packages:
-    - redis-6
+    - valkey-9.0
 
 entrypoint:
-  command: /usr/bin/redis-server
-
-environment:
-  REDIS_VERSION: "7"
+  command: /usr/bin/valkey-server
 
 paths:
   - path: /data

@@ -25,9 +25,30 @@ fi
 
 CONTENT=$(base64 -w0 < "$REPORT_FILE")
 
+# curl_with_retry — retry on transient HTTP errors (exit code 22 = 4xx/5xx).
+# Usage: curl_with_retry <max_attempts> <curl_args...>
+curl_with_retry() {
+  local max="${1}"; shift
+  local attempt=1
+  while true; do
+    if curl "$@"; then
+      return 0
+    fi
+    local rc=$?
+    if [ "$attempt" -ge "$max" ]; then
+      echo "curl failed after ${max} attempts (exit ${rc})" >&2
+      return "$rc"
+    fi
+    local wait=$(( attempt * 5 + RANDOM % 5 ))
+    echo "curl attempt ${attempt} failed (exit ${rc}), retrying in ${wait}s..." >&2
+    sleep "$wait"
+    attempt=$(( attempt + 1 ))
+  done
+}
+
 # Check if file already exists (need its SHA for update).
 existing_sha=""
-response=$(curl -sf \
+response=$(curl_with_retry 5 -sf \
   -H "Authorization: Bearer ${GH_TOKEN}" \
   -H "Accept: application/vnd.github+json" \
   "${API}/${REPORT_PATH}?ref=${BRANCH}" 2>/dev/null || true)
@@ -55,8 +76,8 @@ else
     '{message: $message, content: $content, branch: $branch}')
 fi
 
-# PUT to create or update.
-curl -sf \
+# PUT to create or update (retry up to 5 times on rate-limiting).
+curl_with_retry 5 -sf \
   -X PUT \
   -H "Authorization: Bearer ${GH_TOKEN}" \
   -H "Accept: application/vnd.github+json" \

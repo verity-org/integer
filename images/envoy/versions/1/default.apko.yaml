@@ -2,7 +2,7 @@ include: ../../../_base/wolfi-base.yaml
 
 contents:
   packages:
-    - envoy
+    - envoy-1.37
 
 entrypoint:
   command: /usr/bin/envoy

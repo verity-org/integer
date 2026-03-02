@@ -2,8 +2,7 @@ include: ../../../_base/wolfi-fips.yaml
 
 contents:
   packages:
-    - rust
-    - cargo
+    - rust-1.86
 
 entrypoint:
   command: /usr/bin/rustc

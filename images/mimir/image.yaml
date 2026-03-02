@@ -5,7 +5,7 @@ description: "Grafana Mimir metrics backend — Wolfi rebuild eliminates Debian 
 upstream:
   package: grafana-mimir
 versions:
-  - version: "2"
+  - version: "3"
     latest: true
-    tags: ["2", "latest"]
+    tags: ["3", "latest"]
     types: [default]

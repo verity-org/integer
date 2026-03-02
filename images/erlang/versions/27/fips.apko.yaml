@@ -2,7 +2,7 @@ include: ../../../_base/wolfi-fips.yaml
 
 contents:
   packages:
-    - erlang
+    - erlang-27
 
 entrypoint:
   command: /usr/bin/erl

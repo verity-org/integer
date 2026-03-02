@@ -7,7 +7,7 @@ contents:
     - php-8.3-mbstring
     - php-8.3-openssl
     - php-8.3-curl
-    - php-8.3-json
+
     - php-8.3-pdo
     - composer
     - build-base

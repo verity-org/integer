@@ -106,15 +106,29 @@ jobs:
           echo "refs=$refs" >> "$GITHUB_OUTPUT"
           echo "primary_tag=${TAGS[0]// /}" >> "$GITHUB_OUTPUT"
 
+      - name: Read image metadata
+        id: meta
+        env:
+          INPUT_IMAGE: ${{ inputs.image }}
+        run: |
+          image_yaml="images/${INPUT_IMAGE}/image.yaml"
+          title=$(yq '.name' "$image_yaml")
+          description=$(yq '.description' "$image_yaml")
+          echo "title=${title}" >> "$GITHUB_OUTPUT"
+          echo "description=${description}" >> "$GITHUB_OUTPUT"
+
       # ── Build ──────────────────────────────────────────────────────────────
 
       - name: Build and publish multi-arch image
         id: build
         env:
           INPUT_IMAGE: ${{ inputs.image }}
+          INPUT_VERSION: ${{ inputs.version }}
           INPUT_REGISTRY: ${{ inputs.registry }}
           PRIMARY_TAG: ${{ steps.config.outputs.primary_tag }}
           REFS: ${{ steps.config.outputs.refs }}
+          OCI_TITLE: ${{ steps.meta.outputs.title }}
+          OCI_DESCRIPTION: ${{ steps.meta.outputs.description }}
         run: |
           # apko publish resolves the latest Wolfi packages at build time.
           # No lock file — integer's value is always-fresh CVE patches from Wolfi.
@@ -133,6 +147,11 @@ jobs:
           apko publish \
             --arch amd64,arm64 \
             --sbom-path "$GITHUB_WORKSPACE" \
+            --annotations "org.opencontainers.image.title=${OCI_TITLE}" \
+            --annotations "org.opencontainers.image.description=${OCI_DESCRIPTION}" \
+            --annotations "org.opencontainers.image.version=${INPUT_VERSION}" \
+            --annotations "org.opencontainers.image.revision=${GITHUB_SHA}" \
+            --annotations "org.opencontainers.image.created=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
             "$configfile" \
             "${REFSARR[@]}"
           popd

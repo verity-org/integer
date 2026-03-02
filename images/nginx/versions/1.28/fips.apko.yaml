@@ -2,7 +2,7 @@ include: ../../../_base/wolfi-fips.yaml
 
 contents:
   packages:
-    - nginx
+    - nginx-stable
 
 entrypoint:
   command: /usr/sbin/nginx -g "daemon off;"

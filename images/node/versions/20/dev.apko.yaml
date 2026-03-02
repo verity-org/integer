@@ -5,7 +5,7 @@ contents:
     - nodejs-20
     - npm
     - libstdc++
-    - python3
+    - python3-as-3.13
     - build-base
     - git
 

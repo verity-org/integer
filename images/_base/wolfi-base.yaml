@@ -1,3 +1,9 @@
+annotations:
+  org.opencontainers.image.vendor: "Verity"
+  org.opencontainers.image.licenses: "Apache-2.0"
+  org.opencontainers.image.source: "https://github.com/verity-org/integer"
+  org.opencontainers.image.url: "https://github.com/verity-org/integer"
+
 contents:
   keyring:
     - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub

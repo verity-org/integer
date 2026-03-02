@@ -2,13 +2,12 @@ include: ../../../_base/wolfi-fips.yaml
 
 contents:
   packages:
-    - redis
+    - valkey-9.0
 
 entrypoint:
-  command: /usr/bin/redis-server
+  command: /usr/bin/valkey-server
 
 environment:
-  REDIS_VERSION: "7"
   OPENSSL_MODULES: /usr/lib/ossl-modules
   OPENSSL_CONF: /etc/ssl/openssl-fips.cnf
 
