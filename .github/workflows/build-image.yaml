@@ -144,16 +144,28 @@ jobs:
           read -ra REFSARR <<< "$REFS"
 
           pushd "$configdir"
+
+          # Inject dynamic OCI annotations via yq into a temp config in the
+          # same directory so that include: paths resolve correctly.
+          BUILD_TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          export BUILD_TIMESTAMP
+          tmpconfig=$(mktemp -p . --suffix=.apko.yaml)
+          cp "$configfile" "$tmpconfig"
+          yq -i '
+            .annotations["org.opencontainers.image.title"]       = strenv(OCI_TITLE) |
+            .annotations["org.opencontainers.image.description"] = strenv(OCI_DESCRIPTION) |
+            .annotations["org.opencontainers.image.version"]     = strenv(INPUT_VERSION) |
+            .annotations["org.opencontainers.image.revision"]    = strenv(GITHUB_SHA) |
+            .annotations["org.opencontainers.image.created"]     = strenv(BUILD_TIMESTAMP)
+          ' "$tmpconfig"
+
           apko publish \
             --arch amd64,arm64 \
             --sbom-path "$GITHUB_WORKSPACE" \
-            --annotations "org.opencontainers.image.title=${OCI_TITLE}" \
-            --annotations "org.opencontainers.image.description=${OCI_DESCRIPTION}" \
-            --annotations "org.opencontainers.image.version=${INPUT_VERSION}" \
-            --annotations "org.opencontainers.image.revision=${GITHUB_SHA}" \
-            --annotations "org.opencontainers.image.created=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-            "$configfile" \
+            "$tmpconfig" \
             "${REFSARR[@]}"
+
+          rm -f "$tmpconfig"
           popd
 
           # Capture the digest of the published index for signing

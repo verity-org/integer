@@ -12,4 +12,7 @@ permissions:
 
 jobs:
   lint:
-    uses: verity-org/.github/.github/workflows/lint.yaml@main
+    # Pinned to a specific commit SHA for supply-chain integrity.
+    # To update: get the latest SHA from verity-org/.github and replace below.
+    #   gh api "repos/verity-org/.github/git/refs/heads/main" --jq '.object.sha'
+    uses: verity-org/.github/.github/workflows/lint.yaml@786d4a6f7ff04df6188d82bf3b1320dae65f6c2d # main
