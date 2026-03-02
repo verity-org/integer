@@ -7,8 +7,8 @@
     "latest-8-sdk"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:896c662c618b3919edb391d7312653a2a060b2c67426c6e43c1ea4e5240be8a3",
+  "digest": "sha256:a7bc7ad0ce627fe2da938bd775303099afcfeb7b0f175e26df53c70334e96f6c",
   "status": "success",
-  "built_at": "2026-03-02T04:34:18Z",
-  "run_id": "22561501676"
+  "built_at": "2026-03-02T18:30:56Z",
+  "run_id": "22590009287"
 }
