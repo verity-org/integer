@@ -7,8 +7,8 @@
     "latest-aspnet"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:04348bc38e89c14a63d100763d389aead979b9804b3ed4d0c3ac9d679a17f11a",
+  "digest": "sha256:4f414678ce37acfd730a7abfdd322ce597919fc50035471e0a9248a6be4c6870",
   "status": "success",
-  "built_at": "2026-03-02T20:13:40Z",
-  "run_id": "22593750090"
+  "built_at": "2026-03-03T04:35:32Z",
+  "run_id": "22608382049"
 }
