@@ -3,12 +3,11 @@
   "version": "17",
   "type": "fips",
   "tags": [
-    "17-fips",
-    "latest-17-fips"
+    "17-fips"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:82b9a94bcdff8364ac24c4ea076f0bf970ef1d04ec9afa9df0e18b104b04b7c9",
+  "digest": "sha256:1ee1462f1040a7fc1643e69d8276162155a8252470b3501d93ac1b55c83305ac",
   "status": "success",
-  "built_at": "2026-03-04T04:44:36Z",
-  "run_id": "22655109369"
+  "built_at": "2026-03-04T22:55:03Z",
+  "run_id": "22692835714"
 }
