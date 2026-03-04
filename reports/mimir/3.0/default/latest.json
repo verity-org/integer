@@ -1,0 +1,14 @@
+{
+  "image": "mimir",
+  "version": "3.0",
+  "type": "default",
+  "tags": [
+    "3.0",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:0be19096918d79182234467d4fa9de49269b82f93b75926d7ee17532dfb25fa1",
+  "status": "success",
+  "built_at": "2026-03-04T22:47:45Z",
+  "run_id": "22692752281"
+}
