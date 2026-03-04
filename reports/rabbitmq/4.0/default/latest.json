@@ -1,0 +1,13 @@
+{
+  "image": "rabbitmq",
+  "version": "4.0",
+  "type": "default",
+  "tags": [
+    "4.0"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:88ce071c776e1447c11ce92cac2e8e4570f80ceec979a3459eeb594e7a718339",
+  "status": "success",
+  "built_at": "2026-03-04T23:03:06Z",
+  "run_id": "22692946069"
+}
