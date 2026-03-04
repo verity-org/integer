@@ -1,0 +1,13 @@
+{
+  "image": "prometheus",
+  "version": "2.55",
+  "type": "default",
+  "tags": [
+    "2.55"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:2409f571ca8bcc9672a99767a639967f9578530ed65ff61a677aa22c637960b4",
+  "status": "failure",
+  "built_at": "2026-03-04T23:01:20Z",
+  "run_id": "22692914826"
+}
