@@ -1,0 +1,13 @@
+{
+  "image": "nats",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:be55e6c8b3c65d979d2651b24d04b15f1e9b7e5117c6a3069c40b0599222039e",
+  "status": "success",
+  "built_at": "2026-03-04T22:48:03Z",
+  "run_id": "22692759111"
+}
