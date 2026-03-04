@@ -1,0 +1,13 @@
+{
+  "image": "coredns",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:acca8f4aa0cdda100b3678330fa10e3268928531e357e7a2eea58a154a27d87b",
+  "status": "success",
+  "built_at": "2026-03-04T22:33:53Z",
+  "run_id": "22692571976"
+}
