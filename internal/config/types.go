@@ -1,11 +1,9 @@
 package config
 
-// IntegerConfig represents the integer.yaml global configuration.
+// IntegerConfig is the global integer.yaml configuration.
 type IntegerConfig struct {
-	APIVersion string       `yaml:"apiVersion"`
-	Kind       string       `yaml:"kind"`
-	Target     TargetSpec   `yaml:"target"`
-	Defaults   DefaultsSpec `yaml:"defaults"`
+	Target   TargetSpec   `yaml:"target"`
+	Defaults DefaultsSpec `yaml:"defaults"`
 }
 
 // TargetSpec describes the registry where built images are published.
@@ -18,36 +16,56 @@ type DefaultsSpec struct {
 	Archs []string `yaml:"archs"`
 }
 
-// ImageDefinition represents an images/<name>/image.yaml file.
-// Each image has one or more version streams (e.g. Node 20 LTS, Node 22 LTS).
-// Within each version, one or more types are built (default, dev, fips, jre, …).
-// File paths follow the convention: versions/<Version>/<type>.apko.yaml.
-type ImageDefinition struct {
-	APIVersion  string       `yaml:"apiVersion"`
-	Kind        string       `yaml:"kind"`
-	Name        string       `yaml:"name"`
-	Description string       `yaml:"description"`
-	EOLProduct  string       `yaml:"eol-product,omitempty"` // endoflife.date product slug
-	Upstream    UpstreamSpec `yaml:"upstream,omitempty"`
-	Versions    []VersionDef `yaml:"versions"`
+// ImageDef is an images/<name>.yaml file. It defines the apko config
+// template for each build type and the upstream package discovery pattern.
+type ImageDef struct {
+	Name        string                  `yaml:"name"`
+	Description string                  `yaml:"description"`
+	Upstream    Upstream                `yaml:"upstream"`
+	Types       map[string]TypeTemplate `yaml:"types"`
+	Versions    map[string]VersionMeta  `yaml:"versions,omitempty"`
 }
 
-// UpstreamSpec references the primary Wolfi package for the image.
-type UpstreamSpec struct {
+// Upstream describes how to discover available versions from the Wolfi APKINDEX.
+//
+// If Package contains "{{version}}", versions are discovered by scanning the
+// APKINDEX for all packages matching the prefix before "{{version}}" and
+// extracting the trailing version stem. Example: package "nodejs-{{version}}"
+// matches nodejs-20, nodejs-22, nodejs-24 → versions [20, 22, 24].
+//
+// If Package contains no "{{version}}", the package is unversioned and only
+// a single "latest" version is built.
+type Upstream struct {
 	Package string `yaml:"package"`
 }
 
-// VersionDef declares one version stream for an image (e.g. "22" for Node 22 LTS,
-// "3.12" for Python 3.12). File paths are derived by convention:
-//
-//	versions/<Version>/<type>.apko.yaml
-//
-// Tags for the "default" type are used as-is; every other type gets the type
-// name appended as a suffix (e.g. "22" → "22-dev", "22-fips").
-type VersionDef struct {
-	Version string   `yaml:"version"`          // "22", "3.12", "17", …
-	EOL     string   `yaml:"eol,omitempty"`    // "2027-04-30" — from endoflife.date
-	Latest  bool     `yaml:"latest,omitempty"` // true → carries the "latest" tag
-	Tags    []string `yaml:"tags"`             // base tags for the default type
-	Types   []string `yaml:"types"`            // ["default", "dev", "fips"]
+// TypeTemplate is the apko config template for one build type (default, dev, fips, …).
+// All string fields support the "{{version}}" placeholder, which is replaced with
+// the concrete version string when rendering.
+type TypeTemplate struct {
+	// Base references a _base/*.yaml file by stem name (e.g. "wolfi-base",
+	// "wolfi-dev", "wolfi-fips"). Rendered as an apko include: directive.
+	Base        string            `yaml:"base"`
+	Packages    []string          `yaml:"packages"`
+	Entrypoint  string            `yaml:"entrypoint,omitempty"`
+	WorkDir     string            `yaml:"work-dir,omitempty"`
+	Environment map[string]string `yaml:"environment,omitempty"`
+	Paths       []PathDef         `yaml:"paths,omitempty"`
+}
+
+// PathDef is one path entry in an apko config.
+type PathDef struct {
+	Path        string `yaml:"path"`
+	Type        string `yaml:"type,omitempty"` // defaults to "directory"
+	UID         int    `yaml:"uid"`
+	GID         int    `yaml:"gid"`
+	Permissions string `yaml:"permissions,omitempty"` // e.g. "0o755"
+}
+
+// VersionMeta holds human-curated metadata for a discovered version.
+// Fields are optional — versions without an entry in the map are still
+// built with auto-generated tags.
+type VersionMeta struct {
+	EOL    string `yaml:"eol,omitempty"`    // "2027-04-30"
+	Latest bool   `yaml:"latest,omitempty"` // carries the "latest" tag
 }

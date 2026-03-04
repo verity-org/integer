@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
+        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433765f215b # v2.15.0
         with:
           egress-policy: audit
 
@@ -79,8 +79,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set apko config path
-        id: config
+      - name: Cache Go modules
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
+        with:
+          path: |
+            ~/dev/go/pkg/mod
+            ~/.cache/go-build
+          key: go-${{ runner.os }}-${{ hashFiles('go.sum') }}
+          restore-keys: go-${{ runner.os }}-
+
+      - name: Build integer CLI
+        run: go build -o integer .
+
+      - name: Generate apko configs
+        id: gen
         env:
           INPUT_IMAGE: ${{ inputs.image }}
           INPUT_VERSION: ${{ inputs.version }}
@@ -88,9 +100,13 @@ jobs:
           INPUT_TAGS: ${{ inputs.tags }}
           INPUT_REGISTRY: ${{ inputs.registry }}
         run: |
-          config="images/${INPUT_IMAGE}/versions/${INPUT_VERSION}/${INPUT_TYPE}.apko.yaml"
+          # Generate all apko configs into ./gen/ with absolute include: paths
+          # so apko can resolve them from any working directory.
+          ./integer discover --gen-dir ./gen
+
+          config="gen/${INPUT_IMAGE}/${INPUT_VERSION}/${INPUT_TYPE}.apko.yaml"
           if [ ! -f "$config" ]; then
-            echo "Config not found: $config"
+            echo "Config not found: $config (image/version/type combination may not exist)" >&2
             exit 1
           fi
           echo "path=$config" >> "$GITHUB_OUTPUT"
@@ -111,7 +127,7 @@ jobs:
         env:
           INPUT_IMAGE: ${{ inputs.image }}
         run: |
-          image_yaml="images/${INPUT_IMAGE}/image.yaml"
+          image_yaml="images/${INPUT_IMAGE}.yaml"
           title=$(yq '.name' "$image_yaml")
           description=$(yq '.description' "$image_yaml")
           echo "title=${title}" >> "$GITHUB_OUTPUT"
@@ -125,32 +141,19 @@ jobs:
           INPUT_IMAGE: ${{ inputs.image }}
           INPUT_VERSION: ${{ inputs.version }}
           INPUT_REGISTRY: ${{ inputs.registry }}
-          PRIMARY_TAG: ${{ steps.config.outputs.primary_tag }}
-          REFS: ${{ steps.config.outputs.refs }}
+          PRIMARY_TAG: ${{ steps.gen.outputs.primary_tag }}
+          REFS: ${{ steps.gen.outputs.refs }}
           OCI_TITLE: ${{ steps.meta.outputs.title }}
           OCI_DESCRIPTION: ${{ steps.meta.outputs.description }}
+          CONFIG_PATH: ${{ steps.gen.outputs.path }}
         run: |
-          # apko publish resolves the latest Wolfi packages at build time.
-          # No lock file — integer's value is always-fresh CVE patches from Wolfi.
-          # The SBOM attestation (below) records exactly what was installed.
-          #
-          # apko resolves include: paths relative to the CWD, so cd into the
-          # config file's directory before publishing.
-          config="${{ steps.config.outputs.path }}"
-          configdir=$(dirname "$config")
-          configfile=$(basename "$config")
-
-          # Split refs into an array for safe expansion (one arg per ref).
-          read -ra REFSARR <<< "$REFS"
-
-          pushd "$configdir"
-
-          # Inject dynamic OCI annotations via yq into a temp config in the
-          # same directory so that include: paths resolve correctly.
+          # Inject dynamic OCI annotations into a temp copy of the generated config.
+          # The generated config uses absolute include: paths so apko can resolve
+          # them without needing to cd into the config directory.
           BUILD_TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           export BUILD_TIMESTAMP
-          tmpconfig=$(mktemp -p . --suffix=.apko.yaml)
-          cp "$configfile" "$tmpconfig"
+          tmpconfig=$(mktemp --suffix=.apko.yaml)
+          cp "$CONFIG_PATH" "$tmpconfig"
           yq -i '
             .annotations["org.opencontainers.image.title"]       = strenv(OCI_TITLE) |
             .annotations["org.opencontainers.image.description"] = strenv(OCI_DESCRIPTION) |
@@ -159,6 +162,9 @@ jobs:
             .annotations["org.opencontainers.image.created"]     = strenv(BUILD_TIMESTAMP)
           ' "$tmpconfig"
 
+          # Split refs into an array for safe expansion (one arg per ref).
+          read -ra REFSARR <<< "$REFS"
+
           apko publish \
             --arch amd64,arm64 \
             --sbom-path "$GITHUB_WORKSPACE" \
@@ -166,7 +172,6 @@ jobs:
             "${REFSARR[@]}"
 
           rm -f "$tmpconfig"
-          popd
 
           # Capture the digest of the published index for signing
           digest=$(crane digest "${INPUT_REGISTRY}/${INPUT_IMAGE}:${PRIMARY_TAG}")
@@ -178,7 +183,7 @@ jobs:
         env:
           INPUT_IMAGE: ${{ inputs.image }}
           INPUT_REGISTRY: ${{ inputs.registry }}
-          PRIMARY_TAG: ${{ steps.config.outputs.primary_tag }}
+          PRIMARY_TAG: ${{ steps.gen.outputs.primary_tag }}
         run: |
           trivy image \
             --exit-code 1 \

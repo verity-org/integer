@@ -1,6 +1,12 @@
 # Built binary
 /integer
 
+# Generated apko configs (produced by `integer discover --gen-dir`)
+/gen/
+
+# Built image tarballs (produced by `make build-all`)
+/out/
+
 # Test coverage
 coverage.out
 coverage.html
@@ -10,6 +16,9 @@ coverage.html
 
 # melange signing keys (generated per-build, never commit private keys)
 packages/**/melange.rsa
+
+# apko-generated SBOM files (produced at build time)
+sbom-*.spdx.json
 
 # macOS
 .DS_Store

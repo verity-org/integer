@@ -11,132 +11,152 @@ import (
 	"github.com/verity-org/integer/internal/config"
 )
 
-func TestLoadIntegerConfig(t *testing.T) {
-	t.Run("valid config", func(t *testing.T) {
-		path := writeFile(t, "integer.yaml", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: IntegerConfig
+const globalConfig = `
 target:
   registry: ghcr.io/verity-org
 defaults:
-  archs:
-    - amd64
-    - arm64
-`)
-		cfg, err := config.LoadIntegerConfig(path)
-		require.NoError(t, err)
-		assert.Equal(t, "integer.verity.supply/v1alpha1", cfg.APIVersion)
-		assert.Equal(t, "IntegerConfig", cfg.Kind)
-		assert.Equal(t, "ghcr.io/verity-org", cfg.Target.Registry)
-		assert.Equal(t, []string{"amd64", "arm64"}, cfg.Defaults.Archs)
-	})
+  archs: [amd64, arm64]
+`
 
-	t.Run("file not found", func(t *testing.T) {
-		_, err := config.LoadIntegerConfig("/nonexistent/integer.yaml")
-		require.Error(t, err)
-		assert.Contains(t, err.Error(), "reading integer config")
-	})
-
-	t.Run("invalid yaml", func(t *testing.T) {
-		path := writeFile(t, "bad.yaml", "{ invalid: yaml: content")
-		_, err := config.LoadIntegerConfig(path)
-		require.Error(t, err)
-		assert.Contains(t, err.Error(), "parsing integer config")
-	})
-}
-
-func TestLoadImageDefinition(t *testing.T) {
-	t.Run("multi-version image", func(t *testing.T) {
-		path := writeFile(t, "image.yaml", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
+const nodeImageYAML = `
 name: node
 description: "Node.js runtime"
-eol-product: nodejs
+upstream:
+  package: "nodejs-{{version}}"
+types:
+  default:
+    base: wolfi-base
+    packages: ["nodejs-{{version}}", "libstdc++"]
+    entrypoint: /usr/bin/node
+    work-dir: /app
+    environment:
+      NODE_ENV: production
+    paths:
+      - path: /app
+        uid: 65532
+        gid: 65532
+        permissions: "0o755"
+  fips:
+    base: wolfi-fips
+    packages: ["nodejs-{{version}}", "libstdc++"]
+    entrypoint: /usr/bin/node
 versions:
-  - version: "20"
-    eol: "2026-04-30"
-    tags: ["20"]
-    types: [default, dev, fips]
-  - version: "22"
+  "22":
     eol: "2027-04-30"
+  "24":
+    eol: "2028-04-30"
     latest: true
-    tags: ["22", "latest"]
-    types: [default, dev, fips]
-`)
-		def, err := config.LoadImageDefinition(path)
-		require.NoError(t, err)
-		assert.Equal(t, "node", def.Name)
-		assert.Equal(t, "Node.js runtime", def.Description)
-		assert.Equal(t, "nodejs", def.EOLProduct)
-		require.Len(t, def.Versions, 2)
-		assert.Equal(t, "20", def.Versions[0].Version)
-		assert.Equal(t, "2026-04-30", def.Versions[0].EOL)
-		assert.False(t, def.Versions[0].Latest)
-		assert.Equal(t, []string{"default", "dev", "fips"}, def.Versions[0].Types)
-		assert.Equal(t, "22", def.Versions[1].Version)
-		assert.True(t, def.Versions[1].Latest)
-		assert.Equal(t, []string{"22", "latest"}, def.Versions[1].Tags)
-	})
+`
 
-	t.Run("single-version image", func(t *testing.T) {
-		path := writeFile(t, "image.yaml", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: nginx
-description: "Nginx web server"
-versions:
-  - version: "1"
-    latest: true
-    tags: ["1", "latest"]
-    types: [default, fips]
-`)
-		def, err := config.LoadImageDefinition(path)
-		require.NoError(t, err)
-		assert.Equal(t, "nginx", def.Name)
-		require.Len(t, def.Versions, 1)
-		assert.Equal(t, "1", def.Versions[0].Version)
-		assert.Equal(t, []string{"default", "fips"}, def.Versions[0].Types)
-	})
-
-	t.Run("image without upstream", func(t *testing.T) {
-		path := writeFile(t, "image.yaml", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: custom
-description: "Custom image"
-versions:
-  - version: "1"
-    latest: true
-    tags: ["latest"]
-    types: [default]
-`)
-		def, err := config.LoadImageDefinition(path)
-		require.NoError(t, err)
-		assert.Equal(t, "custom", def.Name)
-		assert.Empty(t, def.Upstream.Package)
-		require.Len(t, def.Versions, 1)
-	})
-
-	t.Run("file not found", func(t *testing.T) {
-		_, err := config.LoadImageDefinition("/nonexistent/image.yaml")
-		require.Error(t, err)
-		assert.Contains(t, err.Error(), "reading image definition")
-	})
-
-	t.Run("invalid yaml", func(t *testing.T) {
-		path := writeFile(t, "bad.yaml", ": bad: yaml:")
-		_, err := config.LoadImageDefinition(path)
-		require.Error(t, err)
-		assert.Contains(t, err.Error(), "parsing image definition")
-	})
+func writeFile(t *testing.T, dir, name, content string) string {
+	t.Helper()
+	path := filepath.Join(dir, name)
+	require.NoError(t, os.MkdirAll(filepath.Dir(path), 0o755))
+	require.NoError(t, os.WriteFile(path, []byte(content), 0o644))
+	return path
 }
 
-// writeFile creates a temp file with the given content and returns its path.
-func writeFile(t *testing.T, name, content string) string {
-	t.Helper()
-	path := filepath.Join(t.TempDir(), name)
-	require.NoError(t, os.WriteFile(path, []byte(content), 0o644))
+func TestLoadConfig(t *testing.T) {
+	dir := t.TempDir()
+	path := writeFile(t, dir, "integer.yaml", globalConfig)
 
-	return path
+	cfg, err := config.LoadConfig(path)
+	require.NoError(t, err)
+
+	assert.Equal(t, "ghcr.io/verity-org", cfg.Target.Registry)
+	assert.Equal(t, []string{"amd64", "arm64"}, cfg.Defaults.Archs)
+}
+
+func TestLoadConfig_NotFound(t *testing.T) {
+	_, err := config.LoadConfig("/nonexistent/integer.yaml")
+	require.Error(t, err)
+}
+
+func TestLoadConfig_InvalidYAML(t *testing.T) {
+	dir := t.TempDir()
+	path := writeFile(t, dir, "integer.yaml", "not: valid: yaml: [")
+	_, err := config.LoadConfig(path)
+	require.Error(t, err)
+}
+
+func TestLoadImage(t *testing.T) {
+	dir := t.TempDir()
+	path := writeFile(t, dir, "node.yaml", nodeImageYAML)
+
+	def, err := config.LoadImage(path)
+	require.NoError(t, err)
+
+	assert.Equal(t, "node", def.Name)
+	assert.Equal(t, "Node.js runtime", def.Description)
+	assert.Equal(t, "nodejs-{{version}}", def.Upstream.Package)
+
+	require.Len(t, def.Types, 2)
+
+	dflt := def.Types["default"]
+	assert.Equal(t, "wolfi-base", dflt.Base)
+	assert.Equal(t, []string{"nodejs-{{version}}", "libstdc++"}, dflt.Packages)
+	assert.Equal(t, "/usr/bin/node", dflt.Entrypoint)
+	assert.Equal(t, "/app", dflt.WorkDir)
+	assert.Equal(t, "production", dflt.Environment["NODE_ENV"])
+	require.Len(t, dflt.Paths, 1)
+	assert.Equal(t, "/app", dflt.Paths[0].Path)
+	assert.Equal(t, 65532, dflt.Paths[0].UID)
+
+	fips := def.Types["fips"]
+	assert.Equal(t, "wolfi-fips", fips.Base)
+
+	require.Len(t, def.Versions, 2)
+	v22 := def.Versions["22"]
+	assert.Equal(t, "2027-04-30", v22.EOL)
+	assert.False(t, v22.Latest)
+
+	v24 := def.Versions["24"]
+	assert.Equal(t, "2028-04-30", v24.EOL)
+	assert.True(t, v24.Latest)
+}
+
+func TestValidate(t *testing.T) {
+	t.Run("valid", func(t *testing.T) {
+		def := &config.ImageDef{
+			Name:     "node",
+			Upstream: config.Upstream{Package: "nodejs-{{version}}"},
+			Types: map[string]config.TypeTemplate{
+				"default": {Base: "wolfi-base"},
+			},
+		}
+		require.NoError(t, config.Validate(def))
+	})
+
+	t.Run("missing name", func(t *testing.T) {
+		def := &config.ImageDef{
+			Upstream: config.Upstream{Package: "nodejs-{{version}}"},
+			Types:    map[string]config.TypeTemplate{"default": {Base: "wolfi-base"}},
+		}
+		require.Error(t, config.Validate(def))
+	})
+
+	t.Run("missing upstream package", func(t *testing.T) {
+		def := &config.ImageDef{
+			Name:  "node",
+			Types: map[string]config.TypeTemplate{"default": {Base: "wolfi-base"}},
+		}
+		require.Error(t, config.Validate(def))
+	})
+
+	t.Run("no types", func(t *testing.T) {
+		def := &config.ImageDef{
+			Name:     "node",
+			Upstream: config.Upstream{Package: "nodejs-{{version}}"},
+		}
+		require.Error(t, config.Validate(def))
+	})
+
+	t.Run("type missing base", func(t *testing.T) {
+		def := &config.ImageDef{
+			Name:     "node",
+			Upstream: config.Upstream{Package: "nodejs-{{version}}"},
+			Types:    map[string]config.TypeTemplate{"default": {}},
+		}
+		require.Error(t, config.Validate(def))
+	})
 }

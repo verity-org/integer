@@ -16,6 +16,7 @@ func main() {
 			cmd.DiscoverCommand,
 			cmd.ValidateCommand,
 			cmd.BuildCommand,
+			cmd.SyncCommand,
 			cmd.CatalogCommand,
 		},
 	}

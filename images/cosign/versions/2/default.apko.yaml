@@ -1,8 +1,0 @@
-include: ../../../_base/wolfi-base.yaml
-
-contents:
-  packages:
-    - cosign
-
-entrypoint:
-  command: /usr/bin/cosign

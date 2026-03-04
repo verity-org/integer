@@ -1,17 +1,20 @@
 name: PR Smoke Test
 
 # Builds a representative subset of images locally (no push) to catch
-# config/include breakage early. Two images are chosen to exercise the
+# template/config breakage early. Two images are chosen to exercise the
 # most common failure modes:
-#   - golang:1.24-fips  → three-level include chain (fips → wolfi-fips → wolfi-base)
+#   - golang:1.24-fips  → GOFIPS140 env var set, wolfi-base used (not wolfi-fips)
 #   - node:22-dev       → dev variant with an expanded package set
 
 on:
   pull_request:
     branches: [main]
     paths:
-      - "images/**"
+      - "images/*.yaml"
+      - "images/_base/*.yaml"
       - "integer.yaml"
+      - "internal/**"
+      - "cmd/**"
       - ".github/workflows/build-image.yaml"
       - ".github/workflows/pr-test.yaml"
 
@@ -26,7 +29,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Three-level include chain: fips.apko.yaml → wolfi-fips.yaml → wolfi-base.yaml
+          # GOFIPS140 native FIPS mode — uses wolfi-base with GOFIPS140=latest env
           - image: golang
             version: "1.24"
             type: fips
@@ -37,7 +40,7 @@ jobs:
 
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
+        uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433765f215b # v2.15.0
         with:
           egress-policy: audit
 
@@ -49,25 +52,34 @@ jobs:
           install: true
           cache: true
 
-      - name: Build image (local, no push)
+      - name: Cache Go modules
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
+        with:
+          path: |
+            ~/dev/go/pkg/mod
+            ~/.cache/go-build
+          key: go-${{ runner.os }}-${{ hashFiles('go.sum') }}
+          restore-keys: go-${{ runner.os }}-
+
+      - name: Build integer CLI
+        run: go build -o integer .
+
+      - name: Generate apko config and build image (local, no push)
         run: |
-          config="images/${{ matrix.image }}/versions/${{ matrix.version }}/${{ matrix.type }}.apko.yaml"
+          # Generate configs — absolute include: paths are embedded automatically.
+          ./integer discover --gen-dir ./gen
+
+          config="gen/${{ matrix.image }}/${{ matrix.version }}/${{ matrix.type }}.apko.yaml"
           if [ ! -f "$config" ]; then
-            echo "Config not found: $config"
+            echo "Config not found: $config" >&2
             exit 1
           fi
-          configdir=$(dirname "$config")
-          configfile=$(basename "$config")
 
-          # apko resolves include: paths relative to the CWD, so cd into the
-          # config file's directory before building.
-          pushd "$configdir"
           apko build \
             --arch amd64 \
-            "$configfile" \
+            "$config" \
             "${{ matrix.image }}:smoke-test" \
             "$GITHUB_WORKSPACE/image.tar"
-          popd
 
       - name: Scan with Trivy (zero-CVE gate)
         run: |

@@ -1,122 +1,201 @@
+// Package discovery walks the images/ directory, resolves available versions
+// from the Wolfi APKINDEX, renders apko config templates, and returns a flat
+// list of all buildable name × version × type combinations.
 package discovery
 
 import (
-	"errors"
 	"fmt"
-	"io/fs"
 	"os"
 	"path/filepath"
+	"sort"
 
+	"github.com/verity-org/integer/internal/apkindex"
 	"github.com/verity-org/integer/internal/config"
+	"github.com/verity-org/integer/internal/render"
 )
 
-// ErrVariantFileMissing is returned when a version/type apko YAML file does not exist.
-var ErrVariantFileMissing = errors.New("apko config file does not exist")
-
-// DiscoveredImage represents one buildable image: a name × version × type combination.
+// DiscoveredImage represents one buildable image: a name × version × type.
 type DiscoveredImage struct {
 	Name     string   `json:"name"`
 	Version  string   `json:"version"`
 	Type     string   `json:"type"`
-	File     string   `json:"file"`
+	File     string   `json:"file"` // absolute path to the generated apko YAML
 	Tags     []string `json:"tags"`
 	Registry string   `json:"registry"`
 }
 
-// Discover walks the images/ directory and returns every name×version×type
-// combination defined across all image.yaml files. _base/ is skipped.
-func Discover(imagesDir, registry string) ([]DiscoveredImage, error) {
-	entries, err := os.ReadDir(imagesDir)
+// Options configures the Discover call.
+type Options struct {
+	ImagesDir string
+	Registry  string
+	// Packages is the parsed APKINDEX. If nil, only versions declared in the
+	// image file's versions map are built (no auto-discovery).
+	Packages []apkindex.Package
+	// GenDir is the directory where generated apko YAML files are written.
+	// Defaults to a system temp directory if empty.
+	GenDir string
+}
+
+// DiscoverFromFiles walks imagesDir for *.yaml files (not subdirectories),
+// resolves versions from APKINDEX, and returns every buildable combination.
+// This is the primary entry point for the v2 flat-file layout.
+func DiscoverFromFiles(opts Options) ([]DiscoveredImage, error) {
+	entries, err := os.ReadDir(opts.ImagesDir)
 	if err != nil {
-		return nil, fmt.Errorf("reading images directory %q: %w", imagesDir, err)
+		return nil, fmt.Errorf("reading images dir %q: %w", opts.ImagesDir, err)
+	}
+
+	genDir := opts.GenDir
+	if genDir == "" {
+		var tmpErr error
+		genDir, tmpErr = os.MkdirTemp("", "integer-gen-*")
+		if tmpErr != nil {
+			return nil, fmt.Errorf("creating temp dir: %w", tmpErr)
+		}
 	}
 
 	var results []DiscoveredImage
 
 	for _, entry := range entries {
-		if !entry.IsDir() || entry.Name() == "_base" {
+		if entry.IsDir() {
+			continue
+		}
+		if filepath.Ext(entry.Name()) != ".yaml" {
 			continue
 		}
 
-		imageDir := filepath.Join(imagesDir, entry.Name())
-		defPath := filepath.Join(imageDir, "image.yaml")
-
-		if _, err := os.Stat(defPath); err != nil {
-			continue
-		}
-
-		def, err := config.LoadImageDefinition(defPath)
+		defPath := filepath.Join(opts.ImagesDir, entry.Name())
+		def, err := config.LoadImage(defPath)
 		if err != nil {
-			return nil, fmt.Errorf("loading image %q: %w", entry.Name(), err)
+			return nil, fmt.Errorf("loading %q: %w", entry.Name(), err)
+		}
+		if err := config.Validate(def); err != nil {
+			return nil, fmt.Errorf("invalid image %q: %w", entry.Name(), err)
 		}
 
-		imgs, err := expandVersions(def, imageDir, registry)
+		imgs, err := expandImage(def, opts.ImagesDir, opts.Registry, opts.Packages, genDir)
 		if err != nil {
-			return nil, fmt.Errorf("expanding versions for %q: %w", entry.Name(), err)
+			return nil, fmt.Errorf("expanding image %q: %w", def.Name, err)
 		}
-
 		results = append(results, imgs...)
 	}
 
 	return results, nil
 }
 
-// expandVersions converts one ImageDefinition into DiscoveredImage entries by
-// iterating every version × type combination. File paths are resolved and
-// verified to exist. Returns a new slice — never mutates the input.
-func expandVersions(def *config.ImageDefinition, imageDir, registry string) ([]DiscoveredImage, error) {
-	results := make([]DiscoveredImage, 0, len(def.Versions)*2)
+// expandImage converts one ImageDef into DiscoveredImage entries by
+// resolving versions and rendering apko configs for each version × type.
+func expandImage(def *config.ImageDef, imagesDir, registry string, pkgs []apkindex.Package, genDir string) ([]DiscoveredImage, error) {
+	versions := ResolveVersions(def, pkgs)
+	if len(versions) == 0 {
+		return nil, nil
+	}
 
-	for _, v := range def.Versions {
-		if err := config.ForEachType(&v, func(typeName string, tags []string) error {
-			relFile := filepath.Join("versions", v.Version, typeName+".apko.yaml")
-			absFile := filepath.Join(imageDir, relFile)
+	// Determine the base path from the generated file location back to _base/.
+	// Generated files go in genDir/<name>/<version>/<type>.apko.yaml
+	// _base/ is at imagesDir/_base/
+	// We use absolute paths so the include: uses an absolute path.
+	basePath := filepath.Join(imagesDir, "_base")
 
-			if _, err := os.Stat(absFile); err != nil {
-				return fmt.Errorf("versions/%s/%s.apko.yaml for image %q: %w",
-					v.Version, typeName, def.Name, ErrVariantFileMissing)
+	var results []DiscoveredImage
+
+	for _, v := range versions {
+		tags := DeriveTags(v, def)
+		for typeName := range def.Types {
+			tmpl := def.Types[typeName]
+
+			out, err := render.Config(&tmpl, v, basePath)
+			if err != nil {
+				return nil, fmt.Errorf("rendering config for %s:%s-%s: %w", def.Name, v, typeName, err)
 			}
 
+			genFile := filepath.Join(genDir, def.Name, v, typeName+".apko.yaml")
+			if err := os.MkdirAll(filepath.Dir(genFile), 0o755); err != nil {
+				return nil, fmt.Errorf("creating gen dir: %w", err)
+			}
+			if err := os.WriteFile(genFile, out, 0o644); err != nil {
+				return nil, fmt.Errorf("writing gen file: %w", err)
+			}
+
+			typeTags := ApplyTypeSuffix(tags, typeName)
 			results = append(results, DiscoveredImage{
 				Name:     def.Name,
-				Version:  v.Version,
+				Version:  v,
 				Type:     typeName,
-				File:     absFile,
-				Tags:     tags,
+				File:     genFile,
+				Tags:     typeTags,
 				Registry: registry,
 			})
-			return nil
-		}); err != nil {
-			return nil, err
 		}
 	}
+
+	// Sort for deterministic output.
+	sort.Slice(results, func(i, j int) bool {
+		if results[i].Version != results[j].Version {
+			return results[i].Version < results[j].Version
+		}
+		return results[i].Type < results[j].Type
+	})
 
 	return results, nil
 }
 
-// WalkApkoFiles returns all apko YAML file paths under imagesDir, excluding
-// _base/ and image.yaml files. Used by validate to count checked files.
-func WalkApkoFiles(imagesDir string) ([]string, error) {
-	var paths []string
+// ResolveVersions merges auto-discovered APKINDEX versions with the
+// human-curated versions map. Returns a sorted slice of version strings.
+func ResolveVersions(def *config.ImageDef, pkgs []apkindex.Package) []string {
+	seen := make(map[string]bool)
 
-	err := filepath.WalkDir(imagesDir, func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
+	// Auto-discover from APKINDEX.
+	if len(pkgs) > 0 {
+		for _, v := range apkindex.DiscoverVersions(pkgs, def.Upstream.Package) {
+			seen[v] = true
 		}
-
-		if d.IsDir() && d.Name() == "_base" {
-			return filepath.SkipDir
-		}
-
-		if !d.IsDir() && filepath.Ext(path) == ".yaml" && filepath.Base(path) != "image.yaml" {
-			paths = append(paths, path)
-		}
-
-		return nil
-	})
-	if err != nil {
-		return nil, fmt.Errorf("walking images directory: %w", err)
 	}
 
-	return paths, nil
+	// Always include explicitly declared versions (even if not in APKINDEX).
+	for v := range def.Versions {
+		seen[v] = true
+	}
+
+	versions := make([]string, 0, len(seen))
+	for v := range seen {
+		versions = append(versions, v)
+	}
+	sort.Strings(versions)
+	return versions
+}
+
+// DeriveTags returns the base tags for a version. If the version is declared
+// in the versions map, its metadata drives the latest flag; otherwise the
+// version string itself is the only base tag.
+func DeriveTags(version string, def *config.ImageDef) []string {
+	// Check if declared in versions map.
+	if meta, ok := def.Versions[version]; ok {
+		var tags []string
+		tags = append(tags, version)
+		if version == "latest" {
+			// Unversioned image — just "latest".
+			return []string{"latest"}
+		}
+		if meta.Latest {
+			tags = append(tags, "latest")
+		}
+		return tags
+	}
+	// Auto-discovered version without metadata.
+	return []string{version}
+}
+
+// ApplyTypeSuffix appends "-<type>" to each tag for non-default types.
+func ApplyTypeSuffix(tags []string, typeName string) []string {
+	if typeName == "default" {
+		result := make([]string, len(tags))
+		copy(result, tags)
+		return result
+	}
+	result := make([]string, len(tags))
+	for i, t := range tags {
+		result[i] = t + "-" + typeName
+	}
+	return result
 }

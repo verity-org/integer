@@ -7,6 +7,7 @@ import (
 
 	"github.com/urfave/cli/v2"
 
+	"github.com/verity-org/integer/internal/apkindex"
 	"github.com/verity-org/integer/internal/catalog"
 	"github.com/verity-org/integer/internal/config"
 )
@@ -19,39 +20,59 @@ var CatalogCommand = &cli.Command{
 		&cli.StringFlag{
 			Name:    "images-dir",
 			Aliases: []string{"i"},
-			Usage:   "path to the images/ directory",
+			Usage:   "Path to the images/ directory",
 			Value:   "images",
 		},
 		&cli.StringFlag{
 			Name:  "reports-dir",
-			Usage: "path to checked-out reports directory (reports branch)",
+			Usage: "Path to checked-out reports directory (reports branch)",
 		},
 		&cli.StringFlag{
 			Name:    "config",
 			Aliases: []string{"c"},
-			Usage:   "path to integer.yaml",
+			Usage:   "Path to integer.yaml",
 			Value:   "integer.yaml",
 		},
 		&cli.StringFlag{
 			Name:    "output",
 			Aliases: []string{"o"},
-			Usage:   "output file path",
+			Usage:   "Output file path (- for stdout)",
 			Value:   "catalog.json",
+		},
+		&cli.StringFlag{
+			Name:  "apkindex-url",
+			Usage: "Wolfi APKINDEX URL",
+			Value: apkindex.DefaultAPKINDEXURL,
+		},
+		&cli.StringFlag{
+			Name:  "cache-dir",
+			Usage: "Directory for caching APKINDEX data",
+			Value: os.TempDir(),
 		},
 	},
 	Action: runCatalog,
 }
 
 func runCatalog(c *cli.Context) error {
-	cfg, err := config.LoadIntegerConfig(c.String("config"))
+	cfg, err := config.LoadConfig(c.String("config"))
 	if err != nil {
 		return fmt.Errorf("loading config: %w", err)
+	}
+
+	var pkgs []apkindex.Package
+	if url := c.String("apkindex-url"); url != "" {
+		pkgs, err = apkindex.Fetch(url, c.String("cache-dir"), apkindex.DefaultCacheMaxAge)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "warning: APKINDEX unavailable (%v) — using versions map only\n", err)
+			pkgs = nil
+		}
 	}
 
 	cat, err := catalog.Generate(
 		c.String("images-dir"),
 		c.String("reports-dir"),
 		cfg.Target.Registry,
+		pkgs,
 	)
 	if err != nil {
 		return fmt.Errorf("generating catalog: %w", err)
@@ -59,7 +80,7 @@ func runCatalog(c *cli.Context) error {
 
 	out, err := json.MarshalIndent(cat, "", "  ")
 	if err != nil {
-		return fmt.Errorf("marshaling catalog: %w", err)
+		return fmt.Errorf("marshalling catalog: %w", err)
 	}
 
 	output := c.String("output")
@@ -72,6 +93,6 @@ func runCatalog(c *cli.Context) error {
 		return fmt.Errorf("writing %s: %w", output, err)
 	}
 
-	fmt.Printf("Catalog → %s (%d images)\n", output, len(cat.Images))
+	fmt.Fprintf(os.Stdout, "Catalog → %s (%d images)\n", output, len(cat.Images))
 	return nil
 }
