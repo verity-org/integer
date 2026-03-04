@@ -1,0 +1,13 @@
+{
+  "image": "grafana",
+  "version": "11.5",
+  "type": "default",
+  "tags": [
+    "11.5"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:6d946deec42192721932da99b4b94f5f5bf4e14391f5c7b29041b4e4f2cb3d4c",
+  "status": "failure",
+  "built_at": "2026-03-04T22:40:42Z",
+  "run_id": "22692661157"
+}
