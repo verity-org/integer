@@ -3,12 +3,11 @@
   "version": "8",
   "type": "default",
   "tags": [
-    "8",
-    "latest-8"
+    "8"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:b40a9e3d6642495346ddc28c61db9b9fcf55f0f1449bfd6bb9cae35523abb05e",
+  "digest": "sha256:70cde7e49cb4f0a008f5b0a0e1a7081158df8875bae4a960d9fd14db66f90bdd",
   "status": "success",
-  "built_at": "2026-03-04T04:28:33Z",
-  "run_id": "22655043637"
+  "built_at": "2026-03-04T22:34:25Z",
+  "run_id": "22692584526"
 }
