@@ -1,0 +1,13 @@
+{
+  "image": "node",
+  "version": "21",
+  "type": "fips",
+  "tags": [
+    "21-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:3f457aa23cd274e31d39d413e68b42bc2bff5cbc06421cc8c9b526a518a5ed3f",
+  "status": "success",
+  "built_at": "2026-03-04T22:49:29Z",
+  "run_id": "22692779285"
+}
