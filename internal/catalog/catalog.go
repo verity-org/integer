@@ -89,7 +89,11 @@ func Generate(imagesDir, reportsDir, registry string) (*Catalog, error) {
 			}
 
 			for _, typeName := range v.Types {
-				tags := applyType(v.Tags, typeName)
+				tags := config.ApplyType(v.Tags, typeName)
+				if len(tags) == 0 {
+					// Skip variants with no tags — nothing to publish.
+					continue
+				}
 				primaryTag := tags[0]
 				ref := fmt.Sprintf("%s/%s:%s", registry, def.Name, primaryTag)
 
@@ -135,18 +139,4 @@ func loadReport(path string) (*buildReport, error) {
 		return nil, err
 	}
 	return &r, nil
-}
-
-// applyType returns the tags for a given type. The "default" type uses base
-// tags unchanged; all other types append "-<type>" to each base tag.
-func applyType(baseTags []string, typeName string) []string {
-	tags := make([]string, len(baseTags))
-	if typeName == "default" {
-		copy(tags, baseTags)
-		return tags
-	}
-	for i, t := range baseTags {
-		tags[i] = t + "-" + typeName
-	}
-	return tags
 }

@@ -178,6 +178,25 @@ versions:
 	assert.Len(t, cat.Images, 2)
 }
 
+func TestGenerate_EmptyTagsSkipsVariant(t *testing.T) {
+	imagesDir := t.TempDir()
+	const yamlEmptyTags = `apiVersion: integer.verity.supply/v1alpha1
+kind: ImageDefinition
+name: node
+description: "Node.js"
+versions:
+  - version: "22"
+    tags: []
+    types: [default, dev]
+`
+	writeFile(t, imagesDir, "node/image.yaml", yamlEmptyTags)
+
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org")
+	require.NoError(t, err)
+	// Variants with no tags are skipped entirely
+	assert.Empty(t, cat.Images[0].Versions[0].Variants)
+}
+
 func TestGenerate_EOLField(t *testing.T) {
 	imagesDir := t.TempDir()
 	const yamlWithEOL = `apiVersion: integer.verity.supply/v1alpha1
