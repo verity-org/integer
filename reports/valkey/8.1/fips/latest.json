@@ -6,8 +6,8 @@
     "8.1-fips"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:ff37ec275ee9e7bbbf9bec73fed75f30e112afb1d5df3e6b039ddf9efec002f3",
+  "digest": "sha256:a1c9dea36a24f21425315dbac5ac822c2946a53d41b57b097be701a62507892a",
   "status": "success",
-  "built_at": "2026-03-03T04:53:24Z",
-  "run_id": "22608517731"
+  "built_at": "2026-03-04T04:51:00Z",
+  "run_id": "22655168241"
 }
