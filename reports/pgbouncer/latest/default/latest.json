@@ -1,0 +1,13 @@
+{
+  "image": "pgbouncer",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:4d956f45cb6157a3b6428ca1f1524b57a30f2d81547ab75ffe22fbcb33f68e2f",
+  "status": "failure",
+  "built_at": "2026-03-04T22:57:46Z",
+  "run_id": "22692870216"
+}
