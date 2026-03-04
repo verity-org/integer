@@ -1,0 +1,13 @@
+{
+  "image": "php",
+  "version": "8.1",
+  "type": "dev",
+  "tags": [
+    "8.1-dev"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:d277015bc950b83c6cd974e2fb8f3df3d0edbaee145d4eacab99d2a01de9de6e",
+  "status": "success",
+  "built_at": "2026-03-04T22:58:23Z",
+  "run_id": "22692872892"
+}
