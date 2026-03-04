@@ -1,0 +1,13 @@
+{
+  "image": "influxdb",
+  "version": "2.7",
+  "type": "default",
+  "tags": [
+    "2.7"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:f475e1138177f805873d3e1e1e06baee7f22b1e258ae6b61ff986cd294516b5d",
+  "status": "failure",
+  "built_at": "2026-03-04T22:42:27Z",
+  "run_id": "22692690624"
+}
