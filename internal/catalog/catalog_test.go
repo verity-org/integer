@@ -178,6 +178,15 @@ versions:
 	assert.Len(t, cat.Images, 2)
 }
 
+func TestGenerate_NonExistentReportsDirErrors(t *testing.T) {
+	imagesDir := t.TempDir()
+	writeFile(t, imagesDir, "node/image.yaml", imageYAML)
+
+	_, err := catalog.Generate(imagesDir, "/nonexistent/reports", "ghcr.io/verity-org")
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "reports dir")
+}
+
 func TestGenerate_EmptyTagsSkipsVariant(t *testing.T) {
 	imagesDir := t.TempDir()
 	const yamlEmptyTags = `apiVersion: integer.verity.supply/v1alpha1

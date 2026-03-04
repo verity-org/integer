@@ -14,3 +14,19 @@ func ApplyType(baseTags []string, typeName string) []string {
 	}
 	return tags
 }
+
+// ForEachType iterates every type in v, calling fn with the type name and its
+// computed tags. Pairs that produce empty tag lists are skipped. fn may return
+// an error to abort iteration early; that error is returned to the caller.
+func ForEachType(v *VersionDef, fn func(typeName string, tags []string) error) error {
+	for _, typeName := range v.Types {
+		tags := ApplyType(v.Tags, typeName)
+		if len(tags) == 0 {
+			continue
+		}
+		if err := fn(typeName, tags); err != nil {
+			return err
+		}
+	}
+	return nil
+}

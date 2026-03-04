@@ -52,8 +52,15 @@ type buildReport struct {
 }
 
 // Generate walks imagesDir, merges build reports from reportsDir, and returns
-// a Catalog. reportsDir may be empty — missing reports yield Status "unknown".
+// a Catalog. reportsDir may be empty (reports omitted, all variants "unknown");
+// a non-empty reportsDir that does not exist is an error.
 func Generate(imagesDir, reportsDir, registry string) (*Catalog, error) {
+	if reportsDir != "" {
+		if _, err := os.Stat(reportsDir); err != nil {
+			return nil, fmt.Errorf("reports dir %q: %w", reportsDir, err)
+		}
+	}
+
 	entries, err := os.ReadDir(imagesDir)
 	if err != nil {
 		return nil, fmt.Errorf("reading images dir %q: %w", imagesDir, err)
@@ -88,22 +95,14 @@ func Generate(imagesDir, reportsDir, registry string) (*Catalog, error) {
 				EOL:     v.EOL,
 			}
 
-			for _, typeName := range v.Types {
-				tags := config.ApplyType(v.Tags, typeName)
-				if len(tags) == 0 {
-					// Skip variants with no tags — nothing to publish.
-					continue
-				}
-				primaryTag := tags[0]
-				ref := fmt.Sprintf("%s/%s:%s", registry, def.Name, primaryTag)
-
+			if err := config.ForEachType(&v, func(typeName string, tags []string) error {
+				ref := fmt.Sprintf("%s/%s:%s", registry, def.Name, tags[0])
 				variant := Variant{
 					Type:   typeName,
 					Tags:   tags,
 					Ref:    ref,
 					Status: "unknown",
 				}
-
 				if reportsDir != "" {
 					reportPath := filepath.Join(reportsDir, def.Name, v.Version, typeName, "latest.json")
 					if report, err := loadReport(reportPath); err == nil {
@@ -112,8 +111,10 @@ func Generate(imagesDir, reportsDir, registry string) (*Catalog, error) {
 						variant.Status = report.Status
 					}
 				}
-
 				ver.Variants = append(ver.Variants, variant)
+				return nil
+			}); err != nil {
+				return nil, err
 			}
 
 			img.Versions = append(img.Versions, ver)
