@@ -1,0 +1,13 @@
+{
+  "image": "loki",
+  "version": "3.4",
+  "type": "default",
+  "tags": [
+    "3.4"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:60450f6e6c226e261fed5346d4f2b8f0e04bcfdc450a618431a45e9d1cf5655b",
+  "status": "failure",
+  "built_at": "2026-03-04T22:44:50Z",
+  "run_id": "22692716715"
+}
