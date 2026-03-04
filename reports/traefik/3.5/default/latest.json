@@ -1,0 +1,13 @@
+{
+  "image": "traefik",
+  "version": "3.5",
+  "type": "default",
+  "tags": [
+    "3.5"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:b2da5bfe2862b76268149fc52dbf242a01cdee96321bab5b574eb43de195e2c2",
+  "status": "failure",
+  "built_at": "2026-03-04T23:06:42Z",
+  "run_id": "22692994825"
+}
