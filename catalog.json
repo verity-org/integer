@@ -1,0 +1,2626 @@
+{
+  "generatedAt": "2026-03-04T08:53:25Z",
+  "registry": "ghcr.io/verity-org",
+  "images": [
+    {
+      "name": "alertmanager",
+      "description": "Prometheus Alertmanager — Copa uses -distroless variant but leaves unfixable CVEs; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "0",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "0",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/alertmanager:0",
+              "digest": "sha256:8bd6d14d41ed071f62c49bbd8848d8e3cdfd40dabfb3e0428bf157ed2c964088",
+              "builtAt": "2026-03-04T04:26:59Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "coredns",
+      "description": "CoreDNS — Copa can't patch scratch-based official image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/coredns:1",
+              "digest": "sha256:5c3e6eb33d38bc86e423d140f3f5894f3a8423ef3e4225cec734575650bca067",
+              "builtAt": "2026-03-04T04:27:16Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cosign",
+      "description": "Sigstore cosign — Copa can't patch distroless-based official image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "2",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "2",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/cosign:2",
+              "digest": "sha256:e531c2fbe0481fc95afcec7b19838e720515e2d198d94ecc2d03e3ba5297d882",
+              "builtAt": "2026-03-04T04:27:35Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "crane",
+      "description": "crane OCI registry tool — Copa can't patch distroless-based official image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "0",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "0",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/crane:0",
+              "digest": "sha256:61402040c9b6fe699cfbcb8f5256628e09c4a807a181df60979ac554bdc2287d",
+              "builtAt": "2026-03-04T04:27:34Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "curl",
+      "description": "curl HTTP client — Copa can't patch Alpine-based curlimages/curl; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "8",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/curl:8",
+              "digest": "",
+              "builtAt": "2026-03-04T07:56:43Z",
+              "status": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deno",
+      "description": "Deno JavaScript/TypeScript runtime — Wolfi rebuild; official image is Debian-based",
+      "versions": [
+        {
+          "version": "2",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "2",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/deno:2",
+              "digest": "sha256:46d0b0be2b0593b4d2bfee93ce3d2a4f9ebc816db48375e83a71d49790733fd3",
+              "builtAt": "2026-03-04T04:28:13Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dotnet",
+      "description": ".NET runtime and SDK — drop-in for dotnet/sdk, dotnet/runtime, dotnet/aspnet; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "8",
+          "eol": "2026-11-10",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8",
+                "latest-8"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:8",
+              "digest": "sha256:b40a9e3d6642495346ddc28c61db9b9fcf55f0f1449bfd6bb9cae35523abb05e",
+              "builtAt": "2026-03-04T04:28:33Z",
+              "status": "success"
+            },
+            {
+              "type": "sdk",
+              "tags": [
+                "8-sdk",
+                "latest-8-sdk"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:8-sdk",
+              "digest": "sha256:024554cac20f77eac3ee2ed321512ce188cd20f927081e7b83c04c6727816275",
+              "builtAt": "2026-03-04T04:28:47Z",
+              "status": "success"
+            },
+            {
+              "type": "aspnet",
+              "tags": [
+                "8-aspnet",
+                "latest-8-aspnet"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:8-aspnet",
+              "digest": "sha256:231960c34c9d6b8892abbecc6bb7e660fdb215d7f64cfe8b236d420e1ae2f014",
+              "builtAt": "2026-03-04T04:29:36Z",
+              "status": "success"
+            },
+            {
+              "type": "sdk-fips",
+              "tags": [
+                "8-sdk-fips",
+                "latest-8-sdk-fips"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:8-sdk-fips",
+              "digest": "sha256:e733917cf46f4ce18e7fcad27e305c23204100d7e62600e2d107e219a8303246",
+              "builtAt": "2026-03-04T04:30:52Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "9",
+          "eol": "2026-05-12",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "9"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:9",
+              "digest": "sha256:da3048bf564633440221541bb78b5b9d14cce9e296707a2cfeba6b603d8022fe",
+              "builtAt": "2026-03-04T04:30:27Z",
+              "status": "success"
+            },
+            {
+              "type": "sdk",
+              "tags": [
+                "9-sdk"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:9-sdk",
+              "digest": "sha256:aeb860f512e00ef4b56b0a937657e598a41d17dda1f8e2f4b9a225bf33b00711",
+              "builtAt": "2026-03-04T04:31:26Z",
+              "status": "success"
+            },
+            {
+              "type": "aspnet",
+              "tags": [
+                "9-aspnet"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:9-aspnet",
+              "digest": "sha256:b6204ae586e475e6da6cee542d59aa882f45425d2c6713afc202183c18c2c131",
+              "builtAt": "2026-03-04T04:31:01Z",
+              "status": "success"
+            },
+            {
+              "type": "sdk-fips",
+              "tags": [
+                "9-sdk-fips"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:9-sdk-fips",
+              "digest": "sha256:1789ad3b9ec3ae58fe675971560c6b979cefba28050629d88b19639b08d59afd",
+              "builtAt": "2026-03-04T04:31:28Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "10",
+          "latest": true,
+          "eol": "2028-11-14",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "10",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:10",
+              "digest": "sha256:717999d67afad09059b079539be3ee031ccd9c3664b0c23db716a0ac7ff995f1",
+              "builtAt": "2026-03-04T04:32:11Z",
+              "status": "success"
+            },
+            {
+              "type": "sdk",
+              "tags": [
+                "10-sdk",
+                "latest-sdk"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:10-sdk",
+              "digest": "sha256:52402b58245648e4cccda16f7d91df08526227324f86cfa45045c2d2eb0f6885",
+              "builtAt": "2026-03-04T04:32:14Z",
+              "status": "success"
+            },
+            {
+              "type": "aspnet",
+              "tags": [
+                "10-aspnet",
+                "latest-aspnet"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:10-aspnet",
+              "digest": "sha256:1a8888e4a4cec1cc2fbc6eae2e5e7daf304f2132fd77ad8d3c24ca5fcad79508",
+              "builtAt": "2026-03-04T04:31:46Z",
+              "status": "success"
+            },
+            {
+              "type": "sdk-fips",
+              "tags": [
+                "10-sdk-fips",
+                "latest-sdk-fips"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:10-sdk-fips",
+              "digest": "sha256:126a34f9e53e7445a6272a801e1b3c880a242b5b9e3f7fadc37b377a493f8c49",
+              "builtAt": "2026-03-04T04:32:07Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "envoy",
+      "description": "Envoy proxy — Wolfi rebuild; official image ships with unfixable CVEs",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/envoy:1",
+              "digest": "sha256:92e6d2083277127af44bdba91aad0c3961c6028501596c16647f07186cf4450f",
+              "builtAt": "2026-03-04T04:32:12Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "erlang",
+      "description": "Erlang/OTP runtime — Wolfi rebuild; official image is Debian-based with persistent unfixable CVEs",
+      "versions": [
+        {
+          "version": "26",
+          "eol": "2026-05-15",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "26"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:26",
+              "digest": "sha256:06a94cf26473b17516c57f9e53dda9f344caae6f49a9f0787e007c8e2d68fb79",
+              "builtAt": "2026-03-04T04:32:22Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "26-dev"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:26-dev",
+              "digest": "sha256:df417806aad81a0bd71582b132b2a5bbbc43851b63cdf562d9484f6235ed8b5b",
+              "builtAt": "2026-03-04T04:33:13Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "26-fips"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:26-fips",
+              "digest": "sha256:e93c267662638d4acb1fc89c8ad8bed4ad41b0f7347753c749b3d36884586ac7",
+              "builtAt": "2026-03-04T04:33:47Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "27",
+          "eol": "2027-05-20",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "27"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:27",
+              "digest": "sha256:7d284c4e83653f03e8c7a6745cbdd9054826f9b4252198529cc118415bff7049",
+              "builtAt": "2026-03-04T04:34:23Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "27-dev"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:27-dev",
+              "digest": "sha256:3f28d8b9c343647693bc73d0ce923200d1d33ffb5269b610e87b3e116e5bf87d",
+              "builtAt": "2026-03-04T04:34:52Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "27-fips"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:27-fips",
+              "digest": "sha256:30e0766443e60585972ce0b5f2faf4f9390f8eb791f736c9fd5279217045488f",
+              "builtAt": "2026-03-04T04:34:51Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "28",
+          "latest": true,
+          "eol": "2028-05-20",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "28",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:28",
+              "digest": "sha256:051928c4fba92142f39e797f214b03ff1c3f487c8896db75dbcd086b7c49c0c3",
+              "builtAt": "2026-03-04T04:35:01Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "28-dev",
+                "latest-dev"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:28-dev",
+              "digest": "sha256:371e682e31fd011f9be4a75f77ed96af97df0837533fe6ab5434f0f70a783f2f",
+              "builtAt": "2026-03-04T04:36:22Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "28-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/erlang:28-fips",
+              "digest": "sha256:c1e18682b058f2b5534b80b12da9123f89ad6586f34a4fad8eedbfbc5eb0580f",
+              "builtAt": "2026-03-04T04:34:58Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "etcd",
+      "description": "etcd distributed key-value store — Copa can't patch Alpine/scratch-based official image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "3",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/etcd:3",
+              "digest": "sha256:a9b2c22b9df630a798e618d619258097cd237c45d84571c143c1f797175c8759",
+              "builtAt": "2026-03-04T04:35:27Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/etcd:3-fips",
+              "digest": "sha256:062e9d2248268226d9aeb14051fa9ccada8002e5921190d59c19925519fd74bd",
+              "builtAt": "2026-03-04T04:35:38Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fluent-bit",
+      "description": "Fluent Bit log processor — Wolfi rebuild eliminates persistent CVEs in official image",
+      "versions": [
+        {
+          "version": "4",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "4",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/fluent-bit:4",
+              "digest": "sha256:3b78528db696bdc4fffab1c2e2dd0f55980cde25b12908225a846925add4d2b2",
+              "builtAt": "2026-03-04T04:36:38Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gcc",
+      "description": "GCC compiler toolchain — official image carries 1400+ CVEs from Debian; Wolfi rebuild starts clean",
+      "versions": [
+        {
+          "version": "15",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "15",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/gcc:15",
+              "digest": "sha256:31774a0af5b801aa36bb264a1e3658dc1409fd3b7ec12346df7dd1dedc8ab93f",
+              "builtAt": "2026-03-04T07:57:30Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "git",
+      "description": "Git — Copa can't patch Alpine-based official image (alpine/git); Wolfi rebuild",
+      "versions": [
+        {
+          "version": "2",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "2",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/git:2",
+              "digest": "sha256:cfbe5dbace19cb06b4f5935690765a9faa1e9c25ff8347dedb0c1324682ff39d",
+              "builtAt": "2026-03-04T07:56:58Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "golang",
+      "description": "Go build toolchain — minimal Wolfi-based image, zero CVE guarantee",
+      "versions": [
+        {
+          "version": "1.23",
+          "eol": "2025-08-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.23"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.23",
+              "digest": "sha256:d9f0ae627df9f1a1e4f66e5516fa0f13cabc31b03859e9ac289eab1de8110e7e",
+              "builtAt": "2026-03-04T04:37:28Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "1.23-dev"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.23-dev",
+              "digest": "sha256:421692e947a68fb4298d069af40d8cea6f9d459aea2b32e3142426d58b9de7bd",
+              "builtAt": "2026-03-04T07:57:20Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.23-fips"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.23-fips",
+              "digest": "sha256:6e8d9e659fa9ebbb746d8122f5869c7d92ca858b82396e41eeb85bc32f92e1b2",
+              "builtAt": "2026-03-04T07:57:55Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.24",
+          "eol": "2026-02-28",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.24"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.24",
+              "digest": "sha256:1b5439cd50f7d743ddfbc106759c29ea4407cfb49d543834633d0a748533b8f1",
+              "builtAt": "2026-03-04T07:57:52Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "1.24-dev"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.24-dev",
+              "digest": "sha256:1048fd2fcb5b1ac8029cf11f25c66be1afed5d42d1de6b443cc683f14a113d0a",
+              "builtAt": "2026-03-04T07:58:18Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.24-fips"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.24-fips",
+              "digest": "sha256:42b2b7d77217b2ce5ebeaf100df40d6f3714f87adcb52f0704dfc72ff9a3a776",
+              "builtAt": "2026-03-04T07:58:01Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.25",
+          "eol": "2026-08-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.25"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.25",
+              "digest": "sha256:ab8b6f33826aba5b7d8bc43b18ea4ec19eb34415fa3fec7e946f9dcecb97e0f9",
+              "builtAt": "2026-03-04T07:58:29Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "1.25-dev"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.25-dev",
+              "digest": "sha256:9e14a1b8be99d9445fcc5b6ef1f673032cab2c83f657e8cd76ec4b0e529b5d85",
+              "builtAt": "2026-03-04T04:37:46Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.25-fips"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.25-fips",
+              "digest": "sha256:b0382fddaa7c5d0109303daf20916379485f30f55beb8f330ad7c58e0172ad58",
+              "builtAt": "2026-03-04T04:37:28Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.26",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.26",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.26",
+              "digest": "sha256:74a51bc57eb0a7600b289d7d1201bbfc881d54c59c84639042517b45de9492bb",
+              "builtAt": "2026-03-04T04:37:47Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "1.26-dev",
+                "latest-dev"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.26-dev",
+              "digest": "sha256:1dfe2eac1b98ca481da10aa4108d20b3abf2949c2e2ffdd764c908e9c345358d",
+              "builtAt": "2026-03-04T04:37:40Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.26-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.26-fips",
+              "digest": "sha256:acd95c6c8d20d0593526238427ac3402065a18052c6aaea5f9bbe9ba12e6fce1",
+              "builtAt": "2026-03-04T04:39:05Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "grafana",
+      "description": "Grafana observability platform — Wolfi rebuild eliminates Debian CVEs from official image",
+      "versions": [
+        {
+          "version": "11",
+          "eol": "2026-06-25",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11"
+              ],
+              "ref": "ghcr.io/verity-org/grafana:11",
+              "digest": "sha256:cd53571a5172613d3cafff4cf7a8318bf72251e0ee0825bf68f0c4e67b54e1ff",
+              "builtAt": "2026-03-04T04:38:58Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "12",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/grafana:12",
+              "digest": "sha256:4ff671cff6204abf5b86d018b767b9c6e15978ad0ce351f970843d942dc0f254",
+              "builtAt": "2026-03-04T04:38:02Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "grype",
+      "description": "Anchore Grype vulnerability scanner — Copa can't patch scratch-based official image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "0",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "0",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/grype:0",
+              "digest": "sha256:fb796624c816ec520ff76d52439306474425b0b8422258613c4a501e5f75344b",
+              "builtAt": "2026-03-04T04:37:49Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "haproxy",
+      "description": "HAProxy load balancer — Wolfi rebuild from source with \u003c24hr CVE response",
+      "versions": [
+        {
+          "version": "3.0",
+          "eol": "2029-04-01",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.0"
+              ],
+              "ref": "ghcr.io/verity-org/haproxy:3.0",
+              "digest": "sha256:c5f5a26141014c48c6ff74811b2edfb50661e6c5cfc9584849f600f24c731a25",
+              "builtAt": "2026-03-04T04:38:03Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.0-fips"
+              ],
+              "ref": "ghcr.io/verity-org/haproxy:3.0-fips",
+              "digest": "sha256:abdfbcf08ad6acfd8d56fb9fdc052fb2a9788723c9b2a1c1a200977a0291b50c",
+              "builtAt": "2026-03-04T04:37:59Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.1",
+          "eol": "2026-03-01",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.1"
+              ],
+              "ref": "ghcr.io/verity-org/haproxy:3.1",
+              "digest": "sha256:03b20249af2dd1fd15bb0085f8eab3d3aca9cd53a62794df33c2a7471480e3ee",
+              "builtAt": "2026-03-04T04:38:22Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.1-fips"
+              ],
+              "ref": "ghcr.io/verity-org/haproxy:3.1-fips",
+              "digest": "sha256:72c3dad75856669fcf1d7a84eeb0e294a9fc8e9f94164c06febebf66079989cf",
+              "builtAt": "2026-03-04T04:38:22Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.2",
+          "eol": "2030-04-01",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.2"
+              ],
+              "ref": "ghcr.io/verity-org/haproxy:3.2",
+              "digest": "sha256:74cfcf997bf68f04bd0793c286091a2c896b3b624ec03f6f7e14e461e955721e",
+              "builtAt": "2026-03-04T04:38:22Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.2-fips"
+              ],
+              "ref": "ghcr.io/verity-org/haproxy:3.2-fips",
+              "digest": "sha256:dc821aa382936963477fd0835ea3610e19845ae568d54df1a043ff03c3607e1a",
+              "builtAt": "2026-03-04T04:38:34Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.3",
+          "latest": true,
+          "eol": "2027-01-01",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.3",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/haproxy:3.3",
+              "digest": "sha256:5a6e8a6d24913750a4ced823418e401afbf21eedae1c3aa886a3d69dd7bf3d62",
+              "builtAt": "2026-03-04T04:38:34Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.3-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/haproxy:3.3-fips",
+              "digest": "sha256:69e681b574ba0509cabf6e5257946786eaa5dc031317fe91faeb0be6386cbc25",
+              "builtAt": "2026-03-04T04:38:40Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "helm",
+      "description": "Helm Kubernetes package manager — Copa can't patch Alpine-based official image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "3",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3"
+              ],
+              "ref": "ghcr.io/verity-org/helm:3",
+              "digest": "sha256:9e0736a24f2e261c2c1492b74956908eebd32cc0a6f2b37c431715ccac49c15d",
+              "builtAt": "2026-03-04T04:38:40Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "4",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "4",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/helm:4",
+              "digest": "sha256:165590ad45446e2ff39714ea016dbee270062900f199901ba9062c6d1ac2343a",
+              "builtAt": "2026-03-04T04:38:57Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "httpd",
+      "description": "Apache HTTP Server — Wolfi rebuild; official image is Debian-based with persistent CVEs",
+      "versions": [
+        {
+          "version": "2.4",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "2.4",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/httpd:2.4",
+              "digest": "sha256:49db2976d74780823306b8700b3fb7b220692a5bac4ba1bacf2953e2c9936441",
+              "builtAt": "2026-03-04T04:39:09Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "2.4-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/httpd:2.4-fips",
+              "digest": "sha256:ee03624989014ef88f2ae249e3e79bcf359f1d3590d94bb764f122fbd0ed0fb2",
+              "builtAt": "2026-03-04T04:39:16Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "influxdb",
+      "description": "InfluxDB time-series database — Wolfi rebuild eliminates Debian CVEs",
+      "versions": [
+        {
+          "version": "2",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "2"
+              ],
+              "ref": "ghcr.io/verity-org/influxdb:2",
+              "digest": "sha256:d49553cdd340e76fda653464d2af57e70a84d5a4832516df6ef806e28e054c1b",
+              "builtAt": "2026-03-04T07:58:01Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/influxdb:3",
+              "digest": "sha256:02d7b5d8d65ec3cb2c412f1aceb897152f999682e345864d98fab542879e72e5",
+              "builtAt": "2026-03-04T07:58:30Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ko",
+      "description": "ko Go container builder — Copa can't patch distroless-based official image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "0",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "0",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/ko:0",
+              "digest": "sha256:b1676b0c408fa0352274099f8dbc964b279f505f06adcb6e59f766c5d60bde89",
+              "builtAt": "2026-03-04T04:40:11Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kubectl",
+      "description": "kubectl Kubernetes CLI — Copa can't patch Bitnami/Debian-based image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1",
+              "digest": "sha256:0c2afcee8b6dc80ec9d68f8569815de34828d8b908e0629757532b040427153e",
+              "builtAt": "2026-03-04T04:39:40Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "loki",
+      "description": "Grafana Loki log aggregation — Wolfi rebuild eliminates Debian CVEs",
+      "versions": [
+        {
+          "version": "3",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/loki:3",
+              "digest": "sha256:546c8f34c9bf27ea0f94e179a9c083c5d61a5ef2f29a03b03a4f58ba0d29bee1",
+              "builtAt": "2026-03-04T04:39:44Z",
+              "status": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mariadb",
+      "description": "MariaDB database server — Wolfi rebuild eliminates persistent Debian CVEs",
+      "versions": [
+        {
+          "version": "10.6",
+          "eol": "2026-07-06",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "10.6"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:10.6",
+              "digest": "sha256:6d1d44e34b73a60c426ad8836221b84616eafce882c8ab5e91fdacfa50ffcc04",
+              "builtAt": "2026-03-04T04:39:55Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "10.6-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:10.6-fips",
+              "digest": "sha256:baf7f59f4db8b739602f896535deed317ab544df4696ade58da517c6446d503e",
+              "builtAt": "2026-03-04T04:40:12Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "10.11",
+          "eol": "2028-02-16",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "10.11"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:10.11",
+              "digest": "sha256:67ce7f7a30a033e06ac9d10475ebaee58acf0b45423c1a392313e70c8032955c",
+              "builtAt": "2026-03-04T04:40:14Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "10.11-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:10.11-fips",
+              "digest": "sha256:30863d526f06f05e5009c0b5d8c3945b825bf889379b829449fc474691b79c34",
+              "builtAt": "2026-03-04T04:40:21Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "11.4",
+          "eol": "2029-05-29",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11.4"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.4",
+              "digest": "sha256:ae37deadfabc5d004e47b3a35dcb969a592bafe23e9e68a61079e31666501a00",
+              "builtAt": "2026-03-04T04:40:51Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "11.4-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.4-fips",
+              "digest": "sha256:94545dabed2d7333e6bbbc25a20dc1e7aa5e096c8b09ddd6a7845418ad2d8115",
+              "builtAt": "2026-03-04T04:41:03Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "11.8",
+          "latest": true,
+          "eol": "2028-06-04",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11.8",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.8",
+              "digest": "sha256:d2134f84b7d710cae2c79b267bf2273ff20ea43ff7a12076a139911e21829bac",
+              "builtAt": "2026-03-04T04:41:11Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "11.8-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.8-fips",
+              "digest": "sha256:a922b981a36ab301f8a901feea6892a3a59530d661a59cded0a09ff8a6e8ee0a",
+              "builtAt": "2026-03-04T04:41:08Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "maven",
+      "description": "Apache Maven build tool — Wolfi rebuild on top of OpenJDK 21",
+      "versions": [
+        {
+          "version": "3",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/maven:3",
+              "digest": "sha256:55f608c860ff0c926da5379c9aaf2da8a52c5bd2cf729c6be86a055748286149",
+              "builtAt": "2026-03-04T04:41:51Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "memcached",
+      "description": "Memcached in-memory cache — Wolfi rebuild eliminates persistent Debian CVEs",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/memcached:1",
+              "digest": "sha256:f0391f0fb686a6fe29924953f07b5c77fa71b1a63c667d00624458977ba99fbe",
+              "builtAt": "2026-03-04T04:41:19Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mimir",
+      "description": "Grafana Mimir metrics backend — Wolfi rebuild eliminates Debian CVEs",
+      "versions": [
+        {
+          "version": "3",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/mimir:3",
+              "digest": "sha256:222f245a0026e70e1db2859bf6a0317d9f07adbea3d737ff300a3ddb90010b2f",
+              "builtAt": "2026-03-04T04:41:37Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "minio",
+      "description": "MinIO object storage server — Wolfi rebuild eliminates CVEs from official image",
+      "versions": [
+        {
+          "version": "RELEASE",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "RELEASE",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/minio:RELEASE",
+              "digest": "sha256:4a69e8d8e271ae7e429687af11fee10599cbccebf7b864a114b8e9424c43a8a7",
+              "builtAt": "2026-03-04T04:41:33Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "minio-client",
+      "description": "MinIO Client (mc) — Wolfi rebuild eliminates CVEs from official image",
+      "versions": [
+        {
+          "version": "RELEASE",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "RELEASE",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/minio-client:RELEASE",
+              "digest": "sha256:de89aab4b35f310d3fe1e8d100b30056519c71d9b2be910698012fa8e66b5763",
+              "builtAt": "2026-03-04T04:41:32Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nats",
+      "description": "NATS messaging server — Wolfi rebuild eliminates persistent Debian CVEs",
+      "versions": [
+        {
+          "version": "2",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "2",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/nats:2",
+              "digest": "sha256:b24893510f3258b8632132494dd6ec6634f6e7b6b0e93e9c056a779d9f4aadc4",
+              "builtAt": "2026-03-04T04:41:43Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nginx",
+      "description": "Nginx web server — Copa leaves unfixable CVEs in Debian nginx; Wolfi rebuild from source",
+      "versions": [
+        {
+          "version": "1.28",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.28",
+                "stable"
+              ],
+              "ref": "ghcr.io/verity-org/nginx:1.28",
+              "digest": "sha256:3008dcc9dcd9e6cec96ab0468de338491d669c3e997da8adac362074a3a6b46f",
+              "builtAt": "2026-03-04T04:41:48Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.28-fips",
+                "stable-fips"
+              ],
+              "ref": "ghcr.io/verity-org/nginx:1.28-fips",
+              "digest": "sha256:49531af297507a66f00e25dd974b2342d8b3637a5b32a518dda2afbfd4bd6f15",
+              "builtAt": "2026-03-04T04:41:59Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.29",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.29",
+                "latest",
+                "mainline"
+              ],
+              "ref": "ghcr.io/verity-org/nginx:1.29",
+              "digest": "sha256:96bc23aeb1106c659e0ba27aa5933fceaeb7cea5973011bbb86c031c1c0cde27",
+              "builtAt": "2026-03-04T04:42:16Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.29-fips",
+                "latest-fips",
+                "mainline-fips"
+              ],
+              "ref": "ghcr.io/verity-org/nginx:1.29-fips",
+              "digest": "sha256:498c2169b667fb57dfcb8101456219f86ec1d48c1d55d6bce9ea7a9cfea33e9e",
+              "builtAt": "2026-03-04T04:42:25Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "node",
+      "description": "Node.js runtime — minimal Wolfi-based image, zero CVE guarantee",
+      "versions": [
+        {
+          "version": "20",
+          "eol": "2026-04-30",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "20"
+              ],
+              "ref": "ghcr.io/verity-org/node:20",
+              "digest": "sha256:778b9f7041b22e6b47995f467f3678707c11a9cfe970789c153bc24b681e4987",
+              "builtAt": "2026-03-04T04:42:37Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "20-dev"
+              ],
+              "ref": "ghcr.io/verity-org/node:20-dev",
+              "digest": "sha256:7da8d9a34356a5c4825abc13c4d83261f12cdd8693528ff9a0f617f563a85701",
+              "builtAt": "2026-03-04T04:42:54Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "20-fips"
+              ],
+              "ref": "ghcr.io/verity-org/node:20-fips",
+              "digest": "sha256:927f75b7f027e03e6f6cb885524fab130a163b7373c0fcb534bc9e7a0fcb15a0",
+              "builtAt": "2026-03-04T04:42:53Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "22",
+          "eol": "2027-04-30",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "22"
+              ],
+              "ref": "ghcr.io/verity-org/node:22",
+              "digest": "sha256:e4b85a528db13e6f975038b9c381ce34049b9107c4fdb631f7d3a93c50578476",
+              "builtAt": "2026-03-04T04:42:52Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "22-dev"
+              ],
+              "ref": "ghcr.io/verity-org/node:22-dev",
+              "digest": "sha256:c68e00258d595d06c074c178a1ebfba20f3ad79ad6ee51186c5105eea7a8d1ab",
+              "builtAt": "2026-03-04T04:43:38Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "22-fips"
+              ],
+              "ref": "ghcr.io/verity-org/node:22-fips",
+              "digest": "sha256:1f55e5ed65e4e67dbcbe2545526dd5f345f95903f81ecd8dcc89a839ec258681",
+              "builtAt": "2026-03-04T04:43:16Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "24",
+          "latest": true,
+          "eol": "2028-04-30",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "24",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/node:24",
+              "digest": "sha256:edd3a81d19aeccfea9084e46df790dba72f7475bacffc7a85c93d8c623b77f4d",
+              "builtAt": "2026-03-04T04:43:39Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "24-dev",
+                "latest-dev"
+              ],
+              "ref": "ghcr.io/verity-org/node:24-dev",
+              "digest": "sha256:f1d02bb578ab7373ef2a5613ec9bb97d62c86ae22931255c23c7b80af2eac3a3",
+              "builtAt": "2026-03-04T04:43:54Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "24-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/node:24-fips",
+              "digest": "sha256:020c73be86aefc93cb64fde4495d5ee9963baeb72edc529816d7b5b5174ad201",
+              "builtAt": "2026-03-04T04:43:32Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "openjdk",
+      "description": "OpenJDK — drop-in for eclipse-temurin; Wolfi rebuild from source with \u003c24hr CVE response",
+      "versions": [
+        {
+          "version": "17",
+          "eol": "2027-10-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "17",
+                "latest-17"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:17",
+              "digest": "sha256:5b150ffe93db9a35e3c67632ef94638da03f4456eda2e5b3b0dc4cab11e8bdca",
+              "builtAt": "2026-03-04T04:44:10Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "17-jre",
+                "latest-17-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:17-jre",
+              "digest": "sha256:b9a60c7472c20eab815a60ebdd77146c597d7024ca08f5102e3008422a27bf2f",
+              "builtAt": "2026-03-04T04:44:26Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "17-fips",
+                "latest-17-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:17-fips",
+              "digest": "sha256:82b9a94bcdff8364ac24c4ea076f0bf970ef1d04ec9afa9df0e18b104b04b7c9",
+              "builtAt": "2026-03-04T04:44:36Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "21",
+          "eol": "2029-12-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "21"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:21",
+              "digest": "sha256:172f22500cc1e36f94b87586d0a9d3b27b43bbcc0fe08bdaba2eaef3fe013f6c",
+              "builtAt": "2026-03-04T04:44:35Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "21-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:21-jre",
+              "digest": "sha256:f5de1891047721804cbf3f5efd3f20fe389fcc52bdc78a3efeb990771905d425",
+              "builtAt": "2026-03-04T04:44:54Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "21-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:21-fips",
+              "digest": "sha256:1a2eaf312b72f1d264080c11a097ed4adef7aad1d53d41f9312ea61007e7fe34",
+              "builtAt": "2026-03-04T04:45:03Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "25",
+          "latest": true,
+          "eol": "2031-09-30",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "25",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:25",
+              "digest": "sha256:26ea676b210b95817323cc649bafa73c44108cf16ea4696ed67f6199aa9a7a97",
+              "builtAt": "2026-03-04T04:44:58Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "25-jre",
+                "latest-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:25-jre",
+              "digest": "sha256:5318ce576fcd19c568d5b84022e1ab13a271c58069baf46a638db456fe249118",
+              "builtAt": "2026-03-04T04:44:55Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "25-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:25-fips",
+              "digest": "sha256:5b24b84ad634ee45ff0156a4fce2b91f1c14ca5e0f917255218925b2657392ba",
+              "builtAt": "2026-03-04T04:45:07Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pgbouncer",
+      "description": "PgBouncer PostgreSQL connection pooler — Wolfi rebuild eliminates Debian CVEs",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/pgbouncer:1",
+              "digest": "sha256:fa9c6a4a0726620ebd8b98b74303ce2b0f42ccafa3fa839cae696d6feaa807af",
+              "builtAt": "2026-03-04T04:44:30Z",
+              "status": "failure"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "php",
+      "description": "PHP runtime — Copa leaves unfixable CVEs in Debian base; Wolfi rebuilds from source",
+      "versions": [
+        {
+          "version": "8.2",
+          "eol": "2026-12-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8.2"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.2",
+              "digest": "sha256:7cdc9a07b606beeb8dc11f6037ad1e318cf533e4479edcacb17749fd54e1070c",
+              "builtAt": "2026-03-04T07:58:44Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.2-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.2-fpm",
+              "digest": "sha256:baa59ae463bb067cb85b10420d77b77ab74868947280ce38b4866bda223d02cb",
+              "builtAt": "2026-03-04T07:58:40Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "8.2-dev"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.2-dev",
+              "digest": "sha256:3ba932af996f34bb828681bc795301d7b231e6870ebc01b0d422f960eb1950e1",
+              "builtAt": "2026-03-04T07:58:57Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "8.2-fips"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.2-fips",
+              "digest": "sha256:aa09f456f5ba984cee76b8d662699cc4cabd1e130c0097237694d755ac21b97c",
+              "builtAt": "2026-03-04T07:58:50Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "8.3",
+          "eol": "2027-12-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8.3"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.3",
+              "digest": "sha256:cde572a2f83f774f56f590a3f0e5a4704c1e7577ceba2bce7a7a762adef50346",
+              "builtAt": "2026-03-04T07:58:44Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.3-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.3-fpm",
+              "digest": "sha256:753773cdffb901843f00fd85b389a6edb78471cf07278c0d316000083c60ffe9",
+              "builtAt": "2026-03-04T07:58:59Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "8.3-dev"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.3-dev",
+              "digest": "sha256:bcbf7a48ff09257719f7ebb13adc8a28ec298b1cf66b0d31fb1b770a638be7a3",
+              "builtAt": "2026-03-04T07:59:44Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "8.3-fips"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.3-fips",
+              "digest": "sha256:5823741e798b7fc3c07ce2ae2f28c7e847abdef1b9bb2e113eea95bec608c468",
+              "builtAt": "2026-03-04T07:59:24Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "8.4",
+          "eol": "2028-12-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8.4"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.4",
+              "digest": "sha256:a977d90c5ef9967b1a58a61e4dea6a4bd100cefe59cc80e2c61af56b72df1212",
+              "builtAt": "2026-03-04T07:59:35Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.4-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.4-fpm",
+              "digest": "sha256:ebfebfdfa787fd87fb227413788828da15d5f037e63b3d87b0f466ac8f0e3c8d",
+              "builtAt": "2026-03-04T08:01:00Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "8.4-dev"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.4-dev",
+              "digest": "sha256:cee45794270b5944329d48ac0ad04c64b407594e3c8ac900ba04ffd0f051eac8",
+              "builtAt": "2026-03-04T08:02:02Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "8.4-fips"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.4-fips",
+              "digest": "sha256:4756854c37452d6d722f22167c5ff6ebe85bad5260d5940359d3fbe41237b054",
+              "builtAt": "2026-03-04T08:00:41Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "8.5",
+          "latest": true,
+          "eol": "2029-12-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8.5",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.5",
+              "digest": "sha256:6fb971003318e8c801eac9aa4a3aa0318801dfcf491e5ef9a01153d9c2d7854f",
+              "builtAt": "2026-03-04T08:00:42Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.5-fpm",
+                "latest-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.5-fpm",
+              "digest": "sha256:5a1d4bc5eadeb6283d813a65702bd59dc5f59b3d36d13a819d890e0e212bf4f0",
+              "builtAt": "2026-03-04T08:00:55Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "8.5-dev",
+                "latest-dev"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.5-dev",
+              "digest": "sha256:8f0a4cf1afa88af01ee220ac8d1f5decec2c0919cd13a9b99155b1443626f106",
+              "builtAt": "2026-03-04T08:01:30Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "8.5-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.5-fips",
+              "digest": "sha256:9cf78effe3d2924c3d796be924ad0d34d65cdea2de49b84586f3a7d526c5e994",
+              "builtAt": "2026-03-04T08:01:13Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "postgres",
+      "description": "PostgreSQL — Copa leaves 167 unfixable CVEs (linux-libc-dev, binutils); Wolfi rebuild from source",
+      "versions": [
+        {
+          "version": "14",
+          "eol": "2026-11-12",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "14"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:14",
+              "digest": "sha256:eb4d51b0bf683f86d9ee02afa3d2b7af4de1eb97da287654ad6175b4259a435a",
+              "builtAt": "2026-03-04T04:46:01Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "14-fips"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:14-fips",
+              "digest": "sha256:ade099e374737d181e08e1753b59d50992faf3232839a51aaa20b9bb2228cb1d",
+              "builtAt": "2026-03-04T04:46:16Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "15",
+          "eol": "2027-11-11",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "15"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:15",
+              "digest": "sha256:cfc55885d6420800e64a883ac7a6c3eda622a9c3fd1b884b8b95a774cbc4baf1",
+              "builtAt": "2026-03-04T04:46:14Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "15-fips"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:15-fips",
+              "digest": "sha256:202c57e2226debc03255a8a91dea5dd0665ec383a0e93dc3e176496f36aac124",
+              "builtAt": "2026-03-04T04:46:21Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "16",
+          "eol": "2028-11-09",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "16"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:16",
+              "digest": "sha256:25c2191097369096ad3cb8b07f0e68db72816c2ad29e2159bd5880f9face03ea",
+              "builtAt": "2026-03-04T04:46:44Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "16-fips"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:16-fips",
+              "digest": "sha256:0125b2bf0b6db3e05beaaa2368a7db5b6addad40f048e14d9c99f2339cf4f9cc",
+              "builtAt": "2026-03-04T04:46:28Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "17",
+          "eol": "2029-11-08",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "17"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:17",
+              "digest": "sha256:87ef13b7d78151d4cf3ee0d04e4d02993a989db77e6afe014993422ef21722ec",
+              "builtAt": "2026-03-04T04:47:52Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "17-fips"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:17-fips",
+              "digest": "sha256:cdef58fa62ac2dd1ccf1c29ffc0a9b3a2119158b4e610852f869f773bac8c380",
+              "builtAt": "2026-03-04T04:46:45Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "18",
+          "latest": true,
+          "eol": "2030-11-14",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "18",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:18",
+              "digest": "sha256:11f14d699c86952918569c89d64fda22e6a7ee0e8ca19f79c105912ece37caa8",
+              "builtAt": "2026-03-04T04:46:55Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "18-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:18-fips",
+              "digest": "sha256:449cb10c479f096e2d552af6bb7ea16932d744cca5115b516a0bc31d587d8545",
+              "builtAt": "2026-03-04T04:47:13Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "prometheus",
+      "description": "Prometheus monitoring — Copa's -distroless still has unfixable CVEs; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "3",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3",
+              "digest": "sha256:bc32da9b96277c2716afff66ac8b84d7d388ff20b41718c04d6dd0641a206c47",
+              "builtAt": "2026-03-04T04:48:19Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "python",
+      "description": "Python runtime — minimal Wolfi-based image, zero CVE guarantee",
+      "versions": [
+        {
+          "version": "3.10",
+          "eol": "2026-10-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.10"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.10",
+              "digest": "sha256:0f7f9f3018503eb9fc50ba9da0a1a8e687e6f0c42eb76191d99ee4f701e8f7d9",
+              "builtAt": "2026-03-04T04:47:00Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.10-dev"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.10-dev",
+              "digest": "sha256:76195ef8091b0416aca56e3c94e514d45f5012e00fda7ff1620f273606ea6fbb",
+              "builtAt": "2026-03-04T04:48:54Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.10-fips"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.10-fips",
+              "digest": "sha256:cac5a903a23df77c4ca9631e15538474d31082884c14e1087a7137e153f13fc0",
+              "builtAt": "2026-03-04T04:47:16Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.11",
+          "eol": "2027-10-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.11"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.11",
+              "digest": "sha256:61a86f7524fdde130897fdc94dd5bcaf83fc95d10f1f2824e489fdb7885904fe",
+              "builtAt": "2026-03-04T04:47:20Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.11-dev"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.11-dev",
+              "digest": "sha256:6cea62524da778c44d8200e9f365f6b48cb6e897206d200f71ce3703c55da658",
+              "builtAt": "2026-03-04T04:47:50Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.11-fips"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.11-fips",
+              "digest": "sha256:2e847fb0109a4908c60720a57f9750b43c685f3bcc661811b4b72497053d1127",
+              "builtAt": "2026-03-04T04:47:36Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.12",
+          "eol": "2028-10-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.12"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.12",
+              "digest": "sha256:d6cd6609f9c9734e37801d7d713f31c085149efb28d01c33dd64e87ad84180ad",
+              "builtAt": "2026-03-04T04:47:49Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.12-dev"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.12-dev",
+              "digest": "sha256:cddea37c5afe78c3be0a1db6e926e2e0a8a51c7a5d32653e332ed308f01740e4",
+              "builtAt": "2026-03-04T04:49:16Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.12-fips"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.12-fips",
+              "digest": "sha256:f7a078428a8d9a159b32ceec8047c7ea61cbd9c8ec9795688858ca59f50daac7",
+              "builtAt": "2026-03-04T04:48:05Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.13",
+          "eol": "2029-10-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.13"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.13",
+              "digest": "sha256:b7651e6806fdd7fa8dcaa0ee71c302a213c68e08d944b4d158e3d996d9f1f0fd",
+              "builtAt": "2026-03-04T04:48:04Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.13-dev"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.13-dev",
+              "digest": "sha256:9916e134a0a21490badeaba97abd01138d51a4666417b10a7ec7335a549eda93",
+              "builtAt": "2026-03-04T04:49:00Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.13-fips"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.13-fips",
+              "digest": "sha256:a47a53a395fde99780da2c727371ae324b04f5c1f74174c8af3e2bc49c19e669",
+              "builtAt": "2026-03-04T04:48:30Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.14",
+          "latest": true,
+          "eol": "2030-10-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.14",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.14",
+              "digest": "sha256:feb70f2530faf0be22a218dcd94736118adadb530080c40f1789e7371354defe",
+              "builtAt": "2026-03-04T04:48:35Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.14-dev",
+                "latest-dev"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.14-dev",
+              "digest": "sha256:3a2ca95444ab4e554ae9b6ef8bf8f524a8fdd7745d4e1c871f86c7935ab60ba8",
+              "builtAt": "2026-03-04T04:48:56Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.14-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/python:3.14-fips",
+              "digest": "sha256:76bca0985441bb16773476e9966cbca3b0aa222c35c86177161f71e4dd558738",
+              "builtAt": "2026-03-04T04:48:56Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rabbitmq",
+      "description": "RabbitMQ message broker — Wolfi rebuild eliminates persistent Debian CVEs",
+      "versions": [
+        {
+          "version": "4",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "4",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/rabbitmq:4",
+              "digest": "sha256:85997e64de8d3561d33da36942c9df619e86d28c615963e30849828c81b80d61",
+              "builtAt": "2026-03-04T04:49:35Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ruby",
+      "description": "Ruby runtime — Copa leaves unfixable CVEs in Debian base; Wolfi rebuilds from source",
+      "versions": [
+        {
+          "version": "3.2",
+          "eol": "2026-03-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.2"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.2",
+              "digest": "sha256:c46e34f6ccd4324374808066edcebaf1312e54a1e08a711f9913585dcf448b4d",
+              "builtAt": "2026-03-04T08:01:16Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.2-dev"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.2-dev",
+              "digest": "sha256:44384cb4a133c9c122515688fae216339e8a90a71323a24ccfbff529d854be29",
+              "builtAt": "2026-03-04T08:02:14Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.2-fips"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.2-fips",
+              "digest": "sha256:6acaf40fb9405f088b973360daa548764edd37cc01ff8f4bfc61a10ffe64a2a8",
+              "builtAt": "2026-03-04T08:01:40Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.3",
+          "eol": "2027-03-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.3"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.3",
+              "digest": "sha256:e3dc6bd50f12d2a8e9453e833ca96a1c26b99b23a8080e2f2385f1f48daa8657",
+              "builtAt": "2026-03-04T07:48:10Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.3-dev"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.3-dev",
+              "digest": "sha256:6fb0ee6e471a93c3def71f97fc131ff14d11096e6cc9aa3c21e9e1ec2b141065",
+              "builtAt": "2026-03-04T07:48:30Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.3-fips"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.3-fips",
+              "digest": "sha256:d5718121f352279d23bdf70173288eec70f108c6bef9c82a6e00372983515a64",
+              "builtAt": "2026-03-04T07:48:02Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.4",
+          "eol": "2028-03-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.4"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.4",
+              "digest": "sha256:e135507f397c0aab07978be5e70223705a5a9ee413f714808950a40d43ec1aad",
+              "builtAt": "2026-03-04T07:50:00Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.4-dev"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.4-dev",
+              "digest": "sha256:d4e62924dbbc844621648ef62d6f253ce3c0cc20b32fd87a66f9adc1a1300cf1",
+              "builtAt": "2026-03-04T07:48:33Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.4-fips"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.4-fips",
+              "digest": "sha256:8436b99968009bb8d7ac06b78f9d195a5d40a754eadf405982907b79fa2f2778",
+              "builtAt": "2026-03-04T07:47:59Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "4.0",
+          "latest": true,
+          "eol": "2029-03-31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "4.0",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:4.0",
+              "digest": "sha256:6568557bed549a1123a69c6fd1297e53593eb02d7892f3bd71e472ebe3b94baf",
+              "builtAt": "2026-03-04T07:47:56Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "4.0-dev",
+                "latest-dev"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:4.0-dev",
+              "digest": "sha256:6666f4bd7cd7ce8ae1742bf96fe6b6a458a58334e332f2a00d2078a8e6156653",
+              "builtAt": "2026-03-04T07:50:06Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "4.0-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:4.0-fips",
+              "digest": "sha256:b752744289a0d056f74d5236acfbe5c73314c7f3b7ff3479b6725c7a1b5206b9",
+              "builtAt": "2026-03-04T07:48:54Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rust",
+      "description": "Rust toolchain — Copa leaves unfixable CVEs in Debian base; Wolfi rebuilds from source",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/rust:1",
+              "digest": "sha256:6af8736b929f3bfb6d4241f14c893f703fa5d34a35d33814aa30ef25634dc469",
+              "builtAt": "2026-03-04T07:48:05Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "1-dev",
+                "latest-dev"
+              ],
+              "ref": "ghcr.io/verity-org/rust:1-dev",
+              "digest": "sha256:5c8d67b25e0cabdf36256374602c685abbef8057c12cfdafa658dd05d87f8407",
+              "builtAt": "2026-03-04T07:48:24Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/rust:1-fips",
+              "digest": "sha256:424a9d84b2ef1afc6d2facf8d3ad524c489b931c5c7c938b0db31d2d77345af7",
+              "builtAt": "2026-03-04T07:47:54Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "telegraf",
+      "description": "Telegraf metrics agent — Wolfi rebuild eliminates Debian CVEs from official image",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/telegraf:1",
+              "digest": "sha256:d9be8c4989f5d93c63252420e0bd8183aa6abf2ac66aa3d967520b46576a4558",
+              "builtAt": "2026-03-04T04:50:42Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "terraform",
+      "description": "OpenTofu (Terraform-compatible) — Copa can't patch Alpine; Wolfi rebuild of BSL-free fork",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/terraform:1",
+              "digest": "sha256:d9925dba7e993332c41d10468760fbac8e574578644cd7073164dd62b9511575",
+              "builtAt": "2026-03-04T04:50:32Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "thanos",
+      "description": "Thanos long-term Prometheus storage — Copa's -distroless still has unfixable CVEs; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "0",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "0",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/thanos:0",
+              "digest": "sha256:97deb2c78758947ef36b7dbfd9f71def64e8ce57506750019b11c158b0eacc46",
+              "builtAt": "2026-03-04T04:50:42Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "traefik",
+      "description": "Traefik reverse proxy — Copa can't patch Alpine-based official image; Wolfi rebuild",
+      "versions": [
+        {
+          "version": "3",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/traefik:3",
+              "digest": "sha256:031b5c961f98dd8789941cfa9658f7e8345ee5fe650e7babe86d2bfb310f195b",
+              "builtAt": "2026-03-04T04:50:54Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "valkey",
+      "description": "Valkey (Redis fork) — Wolfi rebuild eliminates persistent Debian CVEs",
+      "versions": [
+        {
+          "version": "8",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8"
+              ],
+              "ref": "ghcr.io/verity-org/valkey:8",
+              "digest": "sha256:2fc4885455e128709d08af70cd0a9eecef80c7e675446a03e02ff9c120684c7b",
+              "builtAt": "2026-03-04T04:50:49Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "8-fips"
+              ],
+              "ref": "ghcr.io/verity-org/valkey:8-fips",
+              "digest": "sha256:73259a186059ca09c0b81891f529dffb7b70b6da787cd1425d8c16314ef28bcf",
+              "builtAt": "2026-03-04T04:50:46Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "8.1",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8.1"
+              ],
+              "ref": "ghcr.io/verity-org/valkey:8.1",
+              "digest": "sha256:31dd6b6145cf3f5b6e05bde0a1ffcef9db05b9594e1b89c8648d8d152a4274cb",
+              "builtAt": "2026-03-04T04:50:49Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "8.1-fips"
+              ],
+              "ref": "ghcr.io/verity-org/valkey:8.1-fips",
+              "digest": "sha256:a1c9dea36a24f21425315dbac5ac822c2946a53d41b57b097be701a62507892a",
+              "builtAt": "2026-03-04T04:51:00Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "9.0",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "9.0",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/valkey:9.0",
+              "digest": "sha256:f451681edf45baa0d7794e85df57d23f1ee6fdf94b62b669bdab2fbea5d2c235",
+              "builtAt": "2026-03-04T04:51:01Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "9.0-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/valkey:9.0-fips",
+              "digest": "sha256:7357396c1cc9d3b7e298e1a986110a3e9033bd3b02d692de57a346b8fe8c0a8a",
+              "builtAt": "2026-03-04T04:50:52Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vault",
+      "description": "HashiCorp Vault secrets manager — Wolfi rebuild eliminates Debian CVEs",
+      "versions": [
+        {
+          "version": "1",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/vault:1",
+              "digest": "sha256:64b1ef919a76a29177274db336cdb44671db5a56a57b015c7ed3e9f3836290d5",
+              "builtAt": "2026-03-04T04:51:22Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1-fips",
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/vault:1-fips",
+              "digest": "sha256:f9108c5d9d2c69de524060ab1b382a41abb4188508be85a84ec7a5bd8f8f6b0b",
+              "builtAt": "2026-03-04T04:51:10Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vector",
+      "description": "Vector observability pipeline — Copa can't patch Alpine variant; Wolfi rebuild covers both",
+      "versions": [
+        {
+          "version": "0",
+          "latest": true,
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "0",
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/vector:0",
+              "digest": "sha256:c9ef80e92a502c0542e49b5e6a8775c6810bcb2ccffe20cbaa33aaa857bced9f",
+              "builtAt": "2026-03-04T04:51:33Z",
+              "status": "success"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
