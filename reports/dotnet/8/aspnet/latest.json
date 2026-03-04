@@ -3,12 +3,11 @@
   "version": "8",
   "type": "aspnet",
   "tags": [
-    "8-aspnet",
-    "latest-8-aspnet"
+    "8-aspnet"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:231960c34c9d6b8892abbecc6bb7e660fdb215d7f64cfe8b236d420e1ae2f014",
+  "digest": "sha256:2040cb7018e44f3dd556eef301bfbd755362282753040e56c6443fedce6f702e",
   "status": "success",
-  "built_at": "2026-03-04T04:29:36Z",
-  "run_id": "22655045438"
+  "built_at": "2026-03-04T22:34:17Z",
+  "run_id": "22692583245"
 }
