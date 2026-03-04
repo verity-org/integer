@@ -1,0 +1,13 @@
+{
+  "image": "openjdk",
+  "version": "13",
+  "type": "default",
+  "tags": [
+    "13"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:78955747c8756e0a6d4de9636351fdbfbd80eea91cbda270cd38fc947aa19f97",
+  "status": "success",
+  "built_at": "2026-03-04T22:53:54Z",
+  "run_id": "22692819539"
+}
