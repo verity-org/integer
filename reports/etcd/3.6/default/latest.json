@@ -1,0 +1,14 @@
+{
+  "image": "etcd",
+  "version": "3.6",
+  "type": "default",
+  "tags": [
+    "3.6",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:7554d858b72437165b62ae549bb6abddb405deb4e23d30a9d6ce92674a783038",
+  "status": "success",
+  "built_at": "2026-03-04T22:37:05Z",
+  "run_id": "22692619742"
+}
