@@ -1,0 +1,13 @@
+{
+  "image": "grype",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:298e72a6f32be7faf039bb783ffdaaf0d64f0ee76bfb1e3b7c5157c55b8975e3",
+  "status": "success",
+  "built_at": "2026-03-04T22:41:17Z",
+  "run_id": "22692671949"
+}
