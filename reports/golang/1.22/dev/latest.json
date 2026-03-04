@@ -1,0 +1,13 @@
+{
+  "image": "golang",
+  "version": "1.22",
+  "type": "dev",
+  "tags": [
+    "1.22-dev"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:649a016fcdfe532aa88f04f546cd3fc3106620e48ca5fbbd196a16db7410d885",
+  "status": "success",
+  "built_at": "2026-03-04T22:39:09Z",
+  "run_id": "22692641718"
+}
