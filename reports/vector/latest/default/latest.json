@@ -1,0 +1,13 @@
+{
+  "image": "vector",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:efdd146de15a68dd9301d79698e1ab31ca2f1e77b3b5e3b90c73bbb7a69f0589",
+  "status": "success",
+  "built_at": "2026-03-04T23:08:13Z",
+  "run_id": "22693009152"
+}
