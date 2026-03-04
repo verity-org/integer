@@ -68,16 +68,14 @@ func expandVersions(def *config.ImageDefinition, imageDir, registry string) ([]D
 	results := make([]DiscoveredImage, 0, len(def.Versions)*2)
 
 	for _, v := range def.Versions {
-		for _, typeName := range v.Types {
+		if err := config.ForEachType(&v, func(typeName string, tags []string) error {
 			relFile := filepath.Join("versions", v.Version, typeName+".apko.yaml")
 			absFile := filepath.Join(imageDir, relFile)
 
 			if _, err := os.Stat(absFile); err != nil {
-				return nil, fmt.Errorf("versions/%s/%s.apko.yaml for image %q: %w",
+				return fmt.Errorf("versions/%s/%s.apko.yaml for image %q: %w",
 					v.Version, typeName, def.Name, ErrVariantFileMissing)
 			}
-
-			tags := deriveTags(v.Tags, typeName)
 
 			results = append(results, DiscoveredImage{
 				Name:     def.Name,
@@ -87,27 +85,13 @@ func expandVersions(def *config.ImageDefinition, imageDir, registry string) ([]D
 				Tags:     tags,
 				Registry: registry,
 			})
+			return nil
+		}); err != nil {
+			return nil, err
 		}
 	}
 
 	return results, nil
-}
-
-// deriveTags returns the tags for a given type. The "default" type uses the
-// base tags unchanged; all other types append "-<type>" to each base tag.
-func deriveTags(baseTags []string, typeName string) []string {
-	tags := make([]string, len(baseTags))
-
-	if typeName == "default" {
-		copy(tags, baseTags)
-		return tags
-	}
-
-	for i, t := range baseTags {
-		tags[i] = t + "-" + typeName
-	}
-
-	return tags
 }
 
 // WalkApkoFiles returns all apko YAML file paths under imagesDir, excluding
