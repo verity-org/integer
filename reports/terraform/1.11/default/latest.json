@@ -1,0 +1,14 @@
+{
+  "image": "terraform",
+  "version": "1.11",
+  "type": "default",
+  "tags": [
+    "1.11",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:5f45d2c30b636d0357aa547fe441d1ec2b8dd373ccde80deee1e0cda61469ab4",
+  "status": "success",
+  "built_at": "2026-03-04T23:06:07Z",
+  "run_id": "22692988407"
+}
