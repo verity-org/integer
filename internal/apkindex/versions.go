@@ -26,6 +26,14 @@ func DiscoverVersions(pkgs []Package, pattern string) []string {
 	return discoverVersioned(pkgs, pattern)
 }
 
+// SortVersions sorts a slice of version strings using numeric-aware ordering.
+// "1.10" > "1.9" and "22" > "20". Modifies the slice in place.
+func SortVersions(versions []string) {
+	sort.Slice(versions, func(i, j int) bool {
+		return versionLess(versions[i], versions[j])
+	})
+}
+
 // discoverVersioned extracts unique version stems from package names matching
 // the pattern. E.g. "nodejs-{{version}}" extracts "20", "22", "24" from the
 // package names nodejs-20, nodejs-22, nodejs-24.
@@ -54,9 +62,7 @@ func discoverVersioned(pkgs []Package, pattern string) []string {
 	for v := range seen {
 		versions = append(versions, v)
 	}
-	sort.Slice(versions, func(i, j int) bool {
-		return versionLess(versions[i], versions[j])
-	})
+	SortVersions(versions)
 	return versions
 }
 
@@ -84,6 +90,12 @@ func isVersionStem(s string) bool {
 		}
 	}
 	return true
+}
+
+// VersionLess reports whether version a is less than b using numeric-aware
+// comparison. "1.9" < "1.10" and "20" < "22".
+func VersionLess(a, b string) bool {
+	return versionLess(a, b)
 }
 
 // versionLess compares version stems lexicographically with numeric awareness.

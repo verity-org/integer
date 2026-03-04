@@ -129,10 +129,10 @@ func expandImage(def *config.ImageDef, imagesDir, registry string, pkgs []apkind
 		}
 	}
 
-	// Sort for deterministic output.
+	// Sort for deterministic output: numeric-aware version order, then type.
 	sort.Slice(results, func(i, j int) bool {
 		if results[i].Version != results[j].Version {
-			return results[i].Version < results[j].Version
+			return apkindex.VersionLess(results[i].Version, results[j].Version)
 		}
 		return results[i].Type < results[j].Type
 	})
@@ -161,7 +161,7 @@ func ResolveVersions(def *config.ImageDef, pkgs []apkindex.Package) []string {
 	for v := range seen {
 		versions = append(versions, v)
 	}
-	sort.Strings(versions)
+	apkindex.SortVersions(versions)
 	return versions
 }
 

@@ -53,6 +53,38 @@ func TestValidateCommand_InvalidIntegerConfig(t *testing.T) {
 	assert.ErrorIs(t, err, ErrValidationFailed)
 }
 
+func TestValidateCommand_APKINDEXCheck_Missing(t *testing.T) {
+	// APKINDEX has packages, but not the nodejs packages the image needs.
+	srv := makeAPKINDEXServer(t, "P:curl\nV:8.0.0\n\n")
+	imagesDir, cfgPath := setupCmdImages(t)
+
+	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
+	err := app.Run([]string{
+		"integer", "validate",
+		"--config", cfgPath,
+		"--images-dir", imagesDir,
+		"--apkindex-url", srv.URL,
+		"--cache-dir", t.TempDir(), // isolated cache — prevents OS temp dir hits
+	})
+	require.Error(t, err)
+	assert.ErrorIs(t, err, ErrValidationFailed)
+}
+
+func TestValidateCommand_APKINDEXCheck_Found(t *testing.T) {
+	srv := makeAPKINDEXServer(t, "P:nodejs-22\nV:22.0.0\n\n")
+	imagesDir, cfgPath := setupCmdImages(t)
+
+	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
+	err := app.Run([]string{
+		"integer", "validate",
+		"--config", cfgPath,
+		"--images-dir", imagesDir,
+		"--apkindex-url", srv.URL,
+		"--cache-dir", t.TempDir(),
+	})
+	assert.NoError(t, err)
+}
+
 func TestValidateCommand_SkipsNonYAML(t *testing.T) {
 	imagesDir, cfgPath := setupCmdImages(t)
 	writeFile(t, filepath.Join(imagesDir, "README.md"), "# readme")
