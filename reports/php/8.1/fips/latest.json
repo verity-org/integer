@@ -1,0 +1,13 @@
+{
+  "image": "php",
+  "version": "8.1",
+  "type": "fips",
+  "tags": [
+    "8.1-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:cd8a1beada253a5f5b2ae63950c552435a06db510750f10a7619e90d695c0ca8",
+  "status": "success",
+  "built_at": "2026-03-04T22:58:21Z",
+  "run_id": "22692874229"
+}
