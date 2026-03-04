@@ -1,0 +1,13 @@
+{
+  "image": "kubectl",
+  "version": "1.29",
+  "type": "default",
+  "tags": [
+    "1.29"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:7ec85b68617159b4cbcab65af2b5d93d9b19d302408a775090d55452f97eb2fd",
+  "status": "success",
+  "built_at": "2026-03-04T22:43:17Z",
+  "run_id": "22692706125"
+}
