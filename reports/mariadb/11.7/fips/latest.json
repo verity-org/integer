@@ -1,0 +1,13 @@
+{
+  "image": "mariadb",
+  "version": "11.7",
+  "type": "fips",
+  "tags": [
+    "11.7-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:2b7ecdbc6e4ac8b3f266113cbc80afcf3a8c3e62901dd8d5a57a184a835f9c83",
+  "status": "success",
+  "built_at": "2026-03-04T22:46:17Z",
+  "run_id": "22692737118"
+}
