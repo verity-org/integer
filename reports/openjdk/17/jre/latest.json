@@ -3,12 +3,11 @@
   "version": "17",
   "type": "jre",
   "tags": [
-    "17-jre",
-    "latest-17-jre"
+    "17-jre"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:b9a60c7472c20eab815a60ebdd77146c597d7024ca08f5102e3008422a27bf2f",
+  "digest": "sha256:06373c8c23f7ca438f7700d9c4892c247d331c31bb3d3ee7a178c2297e3af92e",
   "status": "success",
-  "built_at": "2026-03-04T04:44:26Z",
-  "run_id": "22655108485"
+  "built_at": "2026-03-04T22:54:52Z",
+  "run_id": "22692836940"
 }
