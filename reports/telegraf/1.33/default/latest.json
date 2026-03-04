@@ -1,0 +1,13 @@
+{
+  "image": "telegraf",
+  "version": "1.33",
+  "type": "default",
+  "tags": [
+    "1.33"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:e00ceaf53c5c3027ed172df8a79d38c489c0321e5649f5dd0dc2f488bf4ed77d",
+  "status": "failure",
+  "built_at": "2026-03-04T23:06:08Z",
+  "run_id": "22692978916"
+}
