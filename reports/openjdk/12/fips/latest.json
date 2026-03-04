@@ -1,0 +1,13 @@
+{
+  "image": "openjdk",
+  "version": "12",
+  "type": "fips",
+  "tags": [
+    "12-fips"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:b42c7eeeaf85edc146a566b9f24638195e44792e4dfb58afe16cfdb34c609163",
+  "status": "success",
+  "built_at": "2026-03-04T22:53:38Z",
+  "run_id": "22692816793"
+}
