@@ -8,18 +8,19 @@ import (
 
 	"github.com/urfave/cli/v2"
 
+	"github.com/verity-org/integer/internal/apkindex"
 	"github.com/verity-org/integer/internal/config"
-	"github.com/verity-org/integer/internal/discovery"
 )
 
 // ErrValidationFailed is returned when one or more image configs fail validation.
 var ErrValidationFailed = errors.New("validation failed")
 
-// ValidateCommand schema-validates all YAML configs and verifies that every
-// referenced apko file exists on disk.
+// ValidateCommand schema-validates all YAML configs in images/.
+// With --apkindex-url it also verifies every upstream.package pattern matches
+// at least one package in the Wolfi APKINDEX.
 var ValidateCommand = &cli.Command{
 	Name:  "validate",
-	Usage: "Schema-validate all image configs and verify referenced files exist",
+	Usage: "Schema-validate all image configs in images/",
 	Flags: []cli.Flag{
 		&cli.StringFlag{
 			Name:    "config",
@@ -32,68 +33,88 @@ var ValidateCommand = &cli.Command{
 			Usage: "Path to the images/ directory",
 			Value: "images",
 		},
+		&cli.StringFlag{
+			Name:  "apkindex-url",
+			Usage: "Wolfi APKINDEX URL; when set, verifies upstream packages exist (skipped if empty)",
+			Value: "",
+		},
+		&cli.StringFlag{
+			Name:  "cache-dir",
+			Usage: "Directory for caching APKINDEX data",
+			Value: os.TempDir(),
+		},
 	},
-	Action: func(c *cli.Context) error {
-		cfgPath := c.String("config")
-		imagesDir := c.String("images-dir")
+	Action: runValidate,
+}
 
-		failures := 0
+func runValidate(c *cli.Context) error {
+	cfgPath := c.String("config")
+	imagesDir := c.String("images-dir")
 
-		// Validate global config.
-		if _, err := config.LoadIntegerConfig(cfgPath); err != nil {
-			fmt.Fprintf(os.Stderr, "FAIL integer.yaml: %v\n", err)
-			failures++
-		} else {
-			fmt.Fprintf(os.Stdout, "OK   %s\n", cfgPath)
-		}
-
-		// Walk images/ and validate each image.yaml + referenced apko files.
-		entries, err := os.ReadDir(imagesDir)
+	// Optionally fetch APKINDEX for package existence checks.
+	var pkgs []apkindex.Package
+	if url := c.String("apkindex-url"); url != "" {
+		var err error
+		pkgs, err = apkindex.Fetch(url, c.String("cache-dir"), apkindex.DefaultCacheMaxAge)
 		if err != nil {
-			return fmt.Errorf("reading images directory: %w", err)
+			return fmt.Errorf("fetching APKINDEX: %w", err)
+		}
+	}
+
+	failures := 0
+
+	// Validate global config.
+	if _, err := config.LoadConfig(cfgPath); err != nil {
+		fmt.Fprintf(os.Stderr, "FAIL %s: %v\n", cfgPath, err)
+		failures++
+	} else {
+		fmt.Fprintf(os.Stdout, "OK   %s\n", cfgPath)
+	}
+
+	// Walk images/ and validate each *.yaml file.
+	entries, err := os.ReadDir(imagesDir)
+	if err != nil {
+		return fmt.Errorf("reading images directory: %w", err)
+	}
+
+	checked := 0
+	for _, entry := range entries {
+		if entry.IsDir() || filepath.Ext(entry.Name()) != ".yaml" {
+			continue
 		}
 
-		for _, entry := range entries {
-			if !entry.IsDir() || entry.Name() == "_base" {
-				continue
-			}
+		defPath := filepath.Join(imagesDir, entry.Name())
+		def, err := config.LoadImage(defPath)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "FAIL %s: %v\n", defPath, err)
+			failures++
+			continue
+		}
+		if err := config.Validate(def); err != nil {
+			fmt.Fprintf(os.Stderr, "FAIL %s: %v\n", defPath, err)
+			failures++
+			continue
+		}
 
-			imageDir := filepath.Join(imagesDir, entry.Name())
-			defPath := filepath.Join(imageDir, "image.yaml")
-
-			def, err := config.LoadImageDefinition(defPath)
-			if err != nil {
-				fmt.Fprintf(os.Stderr, "FAIL %s: %v\n", defPath, err)
+		// APKINDEX check: upstream.package must match at least one package.
+		if len(pkgs) > 0 {
+			if found := apkindex.DiscoverVersions(pkgs, def.Upstream.Package); len(found) == 0 {
+				fmt.Fprintf(os.Stderr, "FAIL %s: upstream package %q not found in APKINDEX\n",
+					defPath, def.Upstream.Package)
 				failures++
 				continue
 			}
-			fmt.Fprintf(os.Stdout, "OK   %s\n", defPath)
-
-			// Validate each version×type apko file exists.
-			for _, v := range def.Versions {
-				for _, typeName := range v.Types {
-					apkoPath := filepath.Join(imageDir, "versions", v.Version, typeName+".apko.yaml")
-					if _, err := os.Stat(apkoPath); err != nil {
-						fmt.Fprintf(os.Stderr, "FAIL %s (version %s, type %q): file not found\n",
-							defPath, v.Version, typeName)
-						failures++
-					} else {
-						fmt.Fprintf(os.Stdout, "OK   %s (%s/%s)\n", apkoPath, v.Version, typeName)
-					}
-				}
-			}
 		}
 
-		// Report overall result.
-		if failures > 0 {
-			return fmt.Errorf("%d error(s): %w", failures, ErrValidationFailed)
-		}
+		fmt.Fprintf(os.Stdout, "OK   %s (%d types, %d declared versions)\n",
+			defPath, len(def.Types), len(def.Versions))
+		checked++
+	}
 
-		apkoFiles, err := discovery.WalkApkoFiles(imagesDir)
-		if err != nil {
-			return fmt.Errorf("walking apko files: %w", err)
-		}
-		fmt.Fprintf(os.Stdout, "\nAll configs valid (%d apko files checked)\n", len(apkoFiles))
-		return nil
-	},
+	if failures > 0 {
+		return fmt.Errorf("%d error(s): %w", failures, ErrValidationFailed)
+	}
+
+	fmt.Fprintf(os.Stdout, "\nAll configs valid (%d images checked)\n", checked)
+	return nil
 }

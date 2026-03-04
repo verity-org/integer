@@ -1,4 +1,4 @@
-include: ../../../_base/wolfi-base.yaml
+include: images/_base/wolfi-base.yaml
 
 # openssl-provider-fips was removed from the public Wolfi repo.
 # FIPS images use OPENSSL_CONF/OPENSSL_MODULES env vars to point to the

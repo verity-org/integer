@@ -7,7 +7,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "images/**"
+      - "images/*.yaml"
+      - "images/_base/*.yaml"
       - "integer.yaml"
       - ".github/workflows/orchestrator.yaml"
       - ".github/workflows/build-image.yaml"

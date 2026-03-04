@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"os"
 	"path/filepath"
 	"testing"
 
@@ -11,91 +10,25 @@ import (
 )
 
 func TestValidateCommand_AllValid(t *testing.T) {
-	dir := t.TempDir()
-
-	writeFile(t, filepath.Join(dir, "integer.yaml"), `
-apiVersion: integer.verity.supply/v1alpha1
-kind: IntegerConfig
-target:
-  registry: ghcr.io/test-org
-`)
-
-	imagesDir := filepath.Join(dir, "images")
-	versionsDir := filepath.Join(imagesDir, "myapp", "versions", "1")
-	require.NoError(t, os.MkdirAll(versionsDir, 0o755))
-
-	writeFile(t, filepath.Join(imagesDir, "myapp", "image.yaml"), `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: myapp
-versions:
-  - version: "1"
-    tags: ["1", "latest"]
-    types: [default]
-`)
-	writeFile(t, filepath.Join(versionsDir, "default.apko.yaml"), "contents:\n  packages: []\n")
+	imagesDir, cfgPath := setupCmdImages(t)
 
 	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
 	err := app.Run([]string{
 		"integer", "validate",
-		"--config", filepath.Join(dir, "integer.yaml"),
+		"--config", cfgPath,
 		"--images-dir", imagesDir,
 	})
 	assert.NoError(t, err)
 }
 
-func TestValidateCommand_MissingApkoFile(t *testing.T) {
-	dir := t.TempDir()
-
-	writeFile(t, filepath.Join(dir, "integer.yaml"), `
-apiVersion: integer.verity.supply/v1alpha1
-kind: IntegerConfig
-target:
-  registry: ghcr.io/test-org
-`)
-
-	imagesDir := filepath.Join(dir, "images")
-	require.NoError(t, os.MkdirAll(filepath.Join(imagesDir, "myapp", "versions", "1"), 0o755))
-
-	writeFile(t, filepath.Join(imagesDir, "myapp", "image.yaml"), `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: myapp
-versions:
-  - version: "1"
-    tags: ["1"]
-    types: [default]
-`)
-	// No versions/1/default.apko.yaml created
-
-	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
-	err := app.Run([]string{
-		"integer", "validate",
-		"--config", filepath.Join(dir, "integer.yaml"),
-		"--images-dir", imagesDir,
-	})
-	require.Error(t, err)
-	assert.ErrorIs(t, err, ErrValidationFailed)
-}
-
 func TestValidateCommand_InvalidImageYaml(t *testing.T) {
-	dir := t.TempDir()
-
-	writeFile(t, filepath.Join(dir, "integer.yaml"), `
-apiVersion: integer.verity.supply/v1alpha1
-kind: IntegerConfig
-target:
-  registry: ghcr.io/test-org
-`)
-
-	imagesDir := filepath.Join(dir, "images")
-	require.NoError(t, os.MkdirAll(filepath.Join(imagesDir, "broken"), 0o755))
-	writeFile(t, filepath.Join(imagesDir, "broken", "image.yaml"), ":: invalid yaml ::")
+	imagesDir, cfgPath := setupCmdImages(t)
+	writeFile(t, filepath.Join(imagesDir, "broken.yaml"), "not: valid: yaml: [")
 
 	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
 	err := app.Run([]string{
 		"integer", "validate",
-		"--config", filepath.Join(dir, "integer.yaml"),
+		"--config", cfgPath,
 		"--images-dir", imagesDir,
 	})
 	require.Error(t, err)
@@ -104,40 +37,63 @@ target:
 
 func TestValidateCommand_InvalidIntegerConfig(t *testing.T) {
 	dir := t.TempDir()
-	writeFile(t, filepath.Join(dir, "integer.yaml"), ":: bad yaml ::")
+	cfgPath := filepath.Join(dir, "integer.yaml")
+	writeFile(t, cfgPath, ":: bad yaml ::")
+
 	imagesDir := filepath.Join(dir, "images")
-	require.NoError(t, os.MkdirAll(imagesDir, 0o755))
+	writeFile(t, filepath.Join(imagesDir, "node.yaml"), testNodeYAML)
 
 	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
 	err := app.Run([]string{
 		"integer", "validate",
-		"--config", filepath.Join(dir, "integer.yaml"),
+		"--config", cfgPath,
 		"--images-dir", imagesDir,
 	})
-	// Bad integer.yaml counts as a failure
 	require.Error(t, err)
 	assert.ErrorIs(t, err, ErrValidationFailed)
 }
 
-func TestValidateCommand_SkipsBaseDir(t *testing.T) {
-	dir := t.TempDir()
-
-	writeFile(t, filepath.Join(dir, "integer.yaml"), `
-apiVersion: integer.verity.supply/v1alpha1
-kind: IntegerConfig
-target:
-  registry: ghcr.io/test-org
-`)
-
-	imagesDir := filepath.Join(dir, "images")
-	// _base should be skipped — no image.yaml there
-	require.NoError(t, os.MkdirAll(filepath.Join(imagesDir, "_base"), 0o755))
-	writeFile(t, filepath.Join(imagesDir, "_base", "wolfi-base.yaml"), "contents:\n  packages: []\n")
+func TestValidateCommand_APKINDEXCheck_Missing(t *testing.T) {
+	// APKINDEX has packages, but not the nodejs packages the image needs.
+	srv := makeAPKINDEXServer(t, "P:curl\nV:8.0.0\n\n")
+	imagesDir, cfgPath := setupCmdImages(t)
 
 	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
 	err := app.Run([]string{
 		"integer", "validate",
-		"--config", filepath.Join(dir, "integer.yaml"),
+		"--config", cfgPath,
+		"--images-dir", imagesDir,
+		"--apkindex-url", srv.URL,
+		"--cache-dir", t.TempDir(), // isolated cache — prevents OS temp dir hits
+	})
+	require.Error(t, err)
+	assert.ErrorIs(t, err, ErrValidationFailed)
+}
+
+func TestValidateCommand_APKINDEXCheck_Found(t *testing.T) {
+	srv := makeAPKINDEXServer(t, "P:nodejs-22\nV:22.0.0\n\n")
+	imagesDir, cfgPath := setupCmdImages(t)
+
+	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
+	err := app.Run([]string{
+		"integer", "validate",
+		"--config", cfgPath,
+		"--images-dir", imagesDir,
+		"--apkindex-url", srv.URL,
+		"--cache-dir", t.TempDir(),
+	})
+	assert.NoError(t, err)
+}
+
+func TestValidateCommand_SkipsNonYAML(t *testing.T) {
+	imagesDir, cfgPath := setupCmdImages(t)
+	writeFile(t, filepath.Join(imagesDir, "README.md"), "# readme")
+	writeFile(t, filepath.Join(imagesDir, "notes.txt"), "notes")
+
+	app := &cli.App{Commands: []*cli.Command{ValidateCommand}}
+	err := app.Run([]string{
+		"integer", "validate",
+		"--config", cfgPath,
 		"--images-dir", imagesDir,
 	})
 	assert.NoError(t, err)

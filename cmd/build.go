@@ -6,20 +6,22 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
-	"slices"
-	"strings"
 
 	"github.com/urfave/cli/v2"
 
+	"github.com/verity-org/integer/internal/apkindex"
 	"github.com/verity-org/integer/internal/config"
+	"github.com/verity-org/integer/internal/discovery"
+	"github.com/verity-org/integer/internal/render"
 )
 
-// ErrVariantNotFound is returned when the requested version/type combination is not defined.
+// ErrVariantNotFound is returned when the requested version/type is not available.
 var ErrVariantNotFound = errors.New("version/type not found")
 
-// BuildCommand runs a local apko build for a specific image+version+type combination.
-// Intended for development workflows; CI uses apko publish with multi-arch support.
+// ErrNoVersions is returned when no versions can be resolved for an image.
+var ErrNoVersions = errors.New("no versions found")
+
+// BuildCommand runs a local apko build for a specific image+version+type.
 var BuildCommand = &cli.Command{
 	Name:  "build",
 	Usage: "Build a single image variant locally using apko (single-arch)",
@@ -31,10 +33,10 @@ var BuildCommand = &cli.Command{
 			Required: true,
 		},
 		&cli.StringFlag{
-			Name:     "version",
-			Aliases:  []string{"V"},
-			Usage:    "Version stream (e.g., 22, 3.12)",
-			Required: true,
+			Name:    "version",
+			Aliases: []string{"V"},
+			Usage:   "Version (e.g., 22, 3.12, latest)",
+			Value:   "latest",
 		},
 		&cli.StringFlag{
 			Name:    "type",
@@ -57,6 +59,11 @@ var BuildCommand = &cli.Command{
 			Usage: "Target architecture",
 			Value: "amd64",
 		},
+		&cli.StringFlag{
+			Name:  "apkindex-url",
+			Usage: "Wolfi APKINDEX URL",
+			Value: apkindex.DefaultAPKINDEXURL,
+		},
 	},
 	Action: func(c *cli.Context) error {
 		imageName := c.String("image")
@@ -64,70 +71,74 @@ var BuildCommand = &cli.Command{
 		typeName := c.String("type")
 		imagesDir := c.String("images-dir")
 
-		defPath := filepath.Join(imagesDir, imageName, "image.yaml")
-
-		def, err := config.LoadImageDefinition(defPath)
+		// Load image definition.
+		def, err := config.LoadImage(fmt.Sprintf("%s/%s.yaml", imagesDir, imageName))
 		if err != nil {
-			return fmt.Errorf("failed to load image definition: %w", err)
+			return fmt.Errorf("loading image %q: %w", imageName, err)
 		}
 
-		apkoFile, err := findApkoFile(def, version, typeName, filepath.Join(imagesDir, imageName))
-		if err != nil {
-			return err
+		// Validate the requested type exists.
+		tmpl, ok := def.Types[typeName]
+		if !ok {
+			return fmt.Errorf("type %q not defined for image %q: %w", typeName, imageName, ErrVariantNotFound)
 		}
+
+		// Resolve "latest" version from APKINDEX if needed.
+		if version == "latest" {
+			version, err = resolveLatestVersion(def, c.String("apkindex-url"))
+			if err != nil {
+				return err
+			}
+		}
+
+		// Generate the apko config to a temp file.
+		tmp, err := os.CreateTemp("", "integer-build-*.apko.yaml")
+		if err != nil {
+			return fmt.Errorf("creating temp file: %w", err)
+		}
+		defer os.Remove(tmp.Name())
+
+		basePath := imagesDir + "/_base"
+		out, err := render.Config(&tmpl, version, basePath)
+		if err != nil {
+			return fmt.Errorf("rendering apko config: %w", err)
+		}
+		if _, err := tmp.Write(out); err != nil {
+			return fmt.Errorf("writing apko config: %w", err)
+		}
+		tmp.Close()
 
 		output := c.String("output")
 		arch := c.String("arch")
-
 		fmt.Fprintf(os.Stderr, "Building %s:%s-%s (%s) → %s\n", imageName, version, typeName, arch, output)
-
-		return runApkoBuild(c.Context, apkoFile, output, arch)
+		return runApkoBuild(c.Context, tmp.Name(), output, arch)
 	},
 }
 
-// findApkoFile returns the absolute path to the apko YAML for a given version+type.
-func findApkoFile(def *config.ImageDefinition, version, typeName, imageDir string) (string, error) {
-	for _, v := range def.Versions {
-		if v.Version != version {
-			continue
-		}
-
-		if slices.Contains(v.Types, typeName) {
-			return filepath.Join(imageDir, "versions", version, typeName+".apko.yaml"), nil
-		}
-
-		return "", fmt.Errorf("type %q not found for version %q in image %q (available: %s): %w",
-			typeName, version, def.Name, strings.Join(v.Types, ", "), ErrVariantNotFound)
+// resolveLatestVersion fetches the APKINDEX and returns the latest version for the image.
+func resolveLatestVersion(def *config.ImageDef, apkindexURL string) (string, error) {
+	pkgs, err := apkindex.Fetch(apkindexURL, "", 0)
+	if err != nil {
+		return "", fmt.Errorf("fetching APKINDEX: %w", err)
 	}
-
-	available := make([]string, 0, len(def.Versions))
-	for _, v := range def.Versions {
-		available = append(available, v.Version)
+	versions := discovery.ResolveVersions(def, pkgs)
+	if len(versions) == 0 {
+		return "", fmt.Errorf("image %q: %w", def.Name, ErrNoVersions)
 	}
-
-	return "", fmt.Errorf("version %q not found in image %q (available: %s): %w",
-		version, def.Name, strings.Join(available, ", "), ErrVariantNotFound)
+	return versions[len(versions)-1], nil
 }
 
-// runApkoBuild executes apko to build an OCI tarball from the given config.
+// runApkoBuild executes apko to build an OCI tarball.
 func runApkoBuild(ctx context.Context, configFile, output, arch string) error {
 	apko, err := exec.LookPath("apko")
 	if err != nil {
-		return fmt.Errorf("apko not found in PATH — install via mise: %w", err)
+		return fmt.Errorf("apko not found in PATH (install via mise): %w", err)
 	}
-
-	cmd := exec.CommandContext(ctx, apko, "build",
-		"--arch", arch,
-		configFile,
-		"integer:local",
-		output,
-	)
+	cmd := exec.CommandContext(ctx, apko, "build", "--arch", arch, configFile, "integer:local", output)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-
 	if err := cmd.Run(); err != nil {
 		return fmt.Errorf("apko build failed: %w", err)
 	}
-
 	return nil
 }

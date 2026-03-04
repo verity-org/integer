@@ -1,4 +1,4 @@
-.PHONY: help build test test-coverage lint lint-vuln lint-workflows lint-yaml lint-shell lint-markdown fmt validate quality clean install-tools
+.PHONY: help build test test-coverage lint lint-vuln lint-workflows lint-yaml lint-shell lint-markdown fmt validate gen build-all quality clean install-tools
 
 # Default target
 help:
@@ -14,6 +14,8 @@ help:
 	@echo "  make lint-shell       - Lint shell scripts"
 	@echo "  make lint-markdown    - Lint markdown files"
 	@echo "  make validate         - Validate all image configs"
+	@echo "  make gen              - Generate all apko configs (no build)"
+	@echo "  make build-all        - Build all images locally with apko (slow)"
 	@echo "  make quality          - Run ALL linters, validate, and tests"
 	@echo "  make clean            - Clean build artifacts"
 	@echo "  make install-tools    - Install development tools via mise"
@@ -70,6 +72,28 @@ lint-markdown:
 # Validate all image configs (schema + file existence)
 validate: build
 	./integer validate
+
+# Generate all apko configs into ./gen/ (fast — no apko required)
+gen: build
+	./integer discover --gen-dir ./gen
+	@echo "✓ Generated apko configs → gen/"
+
+# Build all image variants locally with apko (amd64 only, no push)
+# Runs apko for each of the 173+ variants — takes a long time.
+# Narrow scope with: IMAGE=node make build-all
+build-all: build
+	@which apko > /dev/null || (echo "apko not found. Run: make install-tools" && exit 1)
+	./integer discover --gen-dir ./gen | \
+	  jq -r '.[] | [.name, .version, .type] | @tsv' | \
+	  $(if $(IMAGE),grep "^$(IMAGE)	",cat) | \
+	  while IFS=$$'\t' read -r name version type; do \
+	    echo "Building $$name:$$version-$$type..."; \
+	    apko build --arch amd64 \
+	      "gen/$$name/$$version/$$type.apko.yaml" \
+	      "$$name:$$version-$$type" \
+	      /dev/null || exit 1; \
+	  done
+	@echo "✓ All images built"
 
 # Run all quality checks
 quality: lint lint-vuln lint-workflows lint-yaml lint-shell lint-markdown validate test

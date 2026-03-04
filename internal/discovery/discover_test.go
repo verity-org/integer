@@ -8,260 +8,246 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	"github.com/verity-org/integer/internal/apkindex"
 	"github.com/verity-org/integer/internal/discovery"
 )
 
-func TestDiscover(t *testing.T) {
-	t.Run("discovers all version×type combos from a valid images directory", func(t *testing.T) {
-		dir := t.TempDir()
-		setupImageDir(t, dir, "node", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
+const (
+	typeDefault = "default"
+	typeDev     = "dev"
+)
+
+const nodeYAML = `
 name: node
-description: "Node.js runtime"
+description: "Node.js"
 upstream:
-  package: nodejs-22
+  package: "nodejs-{{version}}"
+types:
+  default:
+    base: wolfi-base
+    packages: ["nodejs-{{version}}"]
+    entrypoint: /usr/bin/node
+  dev:
+    base: wolfi-dev
+    packages: ["nodejs-{{version}}", "npm"]
+    entrypoint: /usr/bin/node
 versions:
-  - version: "22"
-    tags: ["22", "latest"]
-    types: [default, dev]
-`, []string{"versions/22/default.apko.yaml", "versions/22/dev.apko.yaml"})
+  "22":
+    eol: "2027-04-30"
+  "24":
+    eol: "2028-04-30"
+    latest: true
+`
 
-		imgs, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		require.Len(t, imgs, 2)
-
-		assert.Equal(t, "node", imgs[0].Name)
-		assert.Equal(t, "22", imgs[0].Version)
-		assert.Equal(t, "default", imgs[0].Type)
-		assert.Equal(t, []string{"22", "latest"}, imgs[0].Tags)
-		assert.Equal(t, "ghcr.io/verity-org", imgs[0].Registry)
-
-		assert.Equal(t, "node", imgs[1].Name)
-		assert.Equal(t, "22", imgs[1].Version)
-		assert.Equal(t, "dev", imgs[1].Type)
-		assert.Equal(t, []string{"22-dev", "latest-dev"}, imgs[1].Tags)
-	})
-
-	t.Run("multi-version image produces correct entries", func(t *testing.T) {
-		dir := t.TempDir()
-		setupImageDir(t, dir, "node", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: node
-versions:
-  - version: "20"
-    tags: ["20"]
-    types: [default]
-  - version: "22"
-    tags: ["22", "latest"]
-    types: [default, dev]
-`, []string{
-			"versions/20/default.apko.yaml",
-			"versions/22/default.apko.yaml",
-			"versions/22/dev.apko.yaml",
-		})
-
-		imgs, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		require.Len(t, imgs, 3)
-	})
-
-	t.Run("skips _base directory", func(t *testing.T) {
-		dir := t.TempDir()
-		baseDir := filepath.Join(dir, "_base")
-		require.NoError(t, os.MkdirAll(baseDir, 0o755))
-		require.NoError(t, os.WriteFile(filepath.Join(baseDir, "wolfi-base.yaml"), []byte("contents: {}"), 0o644))
-
-		setupImageDir(t, dir, "python", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: python
-versions:
-  - version: "3.12"
-    tags: ["3.12", "latest"]
-    types: [default]
-`, []string{"versions/3.12/default.apko.yaml"})
-
-		imgs, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		require.Len(t, imgs, 1)
-		assert.Equal(t, "python", imgs[0].Name)
-	})
-
-	t.Run("skips directories without image.yaml", func(t *testing.T) {
-		dir := t.TempDir()
-		require.NoError(t, os.MkdirAll(filepath.Join(dir, "orphan"), 0o755))
-
-		setupImageDir(t, dir, "nginx", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: nginx
-versions:
-  - version: "1"
-    tags: ["latest"]
-    types: [default]
-`, []string{"versions/1/default.apko.yaml"})
-
-		imgs, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		require.Len(t, imgs, 1)
-		assert.Equal(t, "nginx", imgs[0].Name)
-	})
-
-	t.Run("discovers multiple images", func(t *testing.T) {
-		dir := t.TempDir()
-		for _, name := range []string{"node", "python", "nginx"} {
-			setupImageDir(t, dir, name, imageYAML(name), []string{"versions/1/default.apko.yaml"})
-		}
-
-		imgs, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		assert.Len(t, imgs, 3)
-	})
-
-	t.Run("returns error for missing apko file", func(t *testing.T) {
-		dir := t.TempDir()
-		imageDir := filepath.Join(dir, "broken")
-		require.NoError(t, os.MkdirAll(imageDir, 0o755))
-		require.NoError(t, os.WriteFile(filepath.Join(imageDir, "image.yaml"), []byte(`
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: broken
-versions:
-  - version: "1"
-    tags: ["latest"]
-    types: [default]
-`), 0o644))
-		// No versions/1/default.apko.yaml created
-
-		_, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.Error(t, err)
-		assert.ErrorIs(t, err, discovery.ErrVariantFileMissing)
-	})
-
-	t.Run("tags are independent copies", func(t *testing.T) {
-		dir := t.TempDir()
-		setupImageDir(t, dir, "redis", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: redis
-versions:
-  - version: "7"
-    tags: ["7", "latest"]
-    types: [default]
-`, []string{"versions/7/default.apko.yaml"})
-
-		imgs, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		require.Len(t, imgs, 1)
-
-		// Mutating the returned tags must not affect a second call.
-		imgs[0].Tags[0] = "MUTATED"
-		imgs2, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		assert.Equal(t, "7", imgs2[0].Tags[0])
-	})
-}
-
-func TestDeriveTags(t *testing.T) {
-	t.Run("default type returns base tags unchanged", func(t *testing.T) {
-		dir := t.TempDir()
-		setupImageDir(t, dir, "node", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: node
-versions:
-  - version: "22"
-    tags: ["22", "latest"]
-    types: [default]
-`, []string{"versions/22/default.apko.yaml"})
-
-		imgs, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		require.Len(t, imgs, 1)
-		assert.Equal(t, []string{"22", "latest"}, imgs[0].Tags)
-	})
-
-	t.Run("non-default type appends suffix to each tag", func(t *testing.T) {
-		dir := t.TempDir()
-		setupImageDir(t, dir, "node", `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: node
-versions:
-  - version: "22"
-    tags: ["22", "latest"]
-    types: [dev, fips]
-`, []string{"versions/22/dev.apko.yaml", "versions/22/fips.apko.yaml"})
-
-		imgs, err := discovery.Discover(dir, "ghcr.io/verity-org")
-		require.NoError(t, err)
-		require.Len(t, imgs, 2)
-		assert.Equal(t, []string{"22-dev", "latest-dev"}, imgs[0].Tags)
-		assert.Equal(t, []string{"22-fips", "latest-fips"}, imgs[1].Tags)
-	})
-}
-
-func TestWalkApkoFiles(t *testing.T) {
-	t.Run("returns all apko yaml files", func(t *testing.T) {
-		dir := t.TempDir()
-		setupImageDir(t, dir, "node", imageYAML("node"), []string{
-			"versions/22/default.apko.yaml",
-			"versions/22/dev.apko.yaml",
-		})
-
-		files, err := discovery.WalkApkoFiles(dir)
-		require.NoError(t, err)
-		assert.Len(t, files, 2)
-	})
-
-	t.Run("excludes _base directory", func(t *testing.T) {
-		dir := t.TempDir()
-		baseDir := filepath.Join(dir, "_base")
-		require.NoError(t, os.MkdirAll(baseDir, 0o755))
-		require.NoError(t, os.WriteFile(filepath.Join(baseDir, "wolfi-base.yaml"), []byte("{}"), 0o644))
-
-		setupImageDir(t, dir, "nginx", imageYAML("nginx"), []string{"versions/1/default.apko.yaml"})
-
-		files, err := discovery.WalkApkoFiles(dir)
-		require.NoError(t, err)
-		assert.Len(t, files, 1)
-	})
-
-	t.Run("excludes image.yaml files", func(t *testing.T) {
-		dir := t.TempDir()
-		setupImageDir(t, dir, "python", imageYAML("python"), []string{"versions/3.12/default.apko.yaml"})
-
-		files, err := discovery.WalkApkoFiles(dir)
-		require.NoError(t, err)
-		for _, f := range files {
-			assert.NotEqual(t, "image.yaml", filepath.Base(f))
-		}
-	})
-}
-
-// setupImageDir creates an image directory with image.yaml and stub apko files.
-func setupImageDir(t *testing.T, imagesDir, name, imageYAMLContent string, apkoFiles []string) {
+// setupImages creates a minimal images/ + _base/ layout in a temp directory.
+func setupImages(t *testing.T, files map[string]string) string {
 	t.Helper()
-	imageDir := filepath.Join(imagesDir, name)
-	require.NoError(t, os.MkdirAll(imageDir, 0o755))
-	require.NoError(t, os.WriteFile(filepath.Join(imageDir, "image.yaml"), []byte(imageYAMLContent), 0o644))
-	for _, af := range apkoFiles {
-		path := filepath.Join(imageDir, af)
-		require.NoError(t, os.MkdirAll(filepath.Dir(path), 0o755))
-		require.NoError(t, os.WriteFile(path, []byte("contents: {}"), 0o644))
+	dir := t.TempDir()
+
+	// Create _base/ with minimal base files.
+	for _, base := range []string{"wolfi-base", "wolfi-dev", "wolfi-fips"} {
+		writeFile(t, dir, "_base/"+base+".yaml", "# base\n")
+	}
+
+	for name, content := range files {
+		writeFile(t, dir, name, content)
+	}
+	return dir
+}
+
+func writeFile(t *testing.T, dir, name, content string) {
+	t.Helper()
+	path := filepath.Join(dir, name)
+	require.NoError(t, os.MkdirAll(filepath.Dir(path), 0o755))
+	require.NoError(t, os.WriteFile(path, []byte(content), 0o644))
+}
+
+func opts(imagesDir, genDir string, pkgs []apkindex.Package) discovery.Options {
+	return discovery.Options{
+		ImagesDir: imagesDir,
+		Registry:  "ghcr.io/verity-org",
+		Packages:  pkgs,
+		GenDir:    genDir,
 	}
 }
 
-func imageYAML(name string) string {
-	return `
-apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: ` + name + `
+func TestDiscoverFromFiles_Basic(t *testing.T) {
+	imagesDir := setupImages(t, map[string]string{"node.yaml": nodeYAML})
+	genDir := t.TempDir()
+
+	pkgs := []apkindex.Package{{Name: "nodejs-22"}, {Name: "nodejs-24"}}
+
+	imgs, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, pkgs))
+	require.NoError(t, err)
+
+	// 2 versions × 2 types = 4 images
+	assert.Len(t, imgs, 4)
+
+	for _, img := range imgs {
+		assert.Equal(t, "ghcr.io/verity-org", img.Registry)
+		assert.Equal(t, "node", img.Name)
+	}
+
+	for _, img := range imgs {
+		switch {
+		case img.Version == "24" && img.Type == typeDefault:
+			assert.Equal(t, []string{"24", "latest"}, img.Tags)
+		case img.Version == "22" && img.Type == typeDev:
+			assert.Equal(t, []string{"22-dev"}, img.Tags)
+		case img.Version == "24" && img.Type == typeDev:
+			assert.Equal(t, []string{"24-dev", "latest-dev"}, img.Tags)
+		case img.Version == "22" && img.Type == typeDefault:
+			assert.Equal(t, []string{"22"}, img.Tags)
+		}
+	}
+}
+
+func TestDiscoverFromFiles_GeneratesApkoFiles(t *testing.T) {
+	imagesDir := setupImages(t, map[string]string{"node.yaml": nodeYAML})
+	genDir := t.TempDir()
+
+	pkgs := []apkindex.Package{{Name: "nodejs-22"}, {Name: "nodejs-24"}}
+
+	imgs, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, pkgs))
+	require.NoError(t, err)
+
+	for _, img := range imgs {
+		assert.FileExists(t, img.File)
+		data, err := os.ReadFile(img.File)
+		require.NoError(t, err)
+		// Each file should contain the package for its specific version.
+		assert.Contains(t, string(data), "nodejs-"+img.Version, "file %s", img.File)
+	}
+}
+
+func TestDiscoverFromFiles_NoAPKINDEX_UsesVersionsMap(t *testing.T) {
+	imagesDir := setupImages(t, map[string]string{"node.yaml": nodeYAML})
+	genDir := t.TempDir()
+
+	// No packages — only versions map is used.
+	imgs, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, nil))
+	require.NoError(t, err)
+	// 2 versions × 2 types = 4
+	assert.Len(t, imgs, 4)
+}
+
+func TestDiscoverFromFiles_AutoDiscoverNewVersion(t *testing.T) {
+	imagesDir := setupImages(t, map[string]string{"node.yaml": nodeYAML})
+	genDir := t.TempDir()
+
+	// APKINDEX has nodejs-26 which is NOT in the versions map.
+	pkgs := []apkindex.Package{
+		{Name: "nodejs-22"},
+		{Name: "nodejs-24"},
+		{Name: "nodejs-26"},
+	}
+
+	imgs, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, pkgs))
+	require.NoError(t, err)
+	// 3 versions × 2 types = 6
+	assert.Len(t, imgs, 6)
+
+	var v26 []discovery.DiscoveredImage
+	for _, img := range imgs {
+		if img.Version == "26" {
+			v26 = append(v26, img)
+		}
+	}
+	require.Len(t, v26, 2)
+	for _, img := range v26 {
+		if img.Type == typeDefault {
+			assert.Equal(t, []string{"26"}, img.Tags)
+		}
+	}
+}
+
+func TestDiscoverFromFiles_SkipsNonYAML(t *testing.T) {
+	imagesDir := setupImages(t, map[string]string{
+		"node.yaml": nodeYAML,
+		"README.md": "# readme",
+		"notes.txt": "notes",
+	})
+	genDir := t.TempDir()
+
+	imgs, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, nil))
+	require.NoError(t, err)
+	for _, img := range imgs {
+		assert.Equal(t, "node", img.Name)
+	}
+}
+
+func TestDiscoverFromFiles_InvalidYAML(t *testing.T) {
+	imagesDir := setupImages(t, map[string]string{
+		"broken.yaml": "not: valid: yaml: [",
+	})
+	genDir := t.TempDir()
+
+	_, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, nil))
+	require.Error(t, err)
+}
+
+func TestDiscoverFromFiles_EmptyDir(t *testing.T) {
+	imagesDir := setupImages(t, nil)
+	genDir := t.TempDir()
+
+	imgs, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, nil))
+	require.NoError(t, err)
+	assert.Empty(t, imgs)
+}
+
+func TestDiscoverFromFiles_MultipleImages(t *testing.T) {
+	const curlYAML = `
+name: curl
+upstream:
+  package: curl
+types:
+  default:
+    base: wolfi-base
+    packages: [curl]
+    entrypoint: /usr/bin/curl
 versions:
-  - version: "1"
-    tags: ["latest"]
-    types: [default]
+  latest:
+    latest: true
 `
+	imagesDir := setupImages(t, map[string]string{
+		"node.yaml": nodeYAML,
+		"curl.yaml": curlYAML,
+	})
+	genDir := t.TempDir()
+
+	pkgs := []apkindex.Package{
+		{Name: "nodejs-22"},
+		{Name: "nodejs-24"},
+		{Name: "curl"},
+	}
+
+	imgs, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, pkgs))
+	require.NoError(t, err)
+
+	names := make(map[string]bool)
+	for _, img := range imgs {
+		names[img.Name] = true
+	}
+	assert.True(t, names["node"])
+	assert.True(t, names["curl"])
+}
+
+func TestApplyTypeSuffix(t *testing.T) {
+	imagesDir := setupImages(t, map[string]string{"node.yaml": nodeYAML})
+	genDir := t.TempDir()
+
+	pkgs := []apkindex.Package{{Name: "nodejs-22"}}
+	imgs, err := discovery.DiscoverFromFiles(opts(imagesDir, genDir, pkgs))
+	require.NoError(t, err)
+
+	for _, img := range imgs {
+		if img.Type == typeDefault {
+			assert.NotContains(t, img.Tags[0], "-default")
+		}
+		if img.Type == typeDev {
+			for _, tag := range img.Tags {
+				assert.Contains(t, tag, "-dev")
+			}
+		}
+	}
 }

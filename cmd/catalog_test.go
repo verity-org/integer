@@ -11,26 +11,6 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-const testIntegerYAML = `apiVersion: integer.verity.supply/v1alpha1
-kind: IntegerConfig
-target:
-  registry: ghcr.io/verity-org
-defaults:
-  archs:
-    - amd64
-    - arm64
-`
-
-const testImageYAML = `apiVersion: integer.verity.supply/v1alpha1
-kind: ImageDefinition
-name: node
-description: "Node.js runtime"
-versions:
-  - version: "22"
-    tags: ["22"]
-    types: [default]
-`
-
 func runCatalogApp(t *testing.T, args []string) error {
 	t.Helper()
 	app := &cli.App{Commands: []*cli.Command{CatalogCommand}}
@@ -38,21 +18,14 @@ func runCatalogApp(t *testing.T, args []string) error {
 }
 
 func TestCatalogCommand_Basic(t *testing.T) {
-	dir := t.TempDir()
-	cfgPath := filepath.Join(dir, "integer.yaml")
-	require.NoError(t, os.WriteFile(cfgPath, []byte(testIntegerYAML), 0o644))
-
-	imagesDir := filepath.Join(dir, "images")
-	imageYAMLPath := filepath.Join(imagesDir, "node", "image.yaml")
-	require.NoError(t, os.MkdirAll(filepath.Dir(imageYAMLPath), 0o755))
-	require.NoError(t, os.WriteFile(imageYAMLPath, []byte(testImageYAML), 0o644))
-
-	outputPath := filepath.Join(dir, "catalog.json")
+	imagesDir, cfgPath := setupCmdImages(t)
+	outputPath := filepath.Join(t.TempDir(), "catalog.json")
 
 	err := runCatalogApp(t, []string{
 		"catalog",
 		"--config", cfgPath,
 		"--images-dir", imagesDir,
+		"--apkindex-url", "",
 		"--output", outputPath,
 	})
 	require.NoError(t, err)
@@ -67,19 +40,46 @@ func TestCatalogCommand_Basic(t *testing.T) {
 	assert.Len(t, images, 1)
 }
 
-func TestCatalogCommand_StdoutOutput(t *testing.T) {
-	dir := t.TempDir()
-	cfgPath := filepath.Join(dir, "integer.yaml")
-	require.NoError(t, os.WriteFile(cfgPath, []byte(testIntegerYAML), 0o644))
+func TestCatalogCommand_WithAPKINDEX(t *testing.T) {
+	srv := makeAPKINDEXServer(t, "P:nodejs-22\nV:22.0.0\n\nP:nodejs-24\nV:24.0.0\n\n")
 
-	imagesDir := filepath.Join(dir, "images")
-	require.NoError(t, os.MkdirAll(imagesDir, 0o755))
+	imagesDir, cfgPath := setupCmdImages(t)
+	outputPath := filepath.Join(t.TempDir(), "catalog.json")
 
-	// Output to stdout via "-"
 	err := runCatalogApp(t, []string{
 		"catalog",
 		"--config", cfgPath,
 		"--images-dir", imagesDir,
+		"--apkindex-url", srv.URL,
+		"--cache-dir", t.TempDir(),
+		"--output", outputPath,
+	})
+	require.NoError(t, err)
+}
+
+func TestCatalogCommand_APKINDEXFails_ContinuesWithVersionsMap(t *testing.T) {
+	imagesDir, cfgPath := setupCmdImages(t)
+	outputPath := filepath.Join(t.TempDir(), "catalog.json")
+
+	// Use a bad URL — catalog should warn and continue with versions map.
+	err := runCatalogApp(t, []string{
+		"catalog",
+		"--config", cfgPath,
+		"--images-dir", imagesDir,
+		"--apkindex-url", "http://127.0.0.1:0/bad",
+		"--output", outputPath,
+	})
+	require.NoError(t, err)
+}
+
+func TestCatalogCommand_StdoutOutput(t *testing.T) {
+	imagesDir, cfgPath := setupCmdImages(t)
+
+	err := runCatalogApp(t, []string{
+		"catalog",
+		"--config", cfgPath,
+		"--images-dir", imagesDir,
+		"--apkindex-url", "",
 		"--output", "-",
 	})
 	require.NoError(t, err)
@@ -99,12 +99,13 @@ func TestCatalogCommand_InvalidConfig(t *testing.T) {
 func TestCatalogCommand_InvalidImagesDir(t *testing.T) {
 	dir := t.TempDir()
 	cfgPath := filepath.Join(dir, "integer.yaml")
-	require.NoError(t, os.WriteFile(cfgPath, []byte(testIntegerYAML), 0o644))
+	writeFile(t, cfgPath, testIntegerYAML)
 
 	err := runCatalogApp(t, []string{
 		"catalog",
 		"--config", cfgPath,
 		"--images-dir", "/nonexistent/path",
+		"--apkindex-url", "",
 		"--output", filepath.Join(dir, "out.json"),
 	})
 	require.Error(t, err)
