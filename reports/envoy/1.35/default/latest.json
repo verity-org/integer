@@ -1,0 +1,13 @@
+{
+  "image": "envoy",
+  "version": "1.35",
+  "type": "default",
+  "tags": [
+    "1.35"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:6b83ea5be16ee621c767499a7f3e5465cd83dd5039700280106453d251c87cca",
+  "status": "success",
+  "built_at": "2026-03-04T22:35:38Z",
+  "run_id": "22692601139"
+}
