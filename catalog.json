@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-05T09:11:30Z",
+  "generatedAt": "2026-03-05T11:27:14Z",
   "registry": "ghcr.io/verity-org",
   "images": [
     {
@@ -282,7 +282,7 @@
         },
         {
           "version": "9",
-          "eol": "2026-05-12",
+          "eol": "2026-11-10",
           "variants": [
             {
               "type": "aspnet",
@@ -789,6 +789,7 @@
       "versions": [
         {
           "version": "1.20",
+          "eol": "2024-02-06",
           "variants": [
             {
               "type": "default",
@@ -824,6 +825,7 @@
         },
         {
           "version": "1.21",
+          "eol": "2024-08-13",
           "variants": [
             {
               "type": "default",
@@ -859,6 +861,7 @@
         },
         {
           "version": "1.22",
+          "eol": "2025-02-11",
           "variants": [
             {
               "type": "default",
@@ -894,7 +897,7 @@
         },
         {
           "version": "1.23",
-          "eol": "2025-08-31",
+          "eol": "2025-08-12",
           "variants": [
             {
               "type": "default",
@@ -930,7 +933,7 @@
         },
         {
           "version": "1.24",
-          "eol": "2026-02-28",
+          "eol": "2026-02-11",
           "variants": [
             {
               "type": "default",
@@ -966,7 +969,6 @@
         },
         {
           "version": "1.25",
-          "eol": "2026-08-31",
           "variants": [
             {
               "type": "default",
@@ -1047,6 +1049,7 @@
       "versions": [
         {
           "version": "11.5",
+          "eol": "2025-10-28",
           "variants": [
             {
               "type": "default",
@@ -1078,6 +1081,7 @@
         },
         {
           "version": "12.0",
+          "eol": "2026-02-05",
           "variants": [
             {
               "type": "default",
@@ -1093,6 +1097,7 @@
         },
         {
           "version": "12.1",
+          "eol": "2026-04-22",
           "variants": [
             {
               "type": "default",
@@ -1108,6 +1113,7 @@
         },
         {
           "version": "12.2",
+          "eol": "2026-06-23",
           "variants": [
             {
               "type": "default",
@@ -1123,6 +1129,7 @@
         },
         {
           "version": "12.3",
+          "eol": "2026-08-19",
           "variants": [
             {
               "type": "default",
@@ -1139,6 +1146,7 @@
         {
           "version": "12.4",
           "latest": true,
+          "eol": "2027-05-24",
           "variants": [
             {
               "type": "default",
@@ -1225,7 +1233,7 @@
         },
         {
           "version": "3.1",
-          "eol": "2026-03-01",
+          "eol": "2026-01-01",
           "variants": [
             {
               "type": "default",
@@ -1786,6 +1794,7 @@
       "versions": [
         {
           "version": "10.6",
+          "eol": "2026-07-06",
           "variants": [
             {
               "type": "default",
@@ -1837,6 +1846,7 @@
         },
         {
           "version": "11.2",
+          "eol": "2024-11-21",
           "variants": [
             {
               "type": "default",
@@ -1888,6 +1898,7 @@
         },
         {
           "version": "11.5",
+          "eol": "2024-11-21",
           "variants": [
             {
               "type": "default",
@@ -1913,6 +1924,7 @@
         },
         {
           "version": "11.6",
+          "eol": "2025-02-13",
           "variants": [
             {
               "type": "default",
@@ -1938,6 +1950,7 @@
         },
         {
           "version": "11.7",
+          "eol": "2025-05-12",
           "variants": [
             {
               "type": "default",
@@ -1992,6 +2005,7 @@
         },
         {
           "version": "12.0",
+          "eol": "2025-11-18",
           "variants": [
             {
               "type": "default",
@@ -2017,6 +2031,7 @@
         },
         {
           "version": "12.1",
+          "eol": "2026-02-13",
           "variants": [
             {
               "type": "default",
@@ -2042,6 +2057,7 @@
         },
         {
           "version": "12.2",
+          "eol": "2026-05-13",
           "variants": [
             {
               "type": "default",
@@ -2315,6 +2331,7 @@
       "versions": [
         {
           "version": "16",
+          "eol": "2023-09-11",
           "variants": [
             {
               "type": "default",
@@ -2350,6 +2367,7 @@
         },
         {
           "version": "18",
+          "eol": "2025-04-30",
           "variants": [
             {
               "type": "default",
@@ -2421,6 +2439,7 @@
         },
         {
           "version": "21",
+          "eol": "2024-06-01",
           "variants": [
             {
               "type": "default",
@@ -2492,6 +2511,7 @@
         },
         {
           "version": "23",
+          "eol": "2025-06-01",
           "variants": [
             {
               "type": "default",
@@ -2567,6 +2587,7 @@
         },
         {
           "version": "25",
+          "eol": "2026-06-01",
           "variants": [
             {
               "type": "default",
@@ -2958,7 +2979,6 @@
         },
         {
           "version": "17",
-          "eol": "2027-10-31",
           "variants": [
             {
               "type": "default",
@@ -3099,7 +3119,6 @@
         },
         {
           "version": "21",
-          "eol": "2029-12-31",
           "variants": [
             {
               "type": "default",
@@ -3241,7 +3260,6 @@
         {
           "version": "25",
           "latest": true,
-          "eol": "2031-09-30",
           "variants": [
             {
               "type": "default",
@@ -3324,6 +3342,7 @@
       "versions": [
         {
           "version": "8.1",
+          "eol": "2025-12-31",
           "variants": [
             {
               "type": "default",
@@ -3564,6 +3583,7 @@
       "versions": [
         {
           "version": "12",
+          "eol": "2024-11-21",
           "variants": [
             {
               "type": "default",
@@ -3589,6 +3609,7 @@
         },
         {
           "version": "13",
+          "eol": "2025-11-13",
           "variants": [
             {
               "type": "default",
@@ -4154,6 +4175,7 @@
       "versions": [
         {
           "version": "3.0",
+          "eol": "2024-04-23",
           "variants": [
             {
               "type": "default",
@@ -4189,6 +4211,7 @@
         },
         {
           "version": "3.1",
+          "eol": "2025-03-31",
           "variants": [
             {
               "type": "default",
