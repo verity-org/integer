@@ -1,0 +1,13 @@
+{
+  "image": "bash",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:ccd83bf5828be350b3f4662e141d6b45880c2b5c4948dd684aa7ac8862208018",
+  "status": "success",
+  "built_at": "2026-03-05T23:32:20Z",
+  "run_id": "22741420043"
+}
