@@ -17,7 +17,11 @@ if [ ! -f "$CATALOG_FILE" ]; then
   exit 1
 fi
 
-CONTENT=$(base64 -w0 < "$CATALOG_FILE")
+# Write base64 content to a temp file to avoid argument list too long error.
+CONTENT_FILE=$(mktemp)
+BODY_FILE=$(mktemp)
+trap 'rm -f "$CONTENT_FILE" "$BODY_FILE"' EXIT
+base64 -w0 < "$CATALOG_FILE" > "$CONTENT_FILE"
 
 # Fetch existing SHA (needed for update vs create).
 existing_sha=""
@@ -34,18 +38,18 @@ timestamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 message="catalog: regenerate @ ${timestamp}"
 
 if [ -n "$existing_sha" ]; then
-  body=$(jq -n \
+  jq -n \
     --arg message "$message" \
-    --arg content "$CONTENT" \
+    --rawfile content "$CONTENT_FILE" \
     --arg sha "$existing_sha" \
     --arg branch "$BRANCH" \
-    '{message: $message, content: $content, sha: $sha, branch: $branch}')
+    '{message: $message, content: $content, sha: $sha, branch: $branch}' > "$BODY_FILE"
 else
-  body=$(jq -n \
+  jq -n \
     --arg message "$message" \
-    --arg content "$CONTENT" \
+    --rawfile content "$CONTENT_FILE" \
     --arg branch "$BRANCH" \
-    '{message: $message, content: $content, branch: $branch}')
+    '{message: $message, content: $content, branch: $branch}' > "$BODY_FILE"
 fi
 
 curl -sf \
@@ -53,7 +57,7 @@ curl -sf \
   -H "Authorization: Bearer ${GH_TOKEN}" \
   -H "Accept: application/vnd.github+json" \
   -H "Content-Type: application/json" \
-  --data "$body" \
+  --data @"$BODY_FILE" \
   "${API}/${PATH_IN_REPO}" > /dev/null
 
 echo "Pushed ${CATALOG_FILE} → ${BRANCH}/${PATH_IN_REPO}"
