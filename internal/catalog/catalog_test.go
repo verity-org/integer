@@ -11,6 +11,7 @@ import (
 
 	"github.com/verity-org/integer/internal/apkindex"
 	"github.com/verity-org/integer/internal/catalog"
+	"github.com/verity-org/integer/internal/eol"
 )
 
 func writeFile(t *testing.T, dir, name, content string) string {
@@ -52,7 +53,7 @@ func TestGenerate_NoReports(t *testing.T) {
 	imagesDir := t.TempDir()
 	writeFile(t, imagesDir, "node.yaml", nodeYAML)
 
-	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs)
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, nil)
 	require.NoError(t, err)
 
 	require.Len(t, cat.Images, 1)
@@ -103,7 +104,7 @@ func TestGenerate_WithReports(t *testing.T) {
 	require.NoError(t, os.MkdirAll(filepath.Dir(reportPath), 0o755))
 	require.NoError(t, os.WriteFile(reportPath, reportData, 0o644))
 
-	cat, err := catalog.Generate(imagesDir, reportsDir, "ghcr.io/verity-org", testPkgs)
+	cat, err := catalog.Generate(imagesDir, reportsDir, "ghcr.io/verity-org", testPkgs, nil)
 	require.NoError(t, err)
 
 	v22 := cat.Images[0].Versions[0]
@@ -121,19 +122,19 @@ func TestGenerate_SkipsNonYAML(t *testing.T) {
 	writeFile(t, imagesDir, "node.yaml", nodeYAML)
 	writeFile(t, imagesDir, "README.md", "# readme")
 
-	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs)
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, nil)
 	require.NoError(t, err)
 	assert.Len(t, cat.Images, 1)
 }
 
 func TestGenerate_InvalidImagesDir(t *testing.T) {
-	_, err := catalog.Generate("/nonexistent/path", "", "ghcr.io/verity-org", nil)
+	_, err := catalog.Generate("/nonexistent/path", "", "ghcr.io/verity-org", nil, nil)
 	require.Error(t, err)
 }
 
 func TestGenerate_EmptyImagesDir(t *testing.T) {
 	imagesDir := t.TempDir()
-	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", nil)
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", nil, nil)
 	require.NoError(t, err)
 	assert.Empty(t, cat.Images)
 }
@@ -148,7 +149,7 @@ func TestGenerate_CorruptReport(t *testing.T) {
 	require.NoError(t, os.WriteFile(reportPath, []byte("not json"), 0o644))
 
 	// Should not fail — corrupt report is silently skipped; status stays "unknown"
-	cat, err := catalog.Generate(imagesDir, reportsDir, "ghcr.io/verity-org", testPkgs)
+	cat, err := catalog.Generate(imagesDir, reportsDir, "ghcr.io/verity-org", testPkgs, nil)
 	require.NoError(t, err)
 	assert.Equal(t, "unknown", cat.Images[0].Versions[0].Variants[0].Status)
 }
@@ -177,7 +178,7 @@ versions:
 		{Name: "python-3.12"},
 	}
 
-	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", pkgs)
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", pkgs, nil)
 	require.NoError(t, err)
 	assert.Len(t, cat.Images, 2)
 
@@ -190,7 +191,7 @@ func TestGenerate_NonExistentReportsDirErrors(t *testing.T) {
 	imagesDir := t.TempDir()
 	writeFile(t, imagesDir, "node.yaml", nodeYAML)
 
-	_, err := catalog.Generate(imagesDir, "/nonexistent/reports", "ghcr.io/verity-org", nil)
+	_, err := catalog.Generate(imagesDir, "/nonexistent/reports", "ghcr.io/verity-org", nil, nil)
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "reports dir")
 }
@@ -199,7 +200,7 @@ func TestGenerate_EOLField(t *testing.T) {
 	imagesDir := t.TempDir()
 	writeFile(t, imagesDir, "node.yaml", nodeYAML)
 
-	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs)
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, nil)
 	require.NoError(t, err)
 	assert.Equal(t, "2027-04-30", cat.Images[0].Versions[0].EOL)
 }
@@ -215,9 +216,93 @@ func TestGenerate_AutoDiscoveredVersion(t *testing.T) {
 		{Name: "nodejs-26"},
 	}
 
-	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", pkgs)
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", pkgs, nil)
 	require.NoError(t, err)
 
 	// 3 versions should appear
 	assert.Len(t, cat.Images[0].Versions, 3)
+}
+
+type stubEOLFetcher struct {
+	data map[string]eol.EOLData
+}
+
+func (s *stubEOLFetcher) FetchForImage(imageName string) (eol.EOLData, error) {
+	if data, ok := s.data[imageName]; ok {
+		return data, nil
+	}
+	return eol.EOLData{}, nil
+}
+
+func TestGenerate_WithEOLFetcher(t *testing.T) {
+	imagesDir := t.TempDir()
+
+	const nodeNoEOLYAML = `
+name: node
+description: "Node.js runtime"
+upstream:
+  package: "nodejs-{{version}}"
+types:
+  default:
+    base: wolfi-base
+    packages: ["nodejs-{{version}}"]
+    entrypoint: /usr/bin/node
+versions:
+  "22": {}
+  "24":
+    latest: true
+`
+	writeFile(t, imagesDir, "node.yaml", nodeNoEOLYAML)
+
+	fetcher := &stubEOLFetcher{
+		data: map[string]eol.EOLData{
+			"node": {
+				"22": "2027-04-30",
+				"24": "2028-04-30",
+			},
+		},
+	}
+
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, fetcher)
+	require.NoError(t, err)
+
+	require.Len(t, cat.Images, 1)
+	require.Len(t, cat.Images[0].Versions, 2)
+
+	assert.Equal(t, "2027-04-30", cat.Images[0].Versions[0].EOL)
+	assert.Equal(t, "2028-04-30", cat.Images[0].Versions[1].EOL)
+}
+
+func TestGenerate_EOLFetcherOverridesYAML(t *testing.T) {
+	imagesDir := t.TempDir()
+	writeFile(t, imagesDir, "node.yaml", nodeYAML)
+
+	fetcher := &stubEOLFetcher{
+		data: map[string]eol.EOLData{
+			"node": {
+				"22": "2099-12-31",
+			},
+		},
+	}
+
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, fetcher)
+	require.NoError(t, err)
+
+	assert.Equal(t, "2099-12-31", cat.Images[0].Versions[0].EOL)
+	assert.Equal(t, "2028-04-30", cat.Images[0].Versions[1].EOL)
+}
+
+func TestGenerate_EOLFetcherFallsBackToYAML(t *testing.T) {
+	imagesDir := t.TempDir()
+	writeFile(t, imagesDir, "node.yaml", nodeYAML)
+
+	fetcher := &stubEOLFetcher{
+		data: map[string]eol.EOLData{},
+	}
+
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, fetcher)
+	require.NoError(t, err)
+
+	assert.Equal(t, "2027-04-30", cat.Images[0].Versions[0].EOL)
+	assert.Equal(t, "2028-04-30", cat.Images[0].Versions[1].EOL)
 }

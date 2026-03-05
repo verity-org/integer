@@ -10,6 +10,7 @@ import (
 	"github.com/verity-org/integer/internal/apkindex"
 	"github.com/verity-org/integer/internal/catalog"
 	"github.com/verity-org/integer/internal/config"
+	"github.com/verity-org/integer/internal/eol"
 )
 
 // CatalogCommand generates catalog.json from image definitions + build reports.
@@ -49,6 +50,11 @@ var CatalogCommand = &cli.Command{
 			Usage: "Directory for caching APKINDEX data",
 			Value: os.TempDir(),
 		},
+		&cli.BoolFlag{
+			Name:  "fetch-eol",
+			Usage: "Fetch EOL data from endoflife.date API",
+			Value: true,
+		},
 	},
 	Action: runCatalog,
 }
@@ -67,12 +73,18 @@ func runCatalog(c *cli.Context) error {
 			pkgs = nil
 		}
 	}
+	// Fetch EOL data from endoflife.date API if enabled.
+	var eolClient *eol.Client
+	if c.Bool("fetch-eol") {
+		eolClient = eol.NewClient()
+	}
 
 	cat, err := catalog.Generate(
 		c.String("images-dir"),
 		c.String("reports-dir"),
 		cfg.Target.Registry,
 		pkgs,
+		eolClient,
 	)
 	if err != nil {
 		return fmt.Errorf("generating catalog: %w", err)

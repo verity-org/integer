@@ -60,12 +60,8 @@ types:
       - {path: /app, type: directory, uid: 65532, gid: 65532, permissions: 0o755}
 
 versions:
-  "8.2":
-    eol: "2026-12-31"
-  "8.3":
-    eol: "2027-12-31"
-  "8.4":
-    eol: "2028-12-31"
+  "8.2": {}
+  "8.3": {}
+  "8.4": {}
   "8.5":
-    eol: "2029-12-31"
     latest: true
