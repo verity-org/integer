@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-04T08:53:25Z",
+  "generatedAt": "2026-03-05T09:11:30Z",
   "registry": "ghcr.io/verity-org",
   "images": [
     {
@@ -17,8 +17,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/alertmanager:0",
-              "digest": "sha256:8bd6d14d41ed071f62c49bbd8848d8e3cdfd40dabfb3e0428bf157ed2c964088",
-              "builtAt": "2026-03-04T04:26:59Z",
+              "digest": "sha256:605655c2617cf435fc8a025a4c8cf5ee29392a115abfbcc7f09b49d639d28b5d",
+              "builtAt": "2026-03-05T04:31:39Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/alertmanager:latest",
+              "digest": "sha256:d0f9293a22ea1ec37644d18638ee95cf2093f6e24c9ffd4f3a2627bd8e1174e1",
+              "builtAt": "2026-03-05T04:31:36Z",
               "status": "success"
             }
           ]
@@ -40,8 +55,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/coredns:1",
-              "digest": "sha256:5c3e6eb33d38bc86e423d140f3f5894f3a8423ef3e4225cec734575650bca067",
-              "builtAt": "2026-03-04T04:27:16Z",
+              "digest": "sha256:dffef09fdc53ca971b8d4befaf859f92b5c5ccc21a51d4896912dc3c5e1f0e81",
+              "builtAt": "2026-03-05T04:31:38Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/coredns:latest",
+              "digest": "sha256:36a89bb6743cdbc511e17538c3ef02e031a871367ccdbe420f85d3116574bb7f",
+              "builtAt": "2026-03-05T04:32:52Z",
               "status": "success"
             }
           ]
@@ -63,8 +93,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/cosign:2",
-              "digest": "sha256:e531c2fbe0481fc95afcec7b19838e720515e2d198d94ecc2d03e3ba5297d882",
-              "builtAt": "2026-03-04T04:27:35Z",
+              "digest": "sha256:891235f600f52ca206bd9d92f4ff4560ad7e3a2db3e6ae0cdb00877bb2001531",
+              "builtAt": "2026-03-05T04:32:53Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/cosign:latest",
+              "digest": "sha256:d677d5633dc31f7c306f75857621503203706efa8e0c3f740d346bd8a2e06d6f",
+              "builtAt": "2026-03-05T04:33:18Z",
               "status": "success"
             }
           ]
@@ -86,8 +131,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/crane:0",
-              "digest": "sha256:61402040c9b6fe699cfbcb8f5256628e09c4a807a181df60979ac554bdc2287d",
-              "builtAt": "2026-03-04T04:27:34Z",
+              "digest": "sha256:b488c8685b6697ea3c807ec8dc5d318829832181c79532a73a74b45e382a1f16",
+              "builtAt": "2026-03-05T04:33:32Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/crane:latest",
+              "digest": "sha256:a9955db81517f3918ad78a76aa856ad36c5285ddfc0fafebe6252d7f0385590f",
+              "builtAt": "2026-03-05T04:33:53Z",
               "status": "success"
             }
           ]
@@ -109,9 +169,24 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/curl:8",
-              "digest": "",
-              "builtAt": "2026-03-04T07:56:43Z",
-              "status": "failure"
+              "digest": "sha256:dbf66005161ebca4e4c1f6b2c3d97056c9d5f117e7189360a681f444a6dad744",
+              "builtAt": "2026-03-05T04:34:05Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/curl:latest",
+              "digest": "sha256:cbc5a6a7e3bb694aeb82f52e9110ed493b998454ac291a89fa1d023d8364eda3",
+              "builtAt": "2026-03-05T04:34:30Z",
+              "status": "success"
             }
           ]
         }
@@ -132,8 +207,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/deno:2",
-              "digest": "sha256:46d0b0be2b0593b4d2bfee93ce3d2a4f9ebc816db48375e83a71d49790733fd3",
-              "builtAt": "2026-03-04T04:28:13Z",
+              "digest": "sha256:33ab533dc45bc621b212e0209c5c569377bc2ce179847f5fddb0d08600c64fb6",
+              "builtAt": "2026-03-05T04:35:34Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/deno:latest",
+              "digest": "sha256:b94ddfd4e1340825d29c6c10a68e92ba95f6a67999752de6a084482dca0650ad",
+              "builtAt": "2026-03-05T04:35:02Z",
               "status": "success"
             }
           ]
@@ -149,47 +239,43 @@
           "eol": "2026-11-10",
           "variants": [
             {
+              "type": "aspnet",
+              "tags": [
+                "8-aspnet"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:8-aspnet",
+              "digest": "sha256:2d0d1df04f552aaba3ba8b7d99ebe4dc250cc251d40e1b9763ae0ec5551f41e3",
+              "builtAt": "2026-03-05T04:34:50Z",
+              "status": "success"
+            },
+            {
               "type": "default",
               "tags": [
-                "8",
-                "latest-8"
+                "8"
               ],
               "ref": "ghcr.io/verity-org/dotnet:8",
-              "digest": "sha256:b40a9e3d6642495346ddc28c61db9b9fcf55f0f1449bfd6bb9cae35523abb05e",
-              "builtAt": "2026-03-04T04:28:33Z",
+              "digest": "sha256:296ddb48ff46c76652e8236f7ca0f08d0c4dc999c93b50a0fe1f36726e22bb0c",
+              "builtAt": "2026-03-05T04:36:07Z",
               "status": "success"
             },
             {
               "type": "sdk",
               "tags": [
-                "8-sdk",
-                "latest-8-sdk"
+                "8-sdk"
               ],
               "ref": "ghcr.io/verity-org/dotnet:8-sdk",
-              "digest": "sha256:024554cac20f77eac3ee2ed321512ce188cd20f927081e7b83c04c6727816275",
-              "builtAt": "2026-03-04T04:28:47Z",
-              "status": "success"
-            },
-            {
-              "type": "aspnet",
-              "tags": [
-                "8-aspnet",
-                "latest-8-aspnet"
-              ],
-              "ref": "ghcr.io/verity-org/dotnet:8-aspnet",
-              "digest": "sha256:231960c34c9d6b8892abbecc6bb7e660fdb215d7f64cfe8b236d420e1ae2f014",
-              "builtAt": "2026-03-04T04:29:36Z",
+              "digest": "sha256:9aa517fe5bc05b25d53e987f0b9382fd3d7c43e0332a6edf550f9ac0850a3cee",
+              "builtAt": "2026-03-05T04:36:37Z",
               "status": "success"
             },
             {
               "type": "sdk-fips",
               "tags": [
-                "8-sdk-fips",
-                "latest-8-sdk-fips"
+                "8-sdk-fips"
               ],
               "ref": "ghcr.io/verity-org/dotnet:8-sdk-fips",
-              "digest": "sha256:e733917cf46f4ce18e7fcad27e305c23204100d7e62600e2d107e219a8303246",
-              "builtAt": "2026-03-04T04:30:52Z",
+              "digest": "sha256:8dfeaf079f9b7949f163984e962f6fc64ef4b03f1a884775c3cc9088a4f26f70",
+              "builtAt": "2026-03-05T04:37:25Z",
               "status": "success"
             }
           ]
@@ -199,13 +285,23 @@
           "eol": "2026-05-12",
           "variants": [
             {
+              "type": "aspnet",
+              "tags": [
+                "9-aspnet"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:9-aspnet",
+              "digest": "sha256:4b64e5d663c5aae8c6ed0ee01da016c7e9ea3f1927ea44e7fa40dd86b72b74d4",
+              "builtAt": "2026-03-05T04:36:18Z",
+              "status": "success"
+            },
+            {
               "type": "default",
               "tags": [
                 "9"
               ],
               "ref": "ghcr.io/verity-org/dotnet:9",
-              "digest": "sha256:da3048bf564633440221541bb78b5b9d14cce9e296707a2cfeba6b603d8022fe",
-              "builtAt": "2026-03-04T04:30:27Z",
+              "digest": "sha256:0f8250ea46148f34a285dc59c2ead08225e15e2c675311bcfeb8ebfb3c7fc4b5",
+              "builtAt": "2026-03-05T04:37:13Z",
               "status": "success"
             },
             {
@@ -214,18 +310,8 @@
                 "9-sdk"
               ],
               "ref": "ghcr.io/verity-org/dotnet:9-sdk",
-              "digest": "sha256:aeb860f512e00ef4b56b0a937657e598a41d17dda1f8e2f4b9a225bf33b00711",
-              "builtAt": "2026-03-04T04:31:26Z",
-              "status": "success"
-            },
-            {
-              "type": "aspnet",
-              "tags": [
-                "9-aspnet"
-              ],
-              "ref": "ghcr.io/verity-org/dotnet:9-aspnet",
-              "digest": "sha256:b6204ae586e475e6da6cee542d59aa882f45425d2c6713afc202183c18c2c131",
-              "builtAt": "2026-03-04T04:31:01Z",
+              "digest": "sha256:908c8ed6cbe9d8fd7c10e29b350e0a473fccfd9d0193c87b985f169f3847f4ad",
+              "builtAt": "2026-03-05T04:37:42Z",
               "status": "success"
             },
             {
@@ -234,8 +320,8 @@
                 "9-sdk-fips"
               ],
               "ref": "ghcr.io/verity-org/dotnet:9-sdk-fips",
-              "digest": "sha256:1789ad3b9ec3ae58fe675971560c6b979cefba28050629d88b19639b08d59afd",
-              "builtAt": "2026-03-04T04:31:28Z",
+              "digest": "sha256:d6d775ac7082aad78bf6693f467f53b4d471cb3373db15feda4c140f594dac37",
+              "builtAt": "2026-03-05T04:39:11Z",
               "status": "success"
             }
           ]
@@ -246,14 +332,25 @@
           "eol": "2028-11-14",
           "variants": [
             {
+              "type": "aspnet",
+              "tags": [
+                "10-aspnet",
+                "latest-aspnet"
+              ],
+              "ref": "ghcr.io/verity-org/dotnet:10-aspnet",
+              "digest": "sha256:1a2dc1074d0469e6d9439b74ff9d57a490b8e527ceeebc4c7c0fe17e8eca321d",
+              "builtAt": "2026-03-05T04:39:53Z",
+              "status": "success"
+            },
+            {
               "type": "default",
               "tags": [
                 "10",
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/dotnet:10",
-              "digest": "sha256:717999d67afad09059b079539be3ee031ccd9c3664b0c23db716a0ac7ff995f1",
-              "builtAt": "2026-03-04T04:32:11Z",
+              "digest": "sha256:fd9d8aeff851269033c5458cd81eef9b468231601c8675acced54884accff21f",
+              "builtAt": "2026-03-05T04:39:57Z",
               "status": "success"
             },
             {
@@ -263,19 +360,8 @@
                 "latest-sdk"
               ],
               "ref": "ghcr.io/verity-org/dotnet:10-sdk",
-              "digest": "sha256:52402b58245648e4cccda16f7d91df08526227324f86cfa45045c2d2eb0f6885",
-              "builtAt": "2026-03-04T04:32:14Z",
-              "status": "success"
-            },
-            {
-              "type": "aspnet",
-              "tags": [
-                "10-aspnet",
-                "latest-aspnet"
-              ],
-              "ref": "ghcr.io/verity-org/dotnet:10-aspnet",
-              "digest": "sha256:1a8888e4a4cec1cc2fbc6eae2e5e7daf304f2132fd77ad8d3c24ca5fcad79508",
-              "builtAt": "2026-03-04T04:31:46Z",
+              "digest": "sha256:af8a03c06a493e379a83cbdfeddaa75258be8eb325bb1f17acf40b62aaacb60f",
+              "builtAt": "2026-03-05T04:39:30Z",
               "status": "success"
             },
             {
@@ -285,8 +371,8 @@
                 "latest-sdk-fips"
               ],
               "ref": "ghcr.io/verity-org/dotnet:10-sdk-fips",
-              "digest": "sha256:126a34f9e53e7445a6272a801e1b3c880a242b5b9e3f7fadc37b377a493f8c49",
-              "builtAt": "2026-03-04T04:32:07Z",
+              "digest": "sha256:de43024d614494dc256e71def6d3d9b7a9230d125254c1a5bcfc00cce44a39c4",
+              "builtAt": "2026-03-05T04:41:48Z",
               "status": "success"
             }
           ]
@@ -298,18 +384,78 @@
       "description": "Envoy proxy — Wolfi rebuild; official image ships with unfixable CVEs",
       "versions": [
         {
-          "version": "1",
+          "version": "1.33",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.33"
+              ],
+              "ref": "ghcr.io/verity-org/envoy:1.33",
+              "digest": "sha256:b8c12d3deea8bf6653aa5967218ed35d33f38a39ca6b474ea94494724f998afa",
+              "builtAt": "2026-03-05T04:39:16Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.34",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.34"
+              ],
+              "ref": "ghcr.io/verity-org/envoy:1.34",
+              "digest": "sha256:afe2ca45dc6cd3eb6ae53834df9becd93b5a1476303359427f533a6e10af5520",
+              "builtAt": "2026-03-05T04:40:26Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.35",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.35"
+              ],
+              "ref": "ghcr.io/verity-org/envoy:1.35",
+              "digest": "sha256:1d625328643e2c45e8559bd8c54b85f00b0f3486b14e69f0909481b6595e3e8c",
+              "builtAt": "2026-03-05T04:39:34Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.36",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.36"
+              ],
+              "ref": "ghcr.io/verity-org/envoy:1.36",
+              "digest": "sha256:223c506df48967acc94c25e27c4c736bd176ac1ee751d38276b6a8775f56bb9d",
+              "builtAt": "2026-03-05T04:40:54Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.37",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "1",
+                "1.37",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/envoy:1",
-              "digest": "sha256:92e6d2083277127af44bdba91aad0c3961c6028501596c16647f07186cf4450f",
-              "builtAt": "2026-03-04T04:32:12Z",
+              "ref": "ghcr.io/verity-org/envoy:1.37",
+              "digest": "sha256:73ee273d9d59f9e520ebb1060be58d4f89a6fd34ed4127a2a95119e1ff52cf58",
+              "builtAt": "2026-03-05T04:40:09Z",
               "status": "success"
             }
           ]
@@ -330,8 +476,8 @@
                 "26"
               ],
               "ref": "ghcr.io/verity-org/erlang:26",
-              "digest": "sha256:06a94cf26473b17516c57f9e53dda9f344caae6f49a9f0787e007c8e2d68fb79",
-              "builtAt": "2026-03-04T04:32:22Z",
+              "digest": "sha256:0933c76ac57c6dc58118cbdd57c418cea320ad85737f60603fc809637a6a7a99",
+              "builtAt": "2026-03-05T04:40:10Z",
               "status": "success"
             },
             {
@@ -340,8 +486,8 @@
                 "26-dev"
               ],
               "ref": "ghcr.io/verity-org/erlang:26-dev",
-              "digest": "sha256:df417806aad81a0bd71582b132b2a5bbbc43851b63cdf562d9484f6235ed8b5b",
-              "builtAt": "2026-03-04T04:33:13Z",
+              "digest": "sha256:dcb1e6c5f834f4e5988d245ec38792c39121a77e0210d3af36d003132fcee1a2",
+              "builtAt": "2026-03-05T04:40:36Z",
               "status": "success"
             },
             {
@@ -350,8 +496,8 @@
                 "26-fips"
               ],
               "ref": "ghcr.io/verity-org/erlang:26-fips",
-              "digest": "sha256:e93c267662638d4acb1fc89c8ad8bed4ad41b0f7347753c749b3d36884586ac7",
-              "builtAt": "2026-03-04T04:33:47Z",
+              "digest": "sha256:32241d7b05432834f0c331bbf8bba586eb7c2b2109ec588721245d056b3e6f03",
+              "builtAt": "2026-03-05T04:40:25Z",
               "status": "success"
             }
           ]
@@ -366,8 +512,8 @@
                 "27"
               ],
               "ref": "ghcr.io/verity-org/erlang:27",
-              "digest": "sha256:7d284c4e83653f03e8c7a6745cbdd9054826f9b4252198529cc118415bff7049",
-              "builtAt": "2026-03-04T04:34:23Z",
+              "digest": "sha256:5dddc930b1d866b9faaa36f8044b11bcceea75c60e229e25ba9a392781075ec8",
+              "builtAt": "2026-03-05T04:40:46Z",
               "status": "success"
             },
             {
@@ -376,8 +522,8 @@
                 "27-dev"
               ],
               "ref": "ghcr.io/verity-org/erlang:27-dev",
-              "digest": "sha256:3f28d8b9c343647693bc73d0ce923200d1d33ffb5269b610e87b3e116e5bf87d",
-              "builtAt": "2026-03-04T04:34:52Z",
+              "digest": "sha256:ffc9bfdfeeab055c615f8af648b5e4729398830e64d8435f635ff1f9cbd7070c",
+              "builtAt": "2026-03-05T04:41:38Z",
               "status": "success"
             },
             {
@@ -386,8 +532,8 @@
                 "27-fips"
               ],
               "ref": "ghcr.io/verity-org/erlang:27-fips",
-              "digest": "sha256:30e0766443e60585972ce0b5f2faf4f9390f8eb791f736c9fd5279217045488f",
-              "builtAt": "2026-03-04T04:34:51Z",
+              "digest": "sha256:003a4adcb2175f8e45b4876527e3667f9e881b164cf5502b8abadcd5b9487277",
+              "builtAt": "2026-03-05T04:40:52Z",
               "status": "success"
             }
           ]
@@ -404,8 +550,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/erlang:28",
-              "digest": "sha256:051928c4fba92142f39e797f214b03ff1c3f487c8896db75dbcd086b7c49c0c3",
-              "builtAt": "2026-03-04T04:35:01Z",
+              "digest": "sha256:828f9bae3df451b031d1ed210b076b4c9ec95da6e3d75306218abb76f945bc96",
+              "builtAt": "2026-03-05T04:41:47Z",
               "status": "success"
             },
             {
@@ -415,8 +561,8 @@
                 "latest-dev"
               ],
               "ref": "ghcr.io/verity-org/erlang:28-dev",
-              "digest": "sha256:371e682e31fd011f9be4a75f77ed96af97df0837533fe6ab5434f0f70a783f2f",
-              "builtAt": "2026-03-04T04:36:22Z",
+              "digest": "sha256:748919df1878061c520f961d41f614c3fa8cd755144d2b404f21f66e5e9f63de",
+              "builtAt": "2026-03-05T04:42:12Z",
               "status": "success"
             },
             {
@@ -426,8 +572,8 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/erlang:28-fips",
-              "digest": "sha256:c1e18682b058f2b5534b80b12da9123f89ad6586f34a4fad8eedbfbc5eb0580f",
-              "builtAt": "2026-03-04T04:34:58Z",
+              "digest": "sha256:7570ce038b35399a29002966e64216fa7c8f75574f26e641b32a793372bd6ba9",
+              "builtAt": "2026-03-05T04:42:54Z",
               "status": "success"
             }
           ]
@@ -439,29 +585,54 @@
       "description": "etcd distributed key-value store — Copa can't patch Alpine/scratch-based official image; Wolfi rebuild",
       "versions": [
         {
-          "version": "3",
+          "version": "3.5",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.5"
+              ],
+              "ref": "ghcr.io/verity-org/etcd:3.5",
+              "digest": "sha256:b9c4f33778a1b6b6094484d4a743f765e4384605613eb8057de9aabdf393d723",
+              "builtAt": "2026-03-05T04:43:23Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.5-fips"
+              ],
+              "ref": "ghcr.io/verity-org/etcd:3.5-fips",
+              "digest": "sha256:00ade978b33f393c2790e63886ccf22961129b9f54dac0081b3742f22521b570",
+              "builtAt": "2026-03-05T04:42:30Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.6",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "3",
+                "3.6",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/etcd:3",
-              "digest": "sha256:a9b2c22b9df630a798e618d619258097cd237c45d84571c143c1f797175c8759",
-              "builtAt": "2026-03-04T04:35:27Z",
+              "ref": "ghcr.io/verity-org/etcd:3.6",
+              "digest": "sha256:68938c27b334629932380e69908bcbe4ddc43c5770c4d360cf5aa67f467809c3",
+              "builtAt": "2026-03-05T04:42:43Z",
               "status": "success"
             },
             {
               "type": "fips",
               "tags": [
-                "3-fips",
+                "3.6-fips",
                 "latest-fips"
               ],
-              "ref": "ghcr.io/verity-org/etcd:3-fips",
-              "digest": "sha256:062e9d2248268226d9aeb14051fa9ccada8002e5921190d59c19925519fd74bd",
-              "builtAt": "2026-03-04T04:35:38Z",
+              "ref": "ghcr.io/verity-org/etcd:3.6-fips",
+              "digest": "sha256:19032dd5825be9b8150ed114a7cdc8defd8f0d3e214bbe444341bb8612a082a5",
+              "builtAt": "2026-03-05T04:42:40Z",
               "status": "success"
             }
           ]
@@ -473,18 +644,63 @@
       "description": "Fluent Bit log processor — Wolfi rebuild eliminates persistent CVEs in official image",
       "versions": [
         {
-          "version": "4",
+          "version": "3.2",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.2"
+              ],
+              "ref": "ghcr.io/verity-org/fluent-bit:3.2",
+              "digest": "sha256:db9db9e896584339298e987079da4a8364ba06206f48e7066ae0c6b4e99d157a",
+              "builtAt": "2026-03-05T04:43:04Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "4.0",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "4.0"
+              ],
+              "ref": "ghcr.io/verity-org/fluent-bit:4.0",
+              "digest": "sha256:463f7f2f093c0caee097d404cedb686256df19dcd5bfab2e3845222b8fdee3e4",
+              "builtAt": "2026-03-05T04:44:17Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "4.1",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "4.1"
+              ],
+              "ref": "ghcr.io/verity-org/fluent-bit:4.1",
+              "digest": "sha256:05faf2252e3d863db35c5452413867f79e2e9dcd83542d06555e3e5b3abc4fea",
+              "builtAt": "2026-03-05T04:43:06Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "4.2",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "4",
+                "4.2",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/fluent-bit:4",
-              "digest": "sha256:3b78528db696bdc4fffab1c2e2dd0f55980cde25b12908225a846925add4d2b2",
-              "builtAt": "2026-03-04T04:36:38Z",
+              "ref": "ghcr.io/verity-org/fluent-bit:4.2",
+              "digest": "sha256:af7bde8620efe5ca22494807d53c0f66fc9403ec0a9d09935614746922627635",
+              "builtAt": "2026-03-05T04:43:38Z",
               "status": "success"
             }
           ]
@@ -506,8 +722,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/gcc:15",
-              "digest": "sha256:31774a0af5b801aa36bb264a1e3658dc1409fd3b7ec12346df7dd1dedc8ab93f",
-              "builtAt": "2026-03-04T07:57:30Z",
+              "digest": "sha256:39ff53b8b3f82569b4144559699740e85981b57b45e05b290af2c05a36800b9c",
+              "builtAt": "2026-03-05T04:44:25Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/gcc:latest",
+              "digest": "sha256:bb317f61c5f96cb244955d486c7c3e34db0b1e732a06d467f2ff31f2ea23de55",
+              "builtAt": "2026-03-05T04:44:31Z",
               "status": "success"
             }
           ]
@@ -529,8 +760,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/git:2",
-              "digest": "sha256:cfbe5dbace19cb06b4f5935690765a9faa1e9c25ff8347dedb0c1324682ff39d",
-              "builtAt": "2026-03-04T07:56:58Z",
+              "digest": "sha256:a7beae92dd8f32af1c059eaabef094a0358769ae06da42c05142b4bfeec70dcc",
+              "builtAt": "2026-03-05T04:44:19Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/git:latest",
+              "digest": "sha256:d6908843462b1001bbcfc74aebc0a1578f51c3b457fc270c3b05030c132d3745",
+              "builtAt": "2026-03-05T04:44:25Z",
               "status": "success"
             }
           ]
@@ -542,6 +788,111 @@
       "description": "Go build toolchain — minimal Wolfi-based image, zero CVE guarantee",
       "versions": [
         {
+          "version": "1.20",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.20"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.20",
+              "digest": "sha256:52652617a0916e449e874315085c89c5045ed69be0177dfb1921153060b5d58b",
+              "builtAt": "2026-03-05T04:44:44Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "1.20-dev"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.20-dev",
+              "digest": "sha256:7e591bd35bac4b59e594d47fa5da22f1b423ae5a682520f95869a80b370e4dde",
+              "builtAt": "2026-03-05T04:45:00Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.20-fips"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.20-fips",
+              "digest": "sha256:53b60f6d38f9e4b25a45a836d2446d8e91fdffc4aff67c3a5accde9096d2072a",
+              "builtAt": "2026-03-05T04:44:59Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.21",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.21"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.21",
+              "digest": "sha256:99c7ea4fc405265635222d4714213f6d3d1efb7ba0d1a0eee6f2767e8866f649",
+              "builtAt": "2026-03-05T04:45:36Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "1.21-dev"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.21-dev",
+              "digest": "sha256:5f84b48672cadfc02ed11a8b19479da0363c6d8060b4aff874a5603a2ee2012b",
+              "builtAt": "2026-03-05T04:46:30Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.21-fips"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.21-fips",
+              "digest": "sha256:aaf6efa336c2732936ec2082254072e4d1122702c72e82f52f26d45af6853e3c",
+              "builtAt": "2026-03-05T04:45:30Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.22",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.22"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.22",
+              "digest": "sha256:0dda1e674bd3eab4de0e1839e221c4cf3f1b9398e87a0764570d0e7b98535170",
+              "builtAt": "2026-03-05T04:46:02Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "1.22-dev"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.22-dev",
+              "digest": "sha256:5e9ff9f5b52cdfebc0e77059b3d5bc116152728a844b1b0b09c0a81346ae47b5",
+              "builtAt": "2026-03-05T04:45:59Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "1.22-fips"
+              ],
+              "ref": "ghcr.io/verity-org/golang:1.22-fips",
+              "digest": "sha256:231bf2da602a3051eddddc0f14821800c023255dcaa8fabaf72931874af0e8ab",
+              "builtAt": "2026-03-05T04:46:57Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
           "version": "1.23",
           "eol": "2025-08-31",
           "variants": [
@@ -551,8 +902,8 @@
                 "1.23"
               ],
               "ref": "ghcr.io/verity-org/golang:1.23",
-              "digest": "sha256:d9f0ae627df9f1a1e4f66e5516fa0f13cabc31b03859e9ac289eab1de8110e7e",
-              "builtAt": "2026-03-04T04:37:28Z",
+              "digest": "sha256:7ac023920e1ee2ec38e8068a0780228758d15b54bf3e436a828c604b84567899",
+              "builtAt": "2026-03-05T04:46:27Z",
               "status": "success"
             },
             {
@@ -561,8 +912,8 @@
                 "1.23-dev"
               ],
               "ref": "ghcr.io/verity-org/golang:1.23-dev",
-              "digest": "sha256:421692e947a68fb4298d069af40d8cea6f9d459aea2b32e3142426d58b9de7bd",
-              "builtAt": "2026-03-04T07:57:20Z",
+              "digest": "sha256:45f7296e15efb0a55d9d2b8dfddac316876b5c7688632716764bc040ac508b3c",
+              "builtAt": "2026-03-05T04:46:30Z",
               "status": "success"
             },
             {
@@ -571,8 +922,8 @@
                 "1.23-fips"
               ],
               "ref": "ghcr.io/verity-org/golang:1.23-fips",
-              "digest": "sha256:6e8d9e659fa9ebbb746d8122f5869c7d92ca858b82396e41eeb85bc32f92e1b2",
-              "builtAt": "2026-03-04T07:57:55Z",
+              "digest": "sha256:e134c855723f0b5049547c1d4c48232d4dc5de535d77894230d158a7f29875b2",
+              "builtAt": "2026-03-05T04:47:34Z",
               "status": "success"
             }
           ]
@@ -587,8 +938,8 @@
                 "1.24"
               ],
               "ref": "ghcr.io/verity-org/golang:1.24",
-              "digest": "sha256:1b5439cd50f7d743ddfbc106759c29ea4407cfb49d543834633d0a748533b8f1",
-              "builtAt": "2026-03-04T07:57:52Z",
+              "digest": "sha256:c1140ff255cefe3aea258f6309abf5bd1a9de6f4a92a36ca42f1c8f0d4d18151",
+              "builtAt": "2026-03-05T04:46:35Z",
               "status": "success"
             },
             {
@@ -597,8 +948,8 @@
                 "1.24-dev"
               ],
               "ref": "ghcr.io/verity-org/golang:1.24-dev",
-              "digest": "sha256:1048fd2fcb5b1ac8029cf11f25c66be1afed5d42d1de6b443cc683f14a113d0a",
-              "builtAt": "2026-03-04T07:58:18Z",
+              "digest": "sha256:8efc4b271f6afcd373130e10ad514a8652546540a4b713b5081b978fc32e2610",
+              "builtAt": "2026-03-05T04:48:06Z",
               "status": "success"
             },
             {
@@ -607,8 +958,8 @@
                 "1.24-fips"
               ],
               "ref": "ghcr.io/verity-org/golang:1.24-fips",
-              "digest": "sha256:42b2b7d77217b2ce5ebeaf100df40d6f3714f87adcb52f0704dfc72ff9a3a776",
-              "builtAt": "2026-03-04T07:58:01Z",
+              "digest": "sha256:2f5c1de86b02c4558c90902180ac5baa9d07fb1e73dfb8760d31415a0801e6a8",
+              "builtAt": "2026-03-05T04:47:16Z",
               "status": "success"
             }
           ]
@@ -623,8 +974,8 @@
                 "1.25"
               ],
               "ref": "ghcr.io/verity-org/golang:1.25",
-              "digest": "sha256:ab8b6f33826aba5b7d8bc43b18ea4ec19eb34415fa3fec7e946f9dcecb97e0f9",
-              "builtAt": "2026-03-04T07:58:29Z",
+              "digest": "sha256:b4da6b4c44c61358ed5beb521ee1e8c8a515a64db0f9b65325e40273d8f91396",
+              "builtAt": "2026-03-05T04:47:06Z",
               "status": "success"
             },
             {
@@ -633,8 +984,8 @@
                 "1.25-dev"
               ],
               "ref": "ghcr.io/verity-org/golang:1.25-dev",
-              "digest": "sha256:9e14a1b8be99d9445fcc5b6ef1f673032cab2c83f657e8cd76ec4b0e529b5d85",
-              "builtAt": "2026-03-04T04:37:46Z",
+              "digest": "sha256:46da2051f350d354bd3c785b2f510c79061080abbd540e323c195cead3d3a89b",
+              "builtAt": "2026-03-05T04:47:23Z",
               "status": "success"
             },
             {
@@ -643,8 +994,8 @@
                 "1.25-fips"
               ],
               "ref": "ghcr.io/verity-org/golang:1.25-fips",
-              "digest": "sha256:b0382fddaa7c5d0109303daf20916379485f30f55beb8f330ad7c58e0172ad58",
-              "builtAt": "2026-03-04T04:37:28Z",
+              "digest": "sha256:56771044d88fe918ff84fbc172f1480b39aa159bfd49af144c1a54b8cf495d53",
+              "builtAt": "2026-03-05T04:47:31Z",
               "status": "success"
             }
           ]
@@ -660,8 +1011,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/golang:1.26",
-              "digest": "sha256:74a51bc57eb0a7600b289d7d1201bbfc881d54c59c84639042517b45de9492bb",
-              "builtAt": "2026-03-04T04:37:47Z",
+              "digest": "sha256:3737fc80ae854679005c10e4b5cea6f95f0017d7c1cca4eb6cec209d686295b6",
+              "builtAt": "2026-03-05T04:47:45Z",
               "status": "success"
             },
             {
@@ -671,8 +1022,8 @@
                 "latest-dev"
               ],
               "ref": "ghcr.io/verity-org/golang:1.26-dev",
-              "digest": "sha256:1dfe2eac1b98ca481da10aa4108d20b3abf2949c2e2ffdd764c908e9c345358d",
-              "builtAt": "2026-03-04T04:37:40Z",
+              "digest": "sha256:d8a47b5bd7457de2471504c7b9485993ea95e0918ce2a8cd0c0a0ddc3c2b52c9",
+              "builtAt": "2026-03-05T04:47:51Z",
               "status": "success"
             },
             {
@@ -682,8 +1033,8 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/golang:1.26-fips",
-              "digest": "sha256:acd95c6c8d20d0593526238427ac3402065a18052c6aaea5f9bbe9ba12e6fce1",
-              "builtAt": "2026-03-04T04:39:05Z",
+              "digest": "sha256:77391b9631774c5c8d1583bc03d8b8177a287e04b58c19e0e837e31b54db6af0",
+              "builtAt": "2026-03-05T04:48:46Z",
               "status": "success"
             }
           ]
@@ -695,34 +1046,109 @@
       "description": "Grafana observability platform — Wolfi rebuild eliminates Debian CVEs from official image",
       "versions": [
         {
-          "version": "11",
-          "eol": "2026-06-25",
+          "version": "11.5",
           "variants": [
             {
               "type": "default",
               "tags": [
-                "11"
+                "11.5"
               ],
-              "ref": "ghcr.io/verity-org/grafana:11",
-              "digest": "sha256:cd53571a5172613d3cafff4cf7a8318bf72251e0ee0825bf68f0c4e67b54e1ff",
-              "builtAt": "2026-03-04T04:38:58Z",
+              "ref": "ghcr.io/verity-org/grafana:11.5",
+              "digest": "sha256:d215c6bf5967d9102a4365366a3a114fb0182010e3b034aef96c9a8c3cbf34ff",
+              "builtAt": "2026-03-05T04:47:48Z",
               "status": "failure"
             }
           ]
         },
         {
-          "version": "12",
+          "version": "11.6",
+          "eol": "2026-06-25",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11.6"
+              ],
+              "ref": "ghcr.io/verity-org/grafana:11.6",
+              "digest": "sha256:a6540ff0b5a91e1d00a0a9d59821b9765e01bed9c8826d77b0a7e7e03c2222fb",
+              "builtAt": "2026-03-05T04:48:24Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "12.0",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12.0"
+              ],
+              "ref": "ghcr.io/verity-org/grafana:12.0",
+              "digest": "sha256:3438c13466c7459b2d003ad6f0cb92816e8a0aa750c3a6733b8f3271581703ed",
+              "builtAt": "2026-03-05T04:48:13Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "12.1",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12.1"
+              ],
+              "ref": "ghcr.io/verity-org/grafana:12.1",
+              "digest": "sha256:2e069ebd5979799a2a85127bda205a8a10050d051117d7e90ac8b77574030ff5",
+              "builtAt": "2026-03-05T04:48:27Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "12.2",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12.2"
+              ],
+              "ref": "ghcr.io/verity-org/grafana:12.2",
+              "digest": "sha256:ea0be354d23c4f9d3444f9a73336549cfa4b1d5ab27caff01be1b7177af3b06c",
+              "builtAt": "2026-03-05T04:51:35Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "12.3",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12.3"
+              ],
+              "ref": "ghcr.io/verity-org/grafana:12.3",
+              "digest": "sha256:7d354213c7cf927ba1f77d6dcacb115cc16438013720ac8c1d9cee77fea11429",
+              "builtAt": "2026-03-05T04:48:55Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "12.4",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "12",
+                "12.4",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/grafana:12",
-              "digest": "sha256:4ff671cff6204abf5b86d018b767b9c6e15978ad0ce351f970843d942dc0f254",
-              "builtAt": "2026-03-04T04:38:02Z",
+              "ref": "ghcr.io/verity-org/grafana:12.4",
+              "digest": "sha256:571e2e506b1ce72d43e6da178ab640c4356318aaeb445ce5a2560415057dba52",
+              "builtAt": "2026-03-05T04:48:53Z",
               "status": "success"
             }
           ]
@@ -744,8 +1170,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/grype:0",
-              "digest": "sha256:fb796624c816ec520ff76d52439306474425b0b8422258613c4a501e5f75344b",
-              "builtAt": "2026-03-04T04:37:49Z",
+              "digest": "sha256:c3f53f50819364873abc0c26ad5e25d65da52fc729c010efb8223d5c39f67362",
+              "builtAt": "2026-03-05T04:48:32Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/grype:latest",
+              "digest": "sha256:c834dcab4a892035305224e00336d60e18ed49b11c580d9bcc3541f37215a26a",
+              "builtAt": "2026-03-05T04:48:44Z",
               "status": "success"
             }
           ]
@@ -766,8 +1207,8 @@
                 "3.0"
               ],
               "ref": "ghcr.io/verity-org/haproxy:3.0",
-              "digest": "sha256:c5f5a26141014c48c6ff74811b2edfb50661e6c5cfc9584849f600f24c731a25",
-              "builtAt": "2026-03-04T04:38:03Z",
+              "digest": "sha256:6a4932453b5266026a956c68fd32a04e5511bb0fe654e71a44267500cd17ec43",
+              "builtAt": "2026-03-05T04:48:36Z",
               "status": "failure"
             },
             {
@@ -776,8 +1217,8 @@
                 "3.0-fips"
               ],
               "ref": "ghcr.io/verity-org/haproxy:3.0-fips",
-              "digest": "sha256:abdfbcf08ad6acfd8d56fb9fdc052fb2a9788723c9b2a1c1a200977a0291b50c",
-              "builtAt": "2026-03-04T04:37:59Z",
+              "digest": "sha256:862667c13d8db64b1b6bad48a090c7af69b67c3cca46dc6eed76874a7fb2a1b8",
+              "builtAt": "2026-03-05T04:48:36Z",
               "status": "failure"
             }
           ]
@@ -792,8 +1233,8 @@
                 "3.1"
               ],
               "ref": "ghcr.io/verity-org/haproxy:3.1",
-              "digest": "sha256:03b20249af2dd1fd15bb0085f8eab3d3aca9cd53a62794df33c2a7471480e3ee",
-              "builtAt": "2026-03-04T04:38:22Z",
+              "digest": "sha256:6c9e11573ecb13c8d1aaafda5e2fd53765f8839e35a7a0fc2d0d8a0bf6548e56",
+              "builtAt": "2026-03-05T04:49:21Z",
               "status": "success"
             },
             {
@@ -802,8 +1243,8 @@
                 "3.1-fips"
               ],
               "ref": "ghcr.io/verity-org/haproxy:3.1-fips",
-              "digest": "sha256:72c3dad75856669fcf1d7a84eeb0e294a9fc8e9f94164c06febebf66079989cf",
-              "builtAt": "2026-03-04T04:38:22Z",
+              "digest": "sha256:162bef5fd94b678a366580df7542ede0abcff894046957777fab09708c7d6f00",
+              "builtAt": "2026-03-05T04:49:25Z",
               "status": "success"
             }
           ]
@@ -818,8 +1259,8 @@
                 "3.2"
               ],
               "ref": "ghcr.io/verity-org/haproxy:3.2",
-              "digest": "sha256:74cfcf997bf68f04bd0793c286091a2c896b3b624ec03f6f7e14e461e955721e",
-              "builtAt": "2026-03-04T04:38:22Z",
+              "digest": "sha256:25ad7ccdb961b9bafb67cfabc194ae90a2bba5294e62d42d911b0c18ae431a16",
+              "builtAt": "2026-03-05T04:49:32Z",
               "status": "success"
             },
             {
@@ -828,8 +1269,8 @@
                 "3.2-fips"
               ],
               "ref": "ghcr.io/verity-org/haproxy:3.2-fips",
-              "digest": "sha256:dc821aa382936963477fd0835ea3610e19845ae568d54df1a043ff03c3607e1a",
-              "builtAt": "2026-03-04T04:38:34Z",
+              "digest": "sha256:d34a26cc27dd814b80c8706f847ddb3713ae177d9fcfbc62328a179e2332a587",
+              "builtAt": "2026-03-05T04:49:44Z",
               "status": "success"
             }
           ]
@@ -846,8 +1287,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/haproxy:3.3",
-              "digest": "sha256:5a6e8a6d24913750a4ced823418e401afbf21eedae1c3aa886a3d69dd7bf3d62",
-              "builtAt": "2026-03-04T04:38:34Z",
+              "digest": "sha256:ea6fbfe3b7d230446a0537b7d2d71b5309c9f771ea30089871f093cadbd6f07e",
+              "builtAt": "2026-03-05T04:49:32Z",
               "status": "success"
             },
             {
@@ -857,8 +1298,8 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/haproxy:3.3-fips",
-              "digest": "sha256:69e681b574ba0509cabf6e5257946786eaa5dc031317fe91faeb0be6386cbc25",
-              "builtAt": "2026-03-04T04:38:40Z",
+              "digest": "sha256:a174f88c11f928600fdeae8f9483a513393ab2ff6573c8127be1be2974703b13",
+              "builtAt": "2026-03-05T04:50:00Z",
               "status": "success"
             }
           ]
@@ -878,8 +1319,8 @@
                 "3"
               ],
               "ref": "ghcr.io/verity-org/helm:3",
-              "digest": "sha256:9e0736a24f2e261c2c1492b74956908eebd32cc0a6f2b37c431715ccac49c15d",
-              "builtAt": "2026-03-04T04:38:40Z",
+              "digest": "sha256:e72c85dabd40740f598e748598797a00d780d49f3d5938369499b5fed0a913f7",
+              "builtAt": "2026-03-05T04:49:45Z",
               "status": "failure"
             }
           ]
@@ -895,8 +1336,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/helm:4",
-              "digest": "sha256:165590ad45446e2ff39714ea016dbee270062900f199901ba9062c6d1ac2343a",
-              "builtAt": "2026-03-04T04:38:57Z",
+              "digest": "sha256:f7547ce9ac5667acaf7353b331b491ba395278f247760bd800082c7739762daf",
+              "builtAt": "2026-03-05T04:50:06Z",
               "status": "success"
             }
           ]
@@ -918,8 +1359,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/httpd:2.4",
-              "digest": "sha256:49db2976d74780823306b8700b3fb7b220692a5bac4ba1bacf2953e2c9936441",
-              "builtAt": "2026-03-04T04:39:09Z",
+              "digest": "sha256:9ae83f48eaaeb5561b241acdb280e3d3d9024f2fe088239aa8577093e2e1b9b4",
+              "builtAt": "2026-03-05T04:50:06Z",
               "status": "success"
             },
             {
@@ -929,8 +1370,33 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/httpd:2.4-fips",
-              "digest": "sha256:ee03624989014ef88f2ae249e3e79bcf359f1d3590d94bb764f122fbd0ed0fb2",
-              "builtAt": "2026-03-04T04:39:16Z",
+              "digest": "sha256:13247a634b2109346d43873de84853400e2642caed901b173c4e1356acee6db1",
+              "builtAt": "2026-03-05T04:50:14Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/httpd:latest",
+              "digest": "sha256:4bee12adeb028556037b258fadfb6c15357040ba312163ce1bcaaa28c5414e13",
+              "builtAt": "2026-03-05T04:50:15Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/httpd:latest-fips",
+              "digest": "sha256:64c670c2ad4d60eec0fb38832a8eeebde7064634f880ad97cdb50b334d6ee0d3",
+              "builtAt": "2026-03-05T04:50:26Z",
               "status": "success"
             }
           ]
@@ -942,33 +1408,78 @@
       "description": "InfluxDB time-series database — Wolfi rebuild eliminates Debian CVEs",
       "versions": [
         {
-          "version": "2",
+          "version": "2.7",
           "variants": [
             {
               "type": "default",
               "tags": [
-                "2"
+                "2.7"
               ],
-              "ref": "ghcr.io/verity-org/influxdb:2",
-              "digest": "sha256:d49553cdd340e76fda653464d2af57e70a84d5a4832516df6ef806e28e054c1b",
-              "builtAt": "2026-03-04T07:58:01Z",
+              "ref": "ghcr.io/verity-org/influxdb:2.7",
+              "digest": "sha256:b7175df1dec8d0ad98118820090171f9c43cd3500a11ef604a3e786423b780db",
+              "builtAt": "2026-03-05T04:51:34Z",
               "status": "failure"
             }
           ]
         },
         {
-          "version": "3",
+          "version": "3.0",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.0"
+              ],
+              "ref": "ghcr.io/verity-org/influxdb:3.0",
+              "digest": "sha256:779d36a3d2cf6ea393837c61959b3126bf3e0a23e956e001f1d407a919585283",
+              "builtAt": "2026-03-05T04:52:16Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.4",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.4"
+              ],
+              "ref": "ghcr.io/verity-org/influxdb:3.4",
+              "digest": "sha256:b246a95f814a18e2af978a6bb575e021374d5e3fed8fc957ea95a2bee22b2724",
+              "builtAt": "2026-03-05T04:51:27Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.5",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.5"
+              ],
+              "ref": "ghcr.io/verity-org/influxdb:3.5",
+              "digest": "sha256:b399c2ba6d4a62404eb6543a35393f9380ef97ded071c8f388ae2267f9e69615",
+              "builtAt": "2026-03-05T04:51:23Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.8",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "3",
+                "3.8",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/influxdb:3",
-              "digest": "sha256:02d7b5d8d65ec3cb2c412f1aceb897152f999682e345864d98fab542879e72e5",
-              "builtAt": "2026-03-04T07:58:30Z",
+              "ref": "ghcr.io/verity-org/influxdb:3.8",
+              "digest": "sha256:3ace96b0e64cd65f5d043d2fb7936934e379b8ae421a4e57ece8609c04de00fd",
+              "builtAt": "2026-03-05T04:51:58Z",
               "status": "success"
             }
           ]
@@ -990,8 +1501,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/ko:0",
-              "digest": "sha256:b1676b0c408fa0352274099f8dbc964b279f505f06adcb6e59f766c5d60bde89",
-              "builtAt": "2026-03-04T04:40:11Z",
+              "digest": "sha256:79fff2937ec7ff8b1361cad6a1ce30102b0938f86b334634a7fabe2894b7ff91",
+              "builtAt": "2026-03-05T04:52:26Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/ko:latest",
+              "digest": "sha256:91485ff38be85f9a54917fa6589dfdb86f137343c3f3f1135ce3b17e11f0b1e6",
+              "builtAt": "2026-03-05T04:52:12Z",
               "status": "success"
             }
           ]
@@ -1003,18 +1529,183 @@
       "description": "kubectl Kubernetes CLI — Copa can't patch Bitnami/Debian-based image; Wolfi rebuild",
       "versions": [
         {
-          "version": "1",
+          "version": "1.24",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.24"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.24",
+              "digest": "sha256:6f572909efcc67a46b5d5cc16c9d6daf7ec78a4affef45167681c999de483560",
+              "builtAt": "2026-03-05T04:51:58Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.25",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.25"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.25",
+              "digest": "sha256:80770667ff85b462c99b5674cb8a237d5986a17c378630d27ab452825e535667",
+              "builtAt": "2026-03-05T04:51:53Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.26",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.26"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.26",
+              "digest": "sha256:17de02298278877fd3ed31f86e317956ff7f0fabc793c30972613b4eab6c07d7",
+              "builtAt": "2026-03-05T04:51:49Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.27",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.27"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.27",
+              "digest": "sha256:34098f1eeb3962765a47f6e1c7873439e2aa9540bdf2f592c14ffc9cbeeb7636",
+              "builtAt": "2026-03-05T04:52:10Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.28",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.28"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.28",
+              "digest": "sha256:73db55d06bd82e3c40454e5170a062467885eecc93f21767f8ccb6d0935e97a4",
+              "builtAt": "2026-03-05T04:52:16Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.29",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.29"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.29",
+              "digest": "sha256:35e36f913c5d1e484645670e89180a88fef65d20496ad4956f07074040a66f2d",
+              "builtAt": "2026-03-05T04:52:31Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.30",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.30"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.30",
+              "digest": "sha256:b7a9848e2f9da20428a6975390023af830b32452a96b7578374a97df80f798ec",
+              "builtAt": "2026-03-05T04:52:46Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.31",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.31"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.31",
+              "digest": "sha256:495b1f8ab4a56b191777eca61ebbbc97280d7cdf4a47f6d9b4266846b1d0bb66",
+              "builtAt": "2026-03-05T04:52:44Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.32",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.32"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.32",
+              "digest": "sha256:de72cb4d5601c12788940bc26a3e160068a06e720683f3b1a329ea1afcb3f59e",
+              "builtAt": "2026-03-05T04:53:52Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.33",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.33"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.33",
+              "digest": "sha256:9a1aa6575a44be3cfdaf1147c919d31028eae1619d6dda3b9694c29d55be1d2c",
+              "builtAt": "2026-03-05T04:53:24Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.34",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.34"
+              ],
+              "ref": "ghcr.io/verity-org/kubectl:1.34",
+              "digest": "sha256:dba0e22d9bea29b29fb193611457fcc50a01e7611a7e40cac1fbceed7965af92",
+              "builtAt": "2026-03-05T04:53:56Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "1.35",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "1",
+                "1.35",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/kubectl:1",
-              "digest": "sha256:0c2afcee8b6dc80ec9d68f8569815de34828d8b908e0629757532b040427153e",
-              "builtAt": "2026-03-04T04:39:40Z",
+              "ref": "ghcr.io/verity-org/kubectl:1.35",
+              "digest": "sha256:ec84255ce290b32810607ed30087ebf73d168d8dbde1dec7642c31bc704e1fe6",
+              "builtAt": "2026-03-05T04:53:42Z",
               "status": "success"
             }
           ]
@@ -1026,19 +1717,64 @@
       "description": "Grafana Loki log aggregation — Wolfi rebuild eliminates Debian CVEs",
       "versions": [
         {
-          "version": "3",
+          "version": "3.3",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.3"
+              ],
+              "ref": "ghcr.io/verity-org/loki:3.3",
+              "digest": "sha256:b5c4a19f2680383efeb0f07885f2aa4c8ebc38ef9a52ef587e888cd91f5fc5bd",
+              "builtAt": "2026-03-05T04:53:44Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.4",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.4"
+              ],
+              "ref": "ghcr.io/verity-org/loki:3.4",
+              "digest": "sha256:6960c337cdf5b0b7bbe42e5b0da51b8830cdc007ea062d3b0f89f4d1b6523195",
+              "builtAt": "2026-03-05T04:54:50Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.5",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.5"
+              ],
+              "ref": "ghcr.io/verity-org/loki:3.5",
+              "digest": "sha256:593394f51fbd5ee4f83c95b4cdece689bd8f12bc99a1d51126e1d15455faf2ab",
+              "builtAt": "2026-03-05T04:54:03Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.6",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "3",
+                "3.6",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/loki:3",
-              "digest": "sha256:546c8f34c9bf27ea0f94e179a9c083c5d61a5ef2f29a03b03a4f58ba0d29bee1",
-              "builtAt": "2026-03-04T04:39:44Z",
-              "status": "failure"
+              "ref": "ghcr.io/verity-org/loki:3.6",
+              "digest": "sha256:64f72cea9f31f009985714115295baab50c6b78004ea6f0c3c3718ebf9a02351",
+              "builtAt": "2026-03-05T04:54:10Z",
+              "status": "success"
             }
           ]
         }
@@ -1050,7 +1786,6 @@
       "versions": [
         {
           "version": "10.6",
-          "eol": "2026-07-06",
           "variants": [
             {
               "type": "default",
@@ -1058,8 +1793,8 @@
                 "10.6"
               ],
               "ref": "ghcr.io/verity-org/mariadb:10.6",
-              "digest": "sha256:6d1d44e34b73a60c426ad8836221b84616eafce882c8ab5e91fdacfa50ffcc04",
-              "builtAt": "2026-03-04T04:39:55Z",
+              "digest": "sha256:19b45ff3e39011d3a08f3d59d9b74755e54678e533d2c1f03082fe5f783c5a09",
+              "builtAt": "2026-03-05T04:54:27Z",
               "status": "failure"
             },
             {
@@ -1068,8 +1803,8 @@
                 "10.6-fips"
               ],
               "ref": "ghcr.io/verity-org/mariadb:10.6-fips",
-              "digest": "sha256:baf7f59f4db8b739602f896535deed317ab544df4696ade58da517c6446d503e",
-              "builtAt": "2026-03-04T04:40:12Z",
+              "digest": "sha256:15c2edc015c4afddb534378f77714155251c297f569ce4ee393c9df0dfe44c1d",
+              "builtAt": "2026-03-05T04:54:50Z",
               "status": "failure"
             }
           ]
@@ -1084,8 +1819,8 @@
                 "10.11"
               ],
               "ref": "ghcr.io/verity-org/mariadb:10.11",
-              "digest": "sha256:67ce7f7a30a033e06ac9d10475ebaee58acf0b45423c1a392313e70c8032955c",
-              "builtAt": "2026-03-04T04:40:14Z",
+              "digest": "sha256:546e87bf32e957ffa08c6a655ad8ea381021d700a716adff9988e3e8c4007268",
+              "builtAt": "2026-03-05T04:54:39Z",
               "status": "failure"
             },
             {
@@ -1094,9 +1829,34 @@
                 "10.11-fips"
               ],
               "ref": "ghcr.io/verity-org/mariadb:10.11-fips",
-              "digest": "sha256:30863d526f06f05e5009c0b5d8c3945b825bf889379b829449fc474691b79c34",
-              "builtAt": "2026-03-04T04:40:21Z",
+              "digest": "sha256:52605f01503f9cdf489bb559ecf317839ffda8ef4e7185bb24ed1f95af67f143",
+              "builtAt": "2026-03-05T04:54:46Z",
               "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "11.2",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11.2"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.2",
+              "digest": "sha256:115a8eea9f9b41726307f8117afae3b9e0c1cc17305a7183af5f47f0e3ca4307",
+              "builtAt": "2026-03-05T04:54:53Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "11.2-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.2-fips",
+              "digest": "sha256:d7cb80e0bb9be1ddfbd85ba206c78153ace8af446d1bc284d3f011df1a7f1ffa",
+              "builtAt": "2026-03-05T04:53:31Z",
+              "status": "success"
             }
           ]
         },
@@ -1110,8 +1870,8 @@
                 "11.4"
               ],
               "ref": "ghcr.io/verity-org/mariadb:11.4",
-              "digest": "sha256:ae37deadfabc5d004e47b3a35dcb969a592bafe23e9e68a61079e31666501a00",
-              "builtAt": "2026-03-04T04:40:51Z",
+              "digest": "sha256:f72cff1b69840fb5effa895bfcac01e7be911db029abc181f565ca4752f2dd86",
+              "builtAt": "2026-03-05T04:56:02Z",
               "status": "failure"
             },
             {
@@ -1120,9 +1880,84 @@
                 "11.4-fips"
               ],
               "ref": "ghcr.io/verity-org/mariadb:11.4-fips",
-              "digest": "sha256:94545dabed2d7333e6bbbc25a20dc1e7aa5e096c8b09ddd6a7845418ad2d8115",
-              "builtAt": "2026-03-04T04:41:03Z",
+              "digest": "sha256:0adede48c7745ca57ed984a90ccf3a978f3713e085a044b3e5fb0d4f7e8aea41",
+              "builtAt": "2026-03-05T04:56:15Z",
               "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "11.5",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11.5"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.5",
+              "digest": "sha256:a65e823e6b667faa64aaf9fa86ab23b6e140855b1e1f8d0e754f9c44845be3b4",
+              "builtAt": "2026-03-05T04:55:30Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "11.5-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.5-fips",
+              "digest": "sha256:34c523055312840ecc8d7339443eee453c2a301f63ac2a18d12ddce6d9771235",
+              "builtAt": "2026-03-05T04:55:34Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "11.6",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11.6"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.6",
+              "digest": "sha256:f29ae103ceeb67e8ac9d4f2c88b8e3308cb8ef6d14b0fb99c21ebe86a6015e98",
+              "builtAt": "2026-03-05T04:55:54Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "11.6-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.6-fips",
+              "digest": "sha256:fe380a7584ccbf03da8015ceb327e7860a246f07b3b2287755b10bb163cd5e5a",
+              "builtAt": "2026-03-05T04:55:21Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "11.7",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11.7"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.7",
+              "digest": "sha256:c1ad767ef52f016a0f1351ddf18bef1cd5cdeb25d9ca2865e8c473654cbef5ac",
+              "builtAt": "2026-03-05T04:55:35Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "11.7-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:11.7-fips",
+              "digest": "sha256:f58772c20c6466e4e075d4faa3376918afd5f530847b10f0ba5fea9afe25fa96",
+              "builtAt": "2026-03-05T04:56:45Z",
+              "status": "success"
             }
           ]
         },
@@ -1138,8 +1973,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/mariadb:11.8",
-              "digest": "sha256:d2134f84b7d710cae2c79b267bf2273ff20ea43ff7a12076a139911e21829bac",
-              "builtAt": "2026-03-04T04:41:11Z",
+              "digest": "sha256:d052c5979e24d77371b6b8eac9a9db72c2b42d7530ae518dc2dc847ce1e789f3",
+              "builtAt": "2026-03-05T04:56:04Z",
               "status": "success"
             },
             {
@@ -1149,8 +1984,83 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/mariadb:11.8-fips",
-              "digest": "sha256:a922b981a36ab301f8a901feea6892a3a59530d661a59cded0a09ff8a6e8ee0a",
-              "builtAt": "2026-03-04T04:41:08Z",
+              "digest": "sha256:9e8c7c94631b3e26669ae726f3c4241215c2c4f0bc753767d1a83b3f6fa6ebc2",
+              "builtAt": "2026-03-05T04:56:01Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "12.0",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12.0"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:12.0",
+              "digest": "sha256:774bc7392357566ec1cc230d1c41db7193a6b84b7c278bb39471b7ef994743f3",
+              "builtAt": "2026-03-05T04:56:10Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "12.0-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:12.0-fips",
+              "digest": "sha256:13a4c0c780fa9404d7fd9f57a8df9a0c69d612cb2c8c8e92b093bb3b5c731cd5",
+              "builtAt": "2026-03-05T04:56:23Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "12.1",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12.1"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:12.1",
+              "digest": "sha256:6b895821434548de97796ff3185da76e1a7b3075edaeb2d2683238e21694f9b8",
+              "builtAt": "2026-03-05T04:56:38Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "12.1-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:12.1-fips",
+              "digest": "sha256:cfd0d55b11126ec46aa8258fc1cba8e716439e6e5e24778e784314e4427686d6",
+              "builtAt": "2026-03-05T04:56:40Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "12.2",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12.2"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:12.2",
+              "digest": "sha256:e5e3e045c2bc3ead36a0335f5fbecf8d6e8605fd31cc1d7304595cd3ecd3bd3a",
+              "builtAt": "2026-03-05T04:56:43Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "12.2-fips"
+              ],
+              "ref": "ghcr.io/verity-org/mariadb:12.2-fips",
+              "digest": "sha256:fbfa011e4c51d8d89377ce5aad9a63780f74e0df6ea8fbb721f5a28e5d4c3a67",
+              "builtAt": "2026-03-05T04:56:46Z",
               "status": "success"
             }
           ]
@@ -1172,8 +2082,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/maven:3",
-              "digest": "sha256:55f608c860ff0c926da5379c9aaf2da8a52c5bd2cf729c6be86a055748286149",
-              "builtAt": "2026-03-04T04:41:51Z",
+              "digest": "sha256:21a127008d759ea71c841770532fdfea3b2300924854cd3b6dfef3360f9adb2a",
+              "builtAt": "2026-03-05T04:56:58Z",
               "status": "success"
             }
           ]
@@ -1195,8 +2105,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/memcached:1",
-              "digest": "sha256:f0391f0fb686a6fe29924953f07b5c77fa71b1a63c667d00624458977ba99fbe",
-              "builtAt": "2026-03-04T04:41:19Z",
+              "digest": "sha256:49dc716b0661bc8bdc01397f60919f083a0f574dac612e425b184033e991862c",
+              "builtAt": "2026-03-05T04:56:33Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/memcached:latest",
+              "digest": "sha256:4f72e4ba64419c226d6e85fa8dcb4e5ed0485bf5ba88a77e3a7aa247bb458d54",
+              "builtAt": "2026-03-05T04:57:06Z",
               "status": "success"
             }
           ]
@@ -1208,18 +2133,18 @@
       "description": "Grafana Mimir metrics backend — Wolfi rebuild eliminates Debian CVEs",
       "versions": [
         {
-          "version": "3",
+          "version": "3.0",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "3",
+                "3.0",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/mimir:3",
-              "digest": "sha256:222f245a0026e70e1db2859bf6a0317d9f07adbea3d737ff300a3ddb90010b2f",
-              "builtAt": "2026-03-04T04:41:37Z",
+              "ref": "ghcr.io/verity-org/mimir:3.0",
+              "digest": "sha256:35da4e48a4055a8540ccc40eb51f8648f2a0f07e7901da79a55696dedef8d6fa",
+              "builtAt": "2026-03-05T04:57:25Z",
               "status": "success"
             }
           ]
@@ -1241,8 +2166,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/minio:RELEASE",
-              "digest": "sha256:4a69e8d8e271ae7e429687af11fee10599cbccebf7b864a114b8e9424c43a8a7",
-              "builtAt": "2026-03-04T04:41:33Z",
+              "digest": "sha256:204d457c306fdd652bbaf8a76d2c30f10cde5406f0db9682bb87d20389881c28",
+              "builtAt": "2026-03-05T04:58:48Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/minio:latest",
+              "digest": "sha256:a687c29253a36b1d55b5fc82d32fd0652cfbc266de1564f4d57bf2f04984c2ed",
+              "builtAt": "2026-03-05T04:58:37Z",
               "status": "success"
             }
           ]
@@ -1264,8 +2204,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/minio-client:RELEASE",
-              "digest": "sha256:de89aab4b35f310d3fe1e8d100b30056519c71d9b2be910698012fa8e66b5763",
-              "builtAt": "2026-03-04T04:41:32Z",
+              "digest": "sha256:1c61d999af33f80ea0c971048302901ed9017c7f9a9c3e4e21c9f43941f5c088",
+              "builtAt": "2026-03-05T04:57:25Z",
               "status": "success"
             }
           ]
@@ -1287,8 +2227,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/nats:2",
-              "digest": "sha256:b24893510f3258b8632132494dd6ec6634f6e7b6b0e93e9c056a779d9f4aadc4",
-              "builtAt": "2026-03-04T04:41:43Z",
+              "digest": "sha256:c006cf8444ef1750209b912a31044960b602f8ce3a590fdd925035eecea05d84",
+              "builtAt": "2026-03-05T04:58:20Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/nats:latest",
+              "digest": "sha256:6a8b59f8db5ca7a147e2416f5b09c9b7f2eab74ca2d5cbcb266e9d721a2a173c",
+              "builtAt": "2026-03-05T04:58:02Z",
               "status": "success"
             }
           ]
@@ -1305,23 +2260,21 @@
             {
               "type": "default",
               "tags": [
-                "1.28",
-                "stable"
+                "1.28"
               ],
               "ref": "ghcr.io/verity-org/nginx:1.28",
-              "digest": "sha256:3008dcc9dcd9e6cec96ab0468de338491d669c3e997da8adac362074a3a6b46f",
-              "builtAt": "2026-03-04T04:41:48Z",
+              "digest": "sha256:d8c99eb468f017171f369bf652df00e49ffc4bc0edd49600932c38e344e696a6",
+              "builtAt": "2026-03-05T04:58:26Z",
               "status": "success"
             },
             {
               "type": "fips",
               "tags": [
-                "1.28-fips",
-                "stable-fips"
+                "1.28-fips"
               ],
               "ref": "ghcr.io/verity-org/nginx:1.28-fips",
-              "digest": "sha256:49531af297507a66f00e25dd974b2342d8b3637a5b32a518dda2afbfd4bd6f15",
-              "builtAt": "2026-03-04T04:41:59Z",
+              "digest": "sha256:1f219432a0a8878e582a50b6a73e843f1174ca9b2e45afa7ce01638c027f3101",
+              "builtAt": "2026-03-05T04:58:30Z",
               "status": "success"
             }
           ]
@@ -1334,24 +2287,22 @@
               "type": "default",
               "tags": [
                 "1.29",
-                "latest",
-                "mainline"
+                "latest"
               ],
               "ref": "ghcr.io/verity-org/nginx:1.29",
-              "digest": "sha256:96bc23aeb1106c659e0ba27aa5933fceaeb7cea5973011bbb86c031c1c0cde27",
-              "builtAt": "2026-03-04T04:42:16Z",
+              "digest": "sha256:b3a6f52e1934fd69847c7c6c4349b2bc49e2f6e0c8141441327e79bdcfc4bab5",
+              "builtAt": "2026-03-05T04:58:22Z",
               "status": "success"
             },
             {
               "type": "fips",
               "tags": [
                 "1.29-fips",
-                "latest-fips",
-                "mainline-fips"
+                "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/nginx:1.29-fips",
-              "digest": "sha256:498c2169b667fb57dfcb8101456219f86ec1d48c1d55d6bce9ea7a9cfea33e9e",
-              "builtAt": "2026-03-04T04:42:25Z",
+              "digest": "sha256:16a9eb3087dbd26c829b45c6e75f55e443e8a50af0ac198b15cdab152eaa9b4d",
+              "builtAt": "2026-03-05T04:58:21Z",
               "status": "success"
             }
           ]
@@ -1363,6 +2314,76 @@
       "description": "Node.js runtime — minimal Wolfi-based image, zero CVE guarantee",
       "versions": [
         {
+          "version": "16",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "16"
+              ],
+              "ref": "ghcr.io/verity-org/node:16",
+              "digest": "sha256:b632b5c3e4ef7bedc22bb8e954d9f78667f24f7f206170ea580b8fcdb5f9394d",
+              "builtAt": "2026-03-05T04:58:38Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "16-dev"
+              ],
+              "ref": "ghcr.io/verity-org/node:16-dev",
+              "digest": "sha256:b972c1a2913443aa288e31b9a3e4dbb030c4b4e9db6dc48f620f40d24d61c3ac",
+              "builtAt": "2026-03-05T05:00:44Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "16-fips"
+              ],
+              "ref": "ghcr.io/verity-org/node:16-fips",
+              "digest": "sha256:f4b61dae55de3bb639db141af68cddf66c2bc0d05e7f3e62583e88d07ef7b27e",
+              "builtAt": "2026-03-05T05:00:05Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "18",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "18"
+              ],
+              "ref": "ghcr.io/verity-org/node:18",
+              "digest": "sha256:02ebd6a5720fcc81b8d3eca24b90f7b499a7fb3df4778f67551686baabb31cf8",
+              "builtAt": "2026-03-05T04:59:24Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "18-dev"
+              ],
+              "ref": "ghcr.io/verity-org/node:18-dev",
+              "digest": "sha256:f7e783f2145117456335a7120f01d917d07b51d5a47a0c25f5267430628de762",
+              "builtAt": "2026-03-05T05:04:35Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "18-fips"
+              ],
+              "ref": "ghcr.io/verity-org/node:18-fips",
+              "digest": "sha256:f98ea3e6fc17af9fe263520c7e7c47b475f689a7741543a753d4a4fff533d605",
+              "builtAt": "2026-03-05T04:59:23Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
           "version": "20",
           "eol": "2026-04-30",
           "variants": [
@@ -1372,8 +2393,8 @@
                 "20"
               ],
               "ref": "ghcr.io/verity-org/node:20",
-              "digest": "sha256:778b9f7041b22e6b47995f467f3678707c11a9cfe970789c153bc24b681e4987",
-              "builtAt": "2026-03-04T04:42:37Z",
+              "digest": "sha256:250de14d22a0f5aa0b6fe1a5c2604faf7b5f4565533bbd8a357fb55c83bfe1ff",
+              "builtAt": "2026-03-05T04:59:35Z",
               "status": "success"
             },
             {
@@ -1382,8 +2403,8 @@
                 "20-dev"
               ],
               "ref": "ghcr.io/verity-org/node:20-dev",
-              "digest": "sha256:7da8d9a34356a5c4825abc13c4d83261f12cdd8693528ff9a0f617f563a85701",
-              "builtAt": "2026-03-04T04:42:54Z",
+              "digest": "sha256:edc0770c9767276a3ece9183a8d4930c19ccab2321bfc69fd89dde780b7b928f",
+              "builtAt": "2026-03-05T05:01:09Z",
               "status": "success"
             },
             {
@@ -1392,8 +2413,43 @@
                 "20-fips"
               ],
               "ref": "ghcr.io/verity-org/node:20-fips",
-              "digest": "sha256:927f75b7f027e03e6f6cb885524fab130a163b7373c0fcb534bc9e7a0fcb15a0",
-              "builtAt": "2026-03-04T04:42:53Z",
+              "digest": "sha256:56670895b31013b3c9f8e92d2545e3e7b1a7aabd9541f0e86442385e9dce2fca",
+              "builtAt": "2026-03-05T04:59:58Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "21",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "21"
+              ],
+              "ref": "ghcr.io/verity-org/node:21",
+              "digest": "sha256:0ac891b2b4e5bcbccabb89d0322b87129e0ff7efb39eacfe3889e5f11424d3d6",
+              "builtAt": "2026-03-05T05:00:51Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "21-dev"
+              ],
+              "ref": "ghcr.io/verity-org/node:21-dev",
+              "digest": "sha256:b43f72bbfcccd1d37b954cdcf4f85fc0475ffd1e006ce4d77005ddea6bb1d728",
+              "builtAt": "2026-03-05T05:01:02Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "21-fips"
+              ],
+              "ref": "ghcr.io/verity-org/node:21-fips",
+              "digest": "sha256:b60cd83d303e2fdd03e1a5a78cad3aa92f6d2a74f34e1dd8872fef05ee4d353d",
+              "builtAt": "2026-03-05T05:00:46Z",
               "status": "success"
             }
           ]
@@ -1408,8 +2464,8 @@
                 "22"
               ],
               "ref": "ghcr.io/verity-org/node:22",
-              "digest": "sha256:e4b85a528db13e6f975038b9c381ce34049b9107c4fdb631f7d3a93c50578476",
-              "builtAt": "2026-03-04T04:42:52Z",
+              "digest": "sha256:01fd7e322d40efe97b61c99e6fe44b54befbb61319444a9e3bdfa2b4a93694c0",
+              "builtAt": "2026-03-05T05:00:46Z",
               "status": "success"
             },
             {
@@ -1418,8 +2474,8 @@
                 "22-dev"
               ],
               "ref": "ghcr.io/verity-org/node:22-dev",
-              "digest": "sha256:c68e00258d595d06c074c178a1ebfba20f3ad79ad6ee51186c5105eea7a8d1ab",
-              "builtAt": "2026-03-04T04:43:38Z",
+              "digest": "sha256:ceb57b27183c1d5f2512639e3f54c5edd2301ad50d7f53b3a0cad0a0199ac32c",
+              "builtAt": "2026-03-05T05:01:26Z",
               "status": "success"
             },
             {
@@ -1428,8 +2484,43 @@
                 "22-fips"
               ],
               "ref": "ghcr.io/verity-org/node:22-fips",
-              "digest": "sha256:1f55e5ed65e4e67dbcbe2545526dd5f345f95903f81ecd8dcc89a839ec258681",
-              "builtAt": "2026-03-04T04:43:16Z",
+              "digest": "sha256:ac13fe48f4995a8ef831ff5611bf9b64626fc82012ed1daec0a22742d4f9a7f7",
+              "builtAt": "2026-03-05T05:01:10Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "23",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "23"
+              ],
+              "ref": "ghcr.io/verity-org/node:23",
+              "digest": "sha256:558103e3d3d5e114a2fee76526c9439d3373e7bff989cebec888a39874897b86",
+              "builtAt": "2026-03-05T05:01:26Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "23-dev"
+              ],
+              "ref": "ghcr.io/verity-org/node:23-dev",
+              "digest": "sha256:ad3bca0363877b84e93b4b1337c0fd2c28e26baf1dc42ea8b2b817b3e85856aa",
+              "builtAt": "2026-03-05T05:02:28Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "23-fips"
+              ],
+              "ref": "ghcr.io/verity-org/node:23-fips",
+              "digest": "sha256:c88128a6b6c1623d849f36f534fcdf29384ecd53848a029765beaaedc1e558f3",
+              "builtAt": "2026-03-05T05:01:44Z",
               "status": "success"
             }
           ]
@@ -1446,8 +2537,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/node:24",
-              "digest": "sha256:edd3a81d19aeccfea9084e46df790dba72f7475bacffc7a85c93d8c623b77f4d",
-              "builtAt": "2026-03-04T04:43:39Z",
+              "digest": "sha256:4199f6cb1300fe288578776a23cd16abe8585a8fc92d05aa273b0925b333e278",
+              "builtAt": "2026-03-05T05:02:14Z",
               "status": "success"
             },
             {
@@ -1457,8 +2548,8 @@
                 "latest-dev"
               ],
               "ref": "ghcr.io/verity-org/node:24-dev",
-              "digest": "sha256:f1d02bb578ab7373ef2a5613ec9bb97d62c86ae22931255c23c7b80af2eac3a3",
-              "builtAt": "2026-03-04T04:43:54Z",
+              "digest": "sha256:26d5664fd2260832e847887e8567d38dd838daee12688a897b4e23763c9342bf",
+              "builtAt": "2026-03-05T05:02:32Z",
               "status": "success"
             },
             {
@@ -1468,8 +2559,43 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/node:24-fips",
-              "digest": "sha256:020c73be86aefc93cb64fde4495d5ee9963baeb72edc529816d7b5b5174ad201",
-              "builtAt": "2026-03-04T04:43:32Z",
+              "digest": "sha256:11d557fb536a32e80850a16b807bd4b438a2411117124086f4bff34d0b393fde",
+              "builtAt": "2026-03-05T05:02:16Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "25",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "25"
+              ],
+              "ref": "ghcr.io/verity-org/node:25",
+              "digest": "sha256:1d864a6bf9c218df36fa040028f1ffc576aba08c679320609afc9c22f06118cf",
+              "builtAt": "2026-03-05T05:02:26Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "25-dev"
+              ],
+              "ref": "ghcr.io/verity-org/node:25-dev",
+              "digest": "sha256:c65eb6ef04e3b69eac4bc3892f93251110b7fe6d02c1e2cb7450d0068e01d586",
+              "builtAt": "2026-03-05T05:03:04Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "25-fips"
+              ],
+              "ref": "ghcr.io/verity-org/node:25-fips",
+              "digest": "sha256:af0130c088a86e487285cc487a246b3f9c1bb74446f6cefa58ad9556d1078cb5",
+              "builtAt": "2026-03-05T04:58:55Z",
               "status": "success"
             }
           ]
@@ -1481,40 +2607,492 @@
       "description": "OpenJDK — drop-in for eclipse-temurin; Wolfi rebuild from source with \u003c24hr CVE response",
       "versions": [
         {
+          "version": "7",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "7"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:7",
+              "digest": "sha256:736747716a8b1d779fa45bc78ef87f65fe5d68298d4ec81fc511afa3c63c1357",
+              "builtAt": "2026-03-05T05:03:18Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "7-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:7-fips",
+              "digest": "sha256:762f3ed7bc89164186a5bb1410b69ff23e77d1f80e50ec161fb187539a507944",
+              "builtAt": "2026-03-05T05:03:20Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "7-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:7-jre",
+              "digest": "sha256:21876a414f8bbb994d6b78035b78e56b9f3983d52c675ead343e0cb14c9aec63",
+              "builtAt": "2026-03-05T05:03:43Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "8",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:8",
+              "digest": "sha256:0946e8c4d1891cd264eba1a1752ae284a412344e88a3329d270fb237af02912d",
+              "builtAt": "2026-03-05T05:03:35Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "8-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:8-fips",
+              "digest": "sha256:3e4aa07b100adfc7f66c720f0ed7bbdb2189a3ef606ae84832c165cd381faff8",
+              "builtAt": "2026-03-05T05:04:04Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "8-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:8-jre",
+              "digest": "sha256:422f1208869db4fe15ca5a55db9a6428dbd1859754b8406d8ee0b4b92aabfdb6",
+              "builtAt": "2026-03-05T05:05:05Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "9",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "9"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:9",
+              "digest": "sha256:0a4b7d39312ea8d59849f58fdd69af0a71b06d5870579bfb3d129df95e77ba7b",
+              "builtAt": "2026-03-05T05:04:04Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "9-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:9-fips",
+              "digest": "sha256:b75052134df567409d23010224155a1be3c220ae761f8720b55718140151194e",
+              "builtAt": "2026-03-05T05:03:49Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "9-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:9-jre",
+              "digest": "sha256:c8998ccffa39bac02b2edb8cb1ab972d02a9ead65ec01736c0d19e54dae0e586",
+              "builtAt": "2026-03-05T05:03:58Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "10",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "10"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:10",
+              "digest": "sha256:87bb7fa3983ed5d83d9a3ea1e169ee41c1334e575a71920b85600ce46252b172",
+              "builtAt": "2026-03-05T05:04:15Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "10-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:10-fips",
+              "digest": "sha256:4976cf3e2120fc4319d9612bdb9a9c55fe09f1407f70a6329a08e2de62c5ae26",
+              "builtAt": "2026-03-05T05:04:50Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "10-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:10-jre",
+              "digest": "sha256:60e160fc13282c51b7c9713bb8b1b5878f9d83f3f952ee02ec6b45846805e5eb",
+              "builtAt": "2026-03-05T05:04:41Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "11",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "11"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:11",
+              "digest": "sha256:3b18bd97d22f0d6d0e54c8747d7b601505ad44bdc93493662fe41b9fa069dd5f",
+              "builtAt": "2026-03-05T05:04:54Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "11-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:11-fips",
+              "digest": "sha256:b076c2cac80dd9790e30c62cdbc5af81891e899a717b235c01d3db9b79256657",
+              "builtAt": "2026-03-05T05:05:29Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "11-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:11-jre",
+              "digest": "sha256:473cd4dbafa4e294f94f1e6a50ec73850e7b3ef300e49809dc12afac9824aace",
+              "builtAt": "2026-03-05T05:05:58Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "12",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:12",
+              "digest": "sha256:c5394659f5687a2390c386f79263ba938ab7084d2aefd2a8c82e1611a5ecc742",
+              "builtAt": "2026-03-05T05:05:59Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "12-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:12-fips",
+              "digest": "sha256:392ca56eb9ad6c468743b076cca98a947bd19ab8dd019e55981520be6514159b",
+              "builtAt": "2026-03-05T05:06:03Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "12-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:12-jre",
+              "digest": "sha256:648ef0ce417b02a6faf7339f598d257fed242ea753c0e5847f89618230f21345",
+              "builtAt": "2026-03-05T05:06:25Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "13",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "13"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:13",
+              "digest": "sha256:befc860ba7cb87cb2102ab536c737f519dd738a23e1f3288a7da92a2fb37c515",
+              "builtAt": "2026-03-05T05:06:19Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "13-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:13-fips",
+              "digest": "sha256:51219d40c9679e8de22f4f927770fda231106243c6e060f5746239c5dc341d67",
+              "builtAt": "2026-03-05T05:06:50Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "13-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:13-jre",
+              "digest": "sha256:9a9c520a45fd6f00743fb15fe787143fb84df0e6a41bf97aa3c11c8ad9c74ced",
+              "builtAt": "2026-03-05T05:06:59Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "14",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "14"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:14",
+              "digest": "sha256:205e0dc4cd84c1fce492c13e04c328fada768ab91b1c1dccdc90560248e2f7ac",
+              "builtAt": "2026-03-05T05:06:57Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "14-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:14-fips",
+              "digest": "sha256:d9f709797fe49ddbcbab21e451264fc1d0c238e8849bb6479b4a4466b51164ce",
+              "builtAt": "2026-03-05T05:08:45Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "14-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:14-jre",
+              "digest": "sha256:b764deff01da97604c2574898157fe561a8ca2d36d0fd34173955e59aea50933",
+              "builtAt": "2026-03-05T05:07:20Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "15",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "15"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:15",
+              "digest": "sha256:86db5a41e59fb12ea3dc6dd48cd1f13f47c2f2709cbac99873feacedb6413e80",
+              "builtAt": "2026-03-05T05:07:39Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "15-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:15-fips",
+              "digest": "sha256:47b953d9fd000f8f7dbf2fe00fc3c1293dbca9166a99926b64c4c9c04b9d190c",
+              "builtAt": "2026-03-05T05:07:58Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "15-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:15-jre",
+              "digest": "sha256:acfe85505b402b9dfaf14d6e0bcded16701a9dc33c21351eb2c127c61133344d",
+              "builtAt": "2026-03-05T05:07:59Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "16",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "16"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:16",
+              "digest": "sha256:7ec33ba1f3188807621da23ceb81fa5405b75b9c8c3d68ea4e39b8c11ea1284b",
+              "builtAt": "2026-03-05T05:08:24Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "16-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:16-fips",
+              "digest": "sha256:c0a9e1632ea3b9301b92a91cbac9afbba81116d4001d3d76e347147f6a3e085b",
+              "builtAt": "2026-03-05T05:08:32Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "16-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:16-jre",
+              "digest": "sha256:1b16d6c13ef75b0757eaa14686e388fd50f58e9ec796552c9f24d3294aeb6717",
+              "builtAt": "2026-03-05T05:08:33Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
           "version": "17",
           "eol": "2027-10-31",
           "variants": [
             {
               "type": "default",
               "tags": [
-                "17",
-                "latest-17"
+                "17"
               ],
               "ref": "ghcr.io/verity-org/openjdk:17",
-              "digest": "sha256:5b150ffe93db9a35e3c67632ef94638da03f4456eda2e5b3b0dc4cab11e8bdca",
-              "builtAt": "2026-03-04T04:44:10Z",
-              "status": "success"
-            },
-            {
-              "type": "jre",
-              "tags": [
-                "17-jre",
-                "latest-17-jre"
-              ],
-              "ref": "ghcr.io/verity-org/openjdk:17-jre",
-              "digest": "sha256:b9a60c7472c20eab815a60ebdd77146c597d7024ca08f5102e3008422a27bf2f",
-              "builtAt": "2026-03-04T04:44:26Z",
+              "digest": "sha256:79fee5170a0bf537843a2b34c8e8babe89025790f9884bacdcbbc30495e1a838",
+              "builtAt": "2026-03-05T05:08:47Z",
               "status": "success"
             },
             {
               "type": "fips",
               "tags": [
-                "17-fips",
-                "latest-17-fips"
+                "17-fips"
               ],
               "ref": "ghcr.io/verity-org/openjdk:17-fips",
-              "digest": "sha256:82b9a94bcdff8364ac24c4ea076f0bf970ef1d04ec9afa9df0e18b104b04b7c9",
-              "builtAt": "2026-03-04T04:44:36Z",
+              "digest": "sha256:abaa90305af9dbd0ffab037e411d2d45033880b0d208f052b95bc6e82c5ecb32",
+              "builtAt": "2026-03-05T05:08:51Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "17-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:17-jre",
+              "digest": "sha256:1d8f5a210423eb11b4521c87826a32b4039b70d4c8e059bf969adcdc76b7ec47",
+              "builtAt": "2026-03-05T05:08:41Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "18",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "18"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:18",
+              "digest": "sha256:57754f022d88ba0ed12348cebbcfab5779332f1c1ee05bd6dc026d262cd6cf83",
+              "builtAt": "2026-03-05T05:09:05Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "18-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:18-fips",
+              "digest": "sha256:941036fe815faa409309f2980c2fad887304708e1b9c4b51e8b9f3db83ddd565",
+              "builtAt": "2026-03-05T05:09:49Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "18-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:18-jre",
+              "digest": "sha256:de5f1db58f8a6da6631640805673f5ec4a83efeed11e907c843cf951d21ed8d6",
+              "builtAt": "2026-03-05T05:09:15Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "19",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "19"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:19",
+              "digest": "sha256:9ae294b497635548be04d43f9008af19f3fa60a52a94d39f959e4b9a674bc477",
+              "builtAt": "2026-03-05T05:09:08Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "19-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:19-fips",
+              "digest": "sha256:20d6a4a4e10e85cf268aee6d87e707b3d16eaeb8d7404b74a9ea90d583e31229",
+              "builtAt": "2026-03-05T05:09:12Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "19-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:19-jre",
+              "digest": "sha256:d59640cd5c1c3f313b523093152fec07e759d4ee44f012c16da6096bd67c1f5d",
+              "builtAt": "2026-03-05T05:09:25Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "20",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "20"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:20",
+              "digest": "sha256:88a2f2fcf0a7c25f34b9d51f169afa054cb50d3e9656fd29d60891c4046d4275",
+              "builtAt": "2026-03-05T05:09:21Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "20-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:20-fips",
+              "digest": "sha256:68474eedf4f00a9b0a71b4f91444ff8edda0185339b5b2e887de9c9449d7f0dd",
+              "builtAt": "2026-03-05T05:09:24Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "20-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:20-jre",
+              "digest": "sha256:120f61af238ffe52a7282a0929974a3440d6214155947a09ea7a3893928ad923",
+              "builtAt": "2026-03-05T05:09:38Z",
               "status": "success"
             }
           ]
@@ -1529,18 +3107,8 @@
                 "21"
               ],
               "ref": "ghcr.io/verity-org/openjdk:21",
-              "digest": "sha256:172f22500cc1e36f94b87586d0a9d3b27b43bbcc0fe08bdaba2eaef3fe013f6c",
-              "builtAt": "2026-03-04T04:44:35Z",
-              "status": "success"
-            },
-            {
-              "type": "jre",
-              "tags": [
-                "21-jre"
-              ],
-              "ref": "ghcr.io/verity-org/openjdk:21-jre",
-              "digest": "sha256:f5de1891047721804cbf3f5efd3f20fe389fcc52bdc78a3efeb990771905d425",
-              "builtAt": "2026-03-04T04:44:54Z",
+              "digest": "sha256:a3029166b5609fe2be97fe5be9198fb0984c8ad7200f9c63099c7a3971e3e3a9",
+              "builtAt": "2026-03-05T05:09:43Z",
               "status": "success"
             },
             {
@@ -1549,8 +3117,123 @@
                 "21-fips"
               ],
               "ref": "ghcr.io/verity-org/openjdk:21-fips",
-              "digest": "sha256:1a2eaf312b72f1d264080c11a097ed4adef7aad1d53d41f9312ea61007e7fe34",
-              "builtAt": "2026-03-04T04:45:03Z",
+              "digest": "sha256:6f59476b206b79827fac494e368f7e76df4a7df831e5fc3624bec27df5cb42b9",
+              "builtAt": "2026-03-05T05:09:46Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "21-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:21-jre",
+              "digest": "sha256:eed719e154e718a60eda6abf4ee8714c87e1c6598c5b8be688e443869781ce21",
+              "builtAt": "2026-03-05T05:09:56Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "22",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "22"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:22",
+              "digest": "sha256:c5e324376bb04d044df06ba8ba5dc286ab8b0488205959d61c9c8fdeb68c0b41",
+              "builtAt": "2026-03-05T05:09:55Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "22-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:22-fips",
+              "digest": "sha256:2319efda0d43f28d63496b22d8e8cb585bd0a0e45ec4f35a10cd1a015a57cf64",
+              "builtAt": "2026-03-05T05:10:21Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "22-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:22-jre",
+              "digest": "sha256:afcdf06cdcfa9070940cc7d9c37f31f725eefa7966db727e2d45627ff9fdd133",
+              "builtAt": "2026-03-05T05:10:22Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "23",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "23"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:23",
+              "digest": "sha256:c84b950ea29c645e7a19309d42486f2219f936409672598b97e32150602ed62e",
+              "builtAt": "2026-03-05T05:10:15Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "23-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:23-fips",
+              "digest": "sha256:c5feef503c52e55c5ca4dbb6fdc6ffda67be9ce0415e3578aa0fa9a82657beda",
+              "builtAt": "2026-03-05T05:10:35Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "23-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:23-jre",
+              "digest": "sha256:5643c9bdfe30996a88af932ad02b182e99d559b24d56c58ea9af6ea4b0ac5347",
+              "builtAt": "2026-03-05T05:11:55Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "24",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "24"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:24",
+              "digest": "sha256:88694355d0f3b0ae4a2084d094edce6726b4f44d371e96710e83bd5f8f1f0563",
+              "builtAt": "2026-03-05T05:10:39Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "24-fips"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:24-fips",
+              "digest": "sha256:48c07ed168a9fde073ebd2306113f2acfb18d259e10817ad75dd2adf0a91fabc",
+              "builtAt": "2026-03-05T05:10:47Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "24-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:24-jre",
+              "digest": "sha256:1d3e08a0627e379e4986d55c87433c9fa8f0f2503238794a692151acca68e740",
+              "builtAt": "2026-03-05T05:11:20Z",
               "status": "success"
             }
           ]
@@ -1567,19 +3250,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/openjdk:25",
-              "digest": "sha256:26ea676b210b95817323cc649bafa73c44108cf16ea4696ed67f6199aa9a7a97",
-              "builtAt": "2026-03-04T04:44:58Z",
-              "status": "success"
-            },
-            {
-              "type": "jre",
-              "tags": [
-                "25-jre",
-                "latest-jre"
-              ],
-              "ref": "ghcr.io/verity-org/openjdk:25-jre",
-              "digest": "sha256:5318ce576fcd19c568d5b84022e1ab13a271c58069baf46a638db456fe249118",
-              "builtAt": "2026-03-04T04:44:55Z",
+              "digest": "sha256:7c1e7a0aecb54eada1a2b399f620a9e4767bac194d7e8994f074f9a754b2b342",
+              "builtAt": "2026-03-05T05:11:11Z",
               "status": "success"
             },
             {
@@ -1589,8 +3261,19 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/openjdk:25-fips",
-              "digest": "sha256:5b24b84ad634ee45ff0156a4fce2b91f1c14ca5e0f917255218925b2657392ba",
-              "builtAt": "2026-03-04T04:45:07Z",
+              "digest": "sha256:98762fec183921651e31df9bacdeebd302e26fc96d310690a8a253917680dee0",
+              "builtAt": "2026-03-05T05:11:34Z",
+              "status": "success"
+            },
+            {
+              "type": "jre",
+              "tags": [
+                "25-jre",
+                "latest-jre"
+              ],
+              "ref": "ghcr.io/verity-org/openjdk:25-jre",
+              "digest": "sha256:517cc8d83c5ae34aa80339cf5f200a659c2adca5298bb606ffb335e5974ca337",
+              "builtAt": "2026-03-05T05:11:08Z",
               "status": "success"
             }
           ]
@@ -1612,8 +3295,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/pgbouncer:1",
-              "digest": "sha256:fa9c6a4a0726620ebd8b98b74303ce2b0f42ccafa3fa839cae696d6feaa807af",
-              "builtAt": "2026-03-04T04:44:30Z",
+              "digest": "sha256:aed720e450eae337af1a7665d77e08ad433588d5eb7268dd50c597c4bddf0947",
+              "builtAt": "2026-03-05T05:10:49Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/pgbouncer:latest",
+              "digest": "sha256:b9bdd2f8c3f001e8587ac01e957856339cbdc9c3771149b050fcb465ae15434e",
+              "builtAt": "2026-03-05T05:10:50Z",
               "status": "failure"
             }
           ]
@@ -1625,6 +3323,51 @@
       "description": "PHP runtime — Copa leaves unfixable CVEs in Debian base; Wolfi rebuilds from source",
       "versions": [
         {
+          "version": "8.1",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "8.1"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.1",
+              "digest": "sha256:a1b44b1559f44b37bf6d44852287864334bd7bb998e71fa7309951da78c38408",
+              "builtAt": "2026-03-05T05:11:26Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "8.1-dev"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.1-dev",
+              "digest": "sha256:6c29746594822bcd1da40c96349d1bddc4148f660648a4ece5b715480178c1bb",
+              "builtAt": "2026-03-05T05:11:30Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "8.1-fips"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.1-fips",
+              "digest": "sha256:6437d324278853ab16eafe6f47e694d5c400fc738980710bd409ff691ca8e3fb",
+              "builtAt": "2026-03-05T05:11:23Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.1-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.1-fpm",
+              "digest": "sha256:1e1c2e62bef1f1e81c54b062cc8bc7e00f9bdbecbe42b993519aec174327cda2",
+              "builtAt": "2026-03-05T05:11:32Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
           "version": "8.2",
           "eol": "2026-12-31",
           "variants": [
@@ -1634,18 +3377,8 @@
                 "8.2"
               ],
               "ref": "ghcr.io/verity-org/php:8.2",
-              "digest": "sha256:7cdc9a07b606beeb8dc11f6037ad1e318cf533e4479edcacb17749fd54e1070c",
-              "builtAt": "2026-03-04T07:58:44Z",
-              "status": "success"
-            },
-            {
-              "type": "fpm",
-              "tags": [
-                "8.2-fpm"
-              ],
-              "ref": "ghcr.io/verity-org/php:8.2-fpm",
-              "digest": "sha256:baa59ae463bb067cb85b10420d77b77ab74868947280ce38b4866bda223d02cb",
-              "builtAt": "2026-03-04T07:58:40Z",
+              "digest": "sha256:a71e9a6de32644690c0d1e87d8f75f8515fda3f1ec414f0567b88f1f1bad4bd2",
+              "builtAt": "2026-03-05T05:11:33Z",
               "status": "success"
             },
             {
@@ -1654,8 +3387,8 @@
                 "8.2-dev"
               ],
               "ref": "ghcr.io/verity-org/php:8.2-dev",
-              "digest": "sha256:3ba932af996f34bb828681bc795301d7b231e6870ebc01b0d422f960eb1950e1",
-              "builtAt": "2026-03-04T07:58:57Z",
+              "digest": "sha256:e2837dca7609618138ac63c19121d18f71d6b9650cc69dcb19857fb7e2a03576",
+              "builtAt": "2026-03-05T05:11:55Z",
               "status": "success"
             },
             {
@@ -1664,8 +3397,18 @@
                 "8.2-fips"
               ],
               "ref": "ghcr.io/verity-org/php:8.2-fips",
-              "digest": "sha256:aa09f456f5ba984cee76b8d662699cc4cabd1e130c0097237694d755ac21b97c",
-              "builtAt": "2026-03-04T07:58:50Z",
+              "digest": "sha256:71cb89aa4b5497984245203119c62988fa2b558fd127ce69ba38e393c51d83cf",
+              "builtAt": "2026-03-05T05:11:56Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.2-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.2-fpm",
+              "digest": "sha256:46a00d9db5e7d6d4b9027ca7122920602c740454e6abf16a90c46cbf4a1093a6",
+              "builtAt": "2026-03-05T05:12:47Z",
               "status": "success"
             }
           ]
@@ -1680,18 +3423,8 @@
                 "8.3"
               ],
               "ref": "ghcr.io/verity-org/php:8.3",
-              "digest": "sha256:cde572a2f83f774f56f590a3f0e5a4704c1e7577ceba2bce7a7a762adef50346",
-              "builtAt": "2026-03-04T07:58:44Z",
-              "status": "success"
-            },
-            {
-              "type": "fpm",
-              "tags": [
-                "8.3-fpm"
-              ],
-              "ref": "ghcr.io/verity-org/php:8.3-fpm",
-              "digest": "sha256:753773cdffb901843f00fd85b389a6edb78471cf07278c0d316000083c60ffe9",
-              "builtAt": "2026-03-04T07:58:59Z",
+              "digest": "sha256:63dfafccc6d2be74721e8bdd03563fe1403bd317aa97236799c8428f9b217096",
+              "builtAt": "2026-03-05T05:12:21Z",
               "status": "success"
             },
             {
@@ -1700,8 +3433,8 @@
                 "8.3-dev"
               ],
               "ref": "ghcr.io/verity-org/php:8.3-dev",
-              "digest": "sha256:bcbf7a48ff09257719f7ebb13adc8a28ec298b1cf66b0d31fb1b770a638be7a3",
-              "builtAt": "2026-03-04T07:59:44Z",
+              "digest": "sha256:fa37bcdc326aecb8b5f07fd10216bfe33a9c7bbfef4ff989a8ef54a798028785",
+              "builtAt": "2026-03-05T05:12:25Z",
               "status": "success"
             },
             {
@@ -1710,8 +3443,18 @@
                 "8.3-fips"
               ],
               "ref": "ghcr.io/verity-org/php:8.3-fips",
-              "digest": "sha256:5823741e798b7fc3c07ce2ae2f28c7e847abdef1b9bb2e113eea95bec608c468",
-              "builtAt": "2026-03-04T07:59:24Z",
+              "digest": "sha256:d04a85fffba592a50580a0e7fa5d7ad075711837e082adae6bc7b37294e2156a",
+              "builtAt": "2026-03-05T05:12:13Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.3-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.3-fpm",
+              "digest": "sha256:c6149d92736bc53b38630dffd8d9f2cb6b33bad22f8f1c2294189dd90c8edef7",
+              "builtAt": "2026-03-05T05:12:11Z",
               "status": "success"
             }
           ]
@@ -1726,18 +3469,8 @@
                 "8.4"
               ],
               "ref": "ghcr.io/verity-org/php:8.4",
-              "digest": "sha256:a977d90c5ef9967b1a58a61e4dea6a4bd100cefe59cc80e2c61af56b72df1212",
-              "builtAt": "2026-03-04T07:59:35Z",
-              "status": "success"
-            },
-            {
-              "type": "fpm",
-              "tags": [
-                "8.4-fpm"
-              ],
-              "ref": "ghcr.io/verity-org/php:8.4-fpm",
-              "digest": "sha256:ebfebfdfa787fd87fb227413788828da15d5f037e63b3d87b0f466ac8f0e3c8d",
-              "builtAt": "2026-03-04T08:01:00Z",
+              "digest": "sha256:5f38a7541bb71ff85bd8ad78a5af41527afbce087b0aa4a3912f10091e6a3f45",
+              "builtAt": "2026-03-05T05:12:27Z",
               "status": "success"
             },
             {
@@ -1746,8 +3479,8 @@
                 "8.4-dev"
               ],
               "ref": "ghcr.io/verity-org/php:8.4-dev",
-              "digest": "sha256:cee45794270b5944329d48ac0ad04c64b407594e3c8ac900ba04ffd0f051eac8",
-              "builtAt": "2026-03-04T08:02:02Z",
+              "digest": "sha256:c8bedaa71d571d805bbd0282f4add2de6183f12a6b3e9b0d44b911b79e73dcf3",
+              "builtAt": "2026-03-05T05:12:43Z",
               "status": "success"
             },
             {
@@ -1756,8 +3489,18 @@
                 "8.4-fips"
               ],
               "ref": "ghcr.io/verity-org/php:8.4-fips",
-              "digest": "sha256:4756854c37452d6d722f22167c5ff6ebe85bad5260d5940359d3fbe41237b054",
-              "builtAt": "2026-03-04T08:00:41Z",
+              "digest": "sha256:177d28a4042957378c6cfc3f27eb3f7d3bdcfde0d5f89ec8b6b16e051c51bd06",
+              "builtAt": "2026-03-05T05:12:29Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.4-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.4-fpm",
+              "digest": "sha256:7ce0848333f90661283c4773367b7e12dc32b8aab4aa1465dc9e98981b3ad9fd",
+              "builtAt": "2026-03-05T05:12:34Z",
               "status": "success"
             }
           ]
@@ -1774,19 +3517,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/php:8.5",
-              "digest": "sha256:6fb971003318e8c801eac9aa4a3aa0318801dfcf491e5ef9a01153d9c2d7854f",
-              "builtAt": "2026-03-04T08:00:42Z",
-              "status": "success"
-            },
-            {
-              "type": "fpm",
-              "tags": [
-                "8.5-fpm",
-                "latest-fpm"
-              ],
-              "ref": "ghcr.io/verity-org/php:8.5-fpm",
-              "digest": "sha256:5a1d4bc5eadeb6283d813a65702bd59dc5f59b3d36d13a819d890e0e212bf4f0",
-              "builtAt": "2026-03-04T08:00:55Z",
+              "digest": "sha256:1590ed31d86b6f10949d17274d4480482dffdbad9e21efc961ddca3ece90db23",
+              "builtAt": "2026-03-05T05:12:47Z",
               "status": "success"
             },
             {
@@ -1796,8 +3528,8 @@
                 "latest-dev"
               ],
               "ref": "ghcr.io/verity-org/php:8.5-dev",
-              "digest": "sha256:8f0a4cf1afa88af01ee220ac8d1f5decec2c0919cd13a9b99155b1443626f106",
-              "builtAt": "2026-03-04T08:01:30Z",
+              "digest": "sha256:282d4595f3f488152d723649e69f355da01d3ed7107bfe4979bf5743969e9d02",
+              "builtAt": "2026-03-05T05:13:11Z",
               "status": "success"
             },
             {
@@ -1807,8 +3539,19 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/php:8.5-fips",
-              "digest": "sha256:9cf78effe3d2924c3d796be924ad0d34d65cdea2de49b84586f3a7d526c5e994",
-              "builtAt": "2026-03-04T08:01:13Z",
+              "digest": "sha256:39a2636dcf218c0ab7b5e674c644f4e53f03b250d2b5443cdd342a7f7be7f102",
+              "builtAt": "2026-03-05T05:13:00Z",
+              "status": "success"
+            },
+            {
+              "type": "fpm",
+              "tags": [
+                "8.5-fpm",
+                "latest-fpm"
+              ],
+              "ref": "ghcr.io/verity-org/php:8.5-fpm",
+              "digest": "sha256:8be0f578f70b3fc16b1c6d11bb799b539823426af25c16387944f9676dd76804",
+              "builtAt": "2026-03-05T05:13:01Z",
               "status": "success"
             }
           ]
@@ -1820,6 +3563,56 @@
       "description": "PostgreSQL — Copa leaves 167 unfixable CVEs (linux-libc-dev, binutils); Wolfi rebuild from source",
       "versions": [
         {
+          "version": "12",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "12"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:12",
+              "digest": "sha256:92edbe4b9a52fa9d167e8758fc51f8515c56bf577ce9e54d0ef3d2022ad2c467",
+              "builtAt": "2026-03-05T05:13:02Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "12-fips"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:12-fips",
+              "digest": "sha256:cfd741e703deedaa9e6fc0af0c7a77a546755d1b34854287df957d8ba8847006",
+              "builtAt": "2026-03-05T05:13:31Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "13",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "13"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:13",
+              "digest": "sha256:4c5702cdf49ccf35bffcba3ac04fa648cad01824107a91441b17b973bd33139b",
+              "builtAt": "2026-03-05T05:13:34Z",
+              "status": "failure"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "13-fips"
+              ],
+              "ref": "ghcr.io/verity-org/postgres:13-fips",
+              "digest": "sha256:d7d2be33d4d63960a7ff452732029375146738a44ec7e1587a1955476931715e",
+              "builtAt": "2026-03-05T05:13:24Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
           "version": "14",
           "eol": "2026-11-12",
           "variants": [
@@ -1829,8 +3622,8 @@
                 "14"
               ],
               "ref": "ghcr.io/verity-org/postgres:14",
-              "digest": "sha256:eb4d51b0bf683f86d9ee02afa3d2b7af4de1eb97da287654ad6175b4259a435a",
-              "builtAt": "2026-03-04T04:46:01Z",
+              "digest": "sha256:d1459fb769f9c8f51dccdcc91e85627a8a49b6805c7df177ded922021dacc049",
+              "builtAt": "2026-03-05T05:13:56Z",
               "status": "failure"
             },
             {
@@ -1839,8 +3632,8 @@
                 "14-fips"
               ],
               "ref": "ghcr.io/verity-org/postgres:14-fips",
-              "digest": "sha256:ade099e374737d181e08e1753b59d50992faf3232839a51aaa20b9bb2228cb1d",
-              "builtAt": "2026-03-04T04:46:16Z",
+              "digest": "sha256:6ff479c0ab77270379f829b96a8500b2e138a60771bc01210c567d6a1272e755",
+              "builtAt": "2026-03-05T05:13:41Z",
               "status": "failure"
             }
           ]
@@ -1855,8 +3648,8 @@
                 "15"
               ],
               "ref": "ghcr.io/verity-org/postgres:15",
-              "digest": "sha256:cfc55885d6420800e64a883ac7a6c3eda622a9c3fd1b884b8b95a774cbc4baf1",
-              "builtAt": "2026-03-04T04:46:14Z",
+              "digest": "sha256:ac5ec9e7a1d9e9832e3b61cf91d406dcfc41efc22f252743ef153d36e6ede034",
+              "builtAt": "2026-03-05T05:14:06Z",
               "status": "failure"
             },
             {
@@ -1865,8 +3658,8 @@
                 "15-fips"
               ],
               "ref": "ghcr.io/verity-org/postgres:15-fips",
-              "digest": "sha256:202c57e2226debc03255a8a91dea5dd0665ec383a0e93dc3e176496f36aac124",
-              "builtAt": "2026-03-04T04:46:21Z",
+              "digest": "sha256:10be09010ad7f1ad84234f7ccfac7c84cb18bed8b29a333ce9db270278dab39d",
+              "builtAt": "2026-03-05T05:14:03Z",
               "status": "failure"
             }
           ]
@@ -1881,8 +3674,8 @@
                 "16"
               ],
               "ref": "ghcr.io/verity-org/postgres:16",
-              "digest": "sha256:25c2191097369096ad3cb8b07f0e68db72816c2ad29e2159bd5880f9face03ea",
-              "builtAt": "2026-03-04T04:46:44Z",
+              "digest": "sha256:a9e18863e97f30874d54aa553e00d95e2c46ee583b8161bc0482cb8bb52c6660",
+              "builtAt": "2026-03-05T05:14:43Z",
               "status": "success"
             },
             {
@@ -1891,8 +3684,8 @@
                 "16-fips"
               ],
               "ref": "ghcr.io/verity-org/postgres:16-fips",
-              "digest": "sha256:0125b2bf0b6db3e05beaaa2368a7db5b6addad40f048e14d9c99f2339cf4f9cc",
-              "builtAt": "2026-03-04T04:46:28Z",
+              "digest": "sha256:3f082c7ca0ab76f7a6c0d3a79238c4aac6e16cd0c89bad6d4406132268e9d713",
+              "builtAt": "2026-03-05T05:14:37Z",
               "status": "success"
             }
           ]
@@ -1907,8 +3700,8 @@
                 "17"
               ],
               "ref": "ghcr.io/verity-org/postgres:17",
-              "digest": "sha256:87ef13b7d78151d4cf3ee0d04e4d02993a989db77e6afe014993422ef21722ec",
-              "builtAt": "2026-03-04T04:47:52Z",
+              "digest": "sha256:0b87a2ee4244ee6357cc4dd23ec867a8f5609cd76dfcdc6548312070b621da12",
+              "builtAt": "2026-03-05T05:14:27Z",
               "status": "success"
             },
             {
@@ -1917,8 +3710,8 @@
                 "17-fips"
               ],
               "ref": "ghcr.io/verity-org/postgres:17-fips",
-              "digest": "sha256:cdef58fa62ac2dd1ccf1c29ffc0a9b3a2119158b4e610852f869f773bac8c380",
-              "builtAt": "2026-03-04T04:46:45Z",
+              "digest": "sha256:0a67d6797d5cac824a60da875eb39b09d5f46945b1390448d2b676c25c89d907",
+              "builtAt": "2026-03-05T05:14:41Z",
               "status": "success"
             }
           ]
@@ -1935,8 +3728,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/postgres:18",
-              "digest": "sha256:11f14d699c86952918569c89d64fda22e6a7ee0e8ca19f79c105912ece37caa8",
-              "builtAt": "2026-03-04T04:46:55Z",
+              "digest": "sha256:aa9e84ab44c186152b1cd455cebd808b0e26e66de68b5386d89db4533deddb35",
+              "builtAt": "2026-03-05T05:15:39Z",
               "status": "success"
             },
             {
@@ -1946,8 +3739,8 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/postgres:18-fips",
-              "digest": "sha256:449cb10c479f096e2d552af6bb7ea16932d744cca5115b516a0bc31d587d8545",
-              "builtAt": "2026-03-04T04:47:13Z",
+              "digest": "sha256:a38c68954b73223f52cd81cee8fd60acc743afeda78398826af4114e9183cff6",
+              "builtAt": "2026-03-05T05:15:16Z",
               "status": "success"
             }
           ]
@@ -1959,18 +3752,153 @@
       "description": "Prometheus monitoring — Copa's -distroless still has unfixable CVEs; Wolfi rebuild",
       "versions": [
         {
-          "version": "3",
+          "version": "2.55",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "2.55"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:2.55",
+              "digest": "sha256:0c56eeadd40a236965da601848a2632e8f082807ef47cf05fa90322317ae9688",
+              "builtAt": "2026-03-05T05:15:12Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.2",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.2"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3.2",
+              "digest": "sha256:4d634e56909a6ac8945c8ffd701d9b6d0acb31dadab0ef9df061ba6be8424f5d",
+              "builtAt": "2026-03-05T05:15:05Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.3",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.3"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3.3",
+              "digest": "sha256:f425c1142278ea2fc5584c7d282a2931e3c024c6d857a27d27d20b8895dec350",
+              "builtAt": "2026-03-05T05:15:12Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.4",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.4"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3.4",
+              "digest": "sha256:1c76e81e928bb7734c458732d3f6835abd12a869cbaf0b0532023b27e18ff357",
+              "builtAt": "2026-03-05T05:15:32Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.5",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.5"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3.5",
+              "digest": "sha256:1f7b35d721a1c65460c0fd3be51d31c9793d7a3925f39261475fe378937bce8b",
+              "builtAt": "2026-03-05T05:15:32Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.6",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.6"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3.6",
+              "digest": "sha256:a8acc1ba6fed66e697840b5432fba555cd68e92220056ada64f46a2409b8c13b",
+              "builtAt": "2026-03-05T05:15:42Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.7",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.7"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3.7",
+              "digest": "sha256:bb976127e5f8986d2faca0c8a70b258df7ce93c1f99264abfb22810cd857f48b",
+              "builtAt": "2026-03-05T05:15:42Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.8",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.8"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3.8",
+              "digest": "sha256:5395f7e2d5cfb8167ea3a3f3583f2fed4f01a4c54dd65b5cad256911f278bbcd",
+              "builtAt": "2026-03-05T05:16:21Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.9",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "3",
+                "3.9",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/prometheus:3",
-              "digest": "sha256:bc32da9b96277c2716afff66ac8b84d7d388ff20b41718c04d6dd0641a206c47",
-              "builtAt": "2026-03-04T04:48:19Z",
+              "ref": "ghcr.io/verity-org/prometheus:3.9",
+              "digest": "sha256:c42518279e3ff9d2eb95791d05445e68dd694841eb9f21ecf9ed609461a4525e",
+              "builtAt": "2026-03-05T05:16:19Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.10",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.10"
+              ],
+              "ref": "ghcr.io/verity-org/prometheus:3.10",
+              "digest": "sha256:975f5863cebf898b69f815df436a5f0f0fff565480a2b509c46ccaaf611076ab",
+              "builtAt": "2026-03-05T05:17:10Z",
               "status": "success"
             }
           ]
@@ -1991,8 +3919,8 @@
                 "3.10"
               ],
               "ref": "ghcr.io/verity-org/python:3.10",
-              "digest": "sha256:0f7f9f3018503eb9fc50ba9da0a1a8e687e6f0c42eb76191d99ee4f701e8f7d9",
-              "builtAt": "2026-03-04T04:47:00Z",
+              "digest": "sha256:9316b8939a7a83c5eed9ea2a0802bede23e1faa89867ff00c9fbfbbea0ae3561",
+              "builtAt": "2026-03-05T05:16:20Z",
               "status": "success"
             },
             {
@@ -2001,8 +3929,8 @@
                 "3.10-dev"
               ],
               "ref": "ghcr.io/verity-org/python:3.10-dev",
-              "digest": "sha256:76195ef8091b0416aca56e3c94e514d45f5012e00fda7ff1620f273606ea6fbb",
-              "builtAt": "2026-03-04T04:48:54Z",
+              "digest": "sha256:6f6b128d738548f5d2cb828ad5da34da5511d6c5c86e01ccbb39ea9a6528b119",
+              "builtAt": "2026-03-05T05:16:44Z",
               "status": "success"
             },
             {
@@ -2011,8 +3939,8 @@
                 "3.10-fips"
               ],
               "ref": "ghcr.io/verity-org/python:3.10-fips",
-              "digest": "sha256:cac5a903a23df77c4ca9631e15538474d31082884c14e1087a7137e153f13fc0",
-              "builtAt": "2026-03-04T04:47:16Z",
+              "digest": "sha256:287312d34e1ff5d72f4d995ce14bc22dc6a239b19c84868b8e91bd350469223b",
+              "builtAt": "2026-03-05T05:17:26Z",
               "status": "success"
             }
           ]
@@ -2027,8 +3955,8 @@
                 "3.11"
               ],
               "ref": "ghcr.io/verity-org/python:3.11",
-              "digest": "sha256:61a86f7524fdde130897fdc94dd5bcaf83fc95d10f1f2824e489fdb7885904fe",
-              "builtAt": "2026-03-04T04:47:20Z",
+              "digest": "sha256:f708ac00d14c17a887e8da124797cb457f00e711af0ca628b4b6b15bc83da127",
+              "builtAt": "2026-03-05T05:16:36Z",
               "status": "success"
             },
             {
@@ -2037,8 +3965,8 @@
                 "3.11-dev"
               ],
               "ref": "ghcr.io/verity-org/python:3.11-dev",
-              "digest": "sha256:6cea62524da778c44d8200e9f365f6b48cb6e897206d200f71ce3703c55da658",
-              "builtAt": "2026-03-04T04:47:50Z",
+              "digest": "sha256:af07a9236fcaa9e4ac63bdb3db345764cb9ddcefc0ec787d89784d92abf999c3",
+              "builtAt": "2026-03-05T05:16:57Z",
               "status": "success"
             },
             {
@@ -2047,8 +3975,8 @@
                 "3.11-fips"
               ],
               "ref": "ghcr.io/verity-org/python:3.11-fips",
-              "digest": "sha256:2e847fb0109a4908c60720a57f9750b43c685f3bcc661811b4b72497053d1127",
-              "builtAt": "2026-03-04T04:47:36Z",
+              "digest": "sha256:b2fcd7f380e5d4061b4db35d9e7e2954e74bf87d7f4170ddeb96457d4201539c",
+              "builtAt": "2026-03-05T05:16:52Z",
               "status": "success"
             }
           ]
@@ -2063,8 +3991,8 @@
                 "3.12"
               ],
               "ref": "ghcr.io/verity-org/python:3.12",
-              "digest": "sha256:d6cd6609f9c9734e37801d7d713f31c085149efb28d01c33dd64e87ad84180ad",
-              "builtAt": "2026-03-04T04:47:49Z",
+              "digest": "sha256:64e92ebcf5183e2d91b2f08ceee12ab00c43341d5481f39cfa9673b58fe58f21",
+              "builtAt": "2026-03-05T05:16:49Z",
               "status": "success"
             },
             {
@@ -2073,8 +4001,8 @@
                 "3.12-dev"
               ],
               "ref": "ghcr.io/verity-org/python:3.12-dev",
-              "digest": "sha256:cddea37c5afe78c3be0a1db6e926e2e0a8a51c7a5d32653e332ed308f01740e4",
-              "builtAt": "2026-03-04T04:49:16Z",
+              "digest": "sha256:e85c48dc7fa15a4f55c81d33b507b027160ba19d07943be4f8dbb451a25bdb2c",
+              "builtAt": "2026-03-05T05:17:19Z",
               "status": "success"
             },
             {
@@ -2083,8 +4011,8 @@
                 "3.12-fips"
               ],
               "ref": "ghcr.io/verity-org/python:3.12-fips",
-              "digest": "sha256:f7a078428a8d9a159b32ceec8047c7ea61cbd9c8ec9795688858ca59f50daac7",
-              "builtAt": "2026-03-04T04:48:05Z",
+              "digest": "sha256:3070b9e526e46df823440f003b536b0025eeb1efceb9fcb09ca079b8ac6b2ceb",
+              "builtAt": "2026-03-05T05:17:26Z",
               "status": "success"
             }
           ]
@@ -2099,8 +4027,8 @@
                 "3.13"
               ],
               "ref": "ghcr.io/verity-org/python:3.13",
-              "digest": "sha256:b7651e6806fdd7fa8dcaa0ee71c302a213c68e08d944b4d158e3d996d9f1f0fd",
-              "builtAt": "2026-03-04T04:48:04Z",
+              "digest": "sha256:e616009cb07f196a8a545a940a9d4af434cdf4ed4adb9f0b40cab74cf470b4ba",
+              "builtAt": "2026-03-05T05:17:34Z",
               "status": "success"
             },
             {
@@ -2109,8 +4037,8 @@
                 "3.13-dev"
               ],
               "ref": "ghcr.io/verity-org/python:3.13-dev",
-              "digest": "sha256:9916e134a0a21490badeaba97abd01138d51a4666417b10a7ec7335a549eda93",
-              "builtAt": "2026-03-04T04:49:00Z",
+              "digest": "sha256:a634dcaf8cb096fbe622726867de5608d59883e48a6d8f4c94ca135cea0e37d2",
+              "builtAt": "2026-03-05T05:17:46Z",
               "status": "success"
             },
             {
@@ -2119,8 +4047,8 @@
                 "3.13-fips"
               ],
               "ref": "ghcr.io/verity-org/python:3.13-fips",
-              "digest": "sha256:a47a53a395fde99780da2c727371ae324b04f5c1f74174c8af3e2bc49c19e669",
-              "builtAt": "2026-03-04T04:48:30Z",
+              "digest": "sha256:46473550e82fb93de3f43c6b621d189f81cccdb0ee9b688b9547c09e48375982",
+              "builtAt": "2026-03-05T05:17:39Z",
               "status": "success"
             }
           ]
@@ -2137,8 +4065,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/python:3.14",
-              "digest": "sha256:feb70f2530faf0be22a218dcd94736118adadb530080c40f1789e7371354defe",
-              "builtAt": "2026-03-04T04:48:35Z",
+              "digest": "sha256:77e99f786ce9b3b2a22da3c219788d0fd0926a5623087e3788cfd0d2e18b00e6",
+              "builtAt": "2026-03-05T05:17:48Z",
               "status": "success"
             },
             {
@@ -2148,8 +4076,8 @@
                 "latest-dev"
               ],
               "ref": "ghcr.io/verity-org/python:3.14-dev",
-              "digest": "sha256:3a2ca95444ab4e554ae9b6ef8bf8f524a8fdd7745d4e1c871f86c7935ab60ba8",
-              "builtAt": "2026-03-04T04:48:56Z",
+              "digest": "sha256:b537d69ecad1d78547f02a8fac11145ca87305277142c6ae92896b8469fe5804",
+              "builtAt": "2026-03-05T05:19:00Z",
               "status": "success"
             },
             {
@@ -2159,8 +4087,8 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/python:3.14-fips",
-              "digest": "sha256:76bca0985441bb16773476e9966cbca3b0aa222c35c86177161f71e4dd558738",
-              "builtAt": "2026-03-04T04:48:56Z",
+              "digest": "sha256:6ffb2970623fc966cf6fceae2761bc6a9e037e955cf84c18e3cf4f93bdb8b297",
+              "builtAt": "2026-03-05T05:18:23Z",
               "status": "success"
             }
           ]
@@ -2172,18 +4100,48 @@
       "description": "RabbitMQ message broker — Wolfi rebuild eliminates persistent Debian CVEs",
       "versions": [
         {
-          "version": "4",
+          "version": "4.0",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "4.0"
+              ],
+              "ref": "ghcr.io/verity-org/rabbitmq:4.0",
+              "digest": "sha256:147e11c672523f56ea9755f5254cd2a3cc341dba90843535b7993ea2de3646fe",
+              "builtAt": "2026-03-05T05:18:45Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "4.1",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "4.1"
+              ],
+              "ref": "ghcr.io/verity-org/rabbitmq:4.1",
+              "digest": "sha256:80da6ba7783db6dde727fa9074e42cf01fba23e4168026e5594e9ee164673189",
+              "builtAt": "2026-03-05T05:18:33Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "4.2",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "4",
+                "4.2",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/rabbitmq:4",
-              "digest": "sha256:85997e64de8d3561d33da36942c9df619e86d28c615963e30849828c81b80d61",
-              "builtAt": "2026-03-04T04:49:35Z",
+              "ref": "ghcr.io/verity-org/rabbitmq:4.2",
+              "digest": "sha256:0eefa217a1a5b462fd56ec7f4b09e92b536cae57c0d39f9e2c2c8d4d124c3c3d",
+              "builtAt": "2026-03-05T05:18:38Z",
               "status": "success"
             }
           ]
@@ -2195,6 +4153,76 @@
       "description": "Ruby runtime — Copa leaves unfixable CVEs in Debian base; Wolfi rebuilds from source",
       "versions": [
         {
+          "version": "3.0",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.0"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.0",
+              "digest": "sha256:8d482c0870fc735b27716f897698632b0afb56df720637ac4f904873687853d1",
+              "builtAt": "2026-03-05T05:18:53Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.0-dev"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.0-dev",
+              "digest": "sha256:79505ed335ed30eec475c386202a2730e370a150992d46ca2dd87f1829594688",
+              "builtAt": "2026-03-05T05:19:34Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.0-fips"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.0-fips",
+              "digest": "sha256:4e616490cfed617fa7a5c7e538cdbe3f3ea89cade51d1c49c2ed1c000979a764",
+              "builtAt": "2026-03-05T05:19:35Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "3.1",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.1"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.1",
+              "digest": "sha256:7405ebc628998bbdaac2454f75acc1c3fc06857e8afeba478908822b3eba1947",
+              "builtAt": "2026-03-05T05:19:41Z",
+              "status": "success"
+            },
+            {
+              "type": "dev",
+              "tags": [
+                "3.1-dev"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.1-dev",
+              "digest": "sha256:0457b5cd2e26d251ef6336be289cbef5b384ce005a250901f2d983679a616e37",
+              "builtAt": "2026-03-05T05:20:21Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "3.1-fips"
+              ],
+              "ref": "ghcr.io/verity-org/ruby:3.1-fips",
+              "digest": "sha256:93b85fc7f4a400358c187ede7379cb6eeafb4e597a6390ed08c8f7aa8d33d03e",
+              "builtAt": "2026-03-05T05:20:03Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
           "version": "3.2",
           "eol": "2026-03-31",
           "variants": [
@@ -2204,8 +4232,8 @@
                 "3.2"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.2",
-              "digest": "sha256:c46e34f6ccd4324374808066edcebaf1312e54a1e08a711f9913585dcf448b4d",
-              "builtAt": "2026-03-04T08:01:16Z",
+              "digest": "sha256:69be67016eac101410c86a72abd7a1c54978f087d94619f8420e2512ba9b4000",
+              "builtAt": "2026-03-05T05:20:11Z",
               "status": "success"
             },
             {
@@ -2214,8 +4242,8 @@
                 "3.2-dev"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.2-dev",
-              "digest": "sha256:44384cb4a133c9c122515688fae216339e8a90a71323a24ccfbff529d854be29",
-              "builtAt": "2026-03-04T08:02:14Z",
+              "digest": "sha256:a4570b97fba77eca12c268fe034cee7ba25d5a0b5f84fc8fda1322e5f21bcc23",
+              "builtAt": "2026-03-05T05:20:38Z",
               "status": "success"
             },
             {
@@ -2224,8 +4252,8 @@
                 "3.2-fips"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.2-fips",
-              "digest": "sha256:6acaf40fb9405f088b973360daa548764edd37cc01ff8f4bfc61a10ffe64a2a8",
-              "builtAt": "2026-03-04T08:01:40Z",
+              "digest": "sha256:bea1dd63a609e0ee17f02cea22ec2692bba2de8c2716b9f03ba6275afeb5cbf0",
+              "builtAt": "2026-03-05T05:20:20Z",
               "status": "success"
             }
           ]
@@ -2240,8 +4268,8 @@
                 "3.3"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.3",
-              "digest": "sha256:e3dc6bd50f12d2a8e9453e833ca96a1c26b99b23a8080e2f2385f1f48daa8657",
-              "builtAt": "2026-03-04T07:48:10Z",
+              "digest": "sha256:29f610f9472ca508a26147092ec148a58455d752ce7af2630a4c6cb672c21271",
+              "builtAt": "2026-03-05T05:20:20Z",
               "status": "success"
             },
             {
@@ -2250,8 +4278,8 @@
                 "3.3-dev"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.3-dev",
-              "digest": "sha256:6fb0ee6e471a93c3def71f97fc131ff14d11096e6cc9aa3c21e9e1ec2b141065",
-              "builtAt": "2026-03-04T07:48:30Z",
+              "digest": "sha256:a3387b5acf89a76c0d9b596a3e61d4efda743c0c5f9396bb2c4de45f80a98be4",
+              "builtAt": "2026-03-05T05:21:06Z",
               "status": "success"
             },
             {
@@ -2260,8 +4288,8 @@
                 "3.3-fips"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.3-fips",
-              "digest": "sha256:d5718121f352279d23bdf70173288eec70f108c6bef9c82a6e00372983515a64",
-              "builtAt": "2026-03-04T07:48:02Z",
+              "digest": "sha256:bfd874cd7088402dcf7483f0259e05a2177707e1c0c24b0d25fe7e81458512d1",
+              "builtAt": "2026-03-05T05:20:33Z",
               "status": "success"
             }
           ]
@@ -2276,8 +4304,8 @@
                 "3.4"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.4",
-              "digest": "sha256:e135507f397c0aab07978be5e70223705a5a9ee413f714808950a40d43ec1aad",
-              "builtAt": "2026-03-04T07:50:00Z",
+              "digest": "sha256:4c9fda9a6f1078ce105a00204f3a226816006371f95eae33ae7076a543cec24a",
+              "builtAt": "2026-03-05T05:21:51Z",
               "status": "success"
             },
             {
@@ -2286,8 +4314,8 @@
                 "3.4-dev"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.4-dev",
-              "digest": "sha256:d4e62924dbbc844621648ef62d6f253ce3c0cc20b32fd87a66f9adc1a1300cf1",
-              "builtAt": "2026-03-04T07:48:33Z",
+              "digest": "sha256:363e6fa533266dd813fdffd3b4c62320a3f46d7898e1048574dc0eebed3e92bc",
+              "builtAt": "2026-03-05T05:21:12Z",
               "status": "success"
             },
             {
@@ -2296,8 +4324,8 @@
                 "3.4-fips"
               ],
               "ref": "ghcr.io/verity-org/ruby:3.4-fips",
-              "digest": "sha256:8436b99968009bb8d7ac06b78f9d195a5d40a754eadf405982907b79fa2f2778",
-              "builtAt": "2026-03-04T07:47:59Z",
+              "digest": "sha256:f45b0581fbf367590e9081285afccf29ea5563852530c0f1e1668a8a777f24c4",
+              "builtAt": "2026-03-05T05:20:56Z",
               "status": "success"
             }
           ]
@@ -2314,8 +4342,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/ruby:4.0",
-              "digest": "sha256:6568557bed549a1123a69c6fd1297e53593eb02d7892f3bd71e472ebe3b94baf",
-              "builtAt": "2026-03-04T07:47:56Z",
+              "digest": "sha256:fab048255df1074b447ab66b81b452399b27714985176a73f868df3e566484b2",
+              "builtAt": "2026-03-05T05:21:47Z",
               "status": "success"
             },
             {
@@ -2325,8 +4353,8 @@
                 "latest-dev"
               ],
               "ref": "ghcr.io/verity-org/ruby:4.0-dev",
-              "digest": "sha256:6666f4bd7cd7ce8ae1742bf96fe6b6a458a58334e332f2a00d2078a8e6156653",
-              "builtAt": "2026-03-04T07:50:06Z",
+              "digest": "sha256:19a8407099d198159efd59442696975f1d017a17f81c8f86db62dca844235641",
+              "builtAt": "2026-03-05T05:23:37Z",
               "status": "success"
             },
             {
@@ -2336,8 +4364,8 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/ruby:4.0-fips",
-              "digest": "sha256:b752744289a0d056f74d5236acfbe5c73314c7f3b7ff3479b6725c7a1b5206b9",
-              "builtAt": "2026-03-04T07:48:54Z",
+              "digest": "sha256:af51b2c026d498ab1950603b248e4a78e9cb5c400724a33eba1a694e1bdfd4e3",
+              "builtAt": "2026-03-05T05:21:09Z",
               "status": "success"
             }
           ]
@@ -2359,8 +4387,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/rust:1",
-              "digest": "sha256:6af8736b929f3bfb6d4241f14c893f703fa5d34a35d33814aa30ef25634dc469",
-              "builtAt": "2026-03-04T07:48:05Z",
+              "digest": "sha256:ee2bd843bd2722fb7f5dcfbc8210e46e6dddf8f734c0768ce6ce4e48d0af1988",
+              "builtAt": "2026-03-05T05:21:49Z",
               "status": "success"
             },
             {
@@ -2370,8 +4398,8 @@
                 "latest-dev"
               ],
               "ref": "ghcr.io/verity-org/rust:1-dev",
-              "digest": "sha256:5c8d67b25e0cabdf36256374602c685abbef8057c12cfdafa658dd05d87f8407",
-              "builtAt": "2026-03-04T07:48:24Z",
+              "digest": "sha256:abe76cdf0b75403555ff934a52d60c07e30909a0b52e452a30de87c847ffedd7",
+              "builtAt": "2026-03-05T05:22:42Z",
               "status": "success"
             },
             {
@@ -2381,8 +4409,8 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/rust:1-fips",
-              "digest": "sha256:424a9d84b2ef1afc6d2facf8d3ad524c489b931c5c7c938b0db31d2d77345af7",
-              "builtAt": "2026-03-04T07:47:54Z",
+              "digest": "sha256:2fa911d07b41fc13f52b2886c6d23c6851272dae25913f27410e8724c5918f83",
+              "builtAt": "2026-03-05T05:23:03Z",
               "status": "success"
             }
           ]
@@ -2394,18 +4422,78 @@
       "description": "Telegraf metrics agent — Wolfi rebuild eliminates Debian CVEs from official image",
       "versions": [
         {
-          "version": "1",
+          "version": "1.33",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.33"
+              ],
+              "ref": "ghcr.io/verity-org/telegraf:1.33",
+              "digest": "sha256:96352ae54705a34e6462842fa72165b0425d4c71bd229028dd04a07668550066",
+              "builtAt": "2026-03-05T05:21:54Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.34",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.34"
+              ],
+              "ref": "ghcr.io/verity-org/telegraf:1.34",
+              "digest": "sha256:18ec580c1f58398226b6556117785757ddf7afcd5b86353c0f8dff397f4a045c",
+              "builtAt": "2026-03-05T05:22:07Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.35",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.35"
+              ],
+              "ref": "ghcr.io/verity-org/telegraf:1.35",
+              "digest": "sha256:c3a286d69a2c87fb717c133b4a2f89b6d1e95323cd8b4c47137538936e51c106",
+              "builtAt": "2026-03-05T05:22:20Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.36",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.36"
+              ],
+              "ref": "ghcr.io/verity-org/telegraf:1.36",
+              "digest": "sha256:317846b5c26f2b4ec82500fc1509cba97975e3f862f65fa871a9f89ea0ea9d64",
+              "builtAt": "2026-03-05T05:22:44Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.37",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "1",
+                "1.37",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/telegraf:1",
-              "digest": "sha256:d9be8c4989f5d93c63252420e0bd8183aa6abf2ac66aa3d967520b46576a4558",
-              "builtAt": "2026-03-04T04:50:42Z",
+              "ref": "ghcr.io/verity-org/telegraf:1.37",
+              "digest": "sha256:27d7a03fc5b18bed4d04c21c11619a6090a11bfcc31ab9796ec362f8ac1cefb0",
+              "builtAt": "2026-03-05T05:23:54Z",
               "status": "success"
             }
           ]
@@ -2417,18 +4505,48 @@
       "description": "OpenTofu (Terraform-compatible) — Copa can't patch Alpine; Wolfi rebuild of BSL-free fork",
       "versions": [
         {
-          "version": "1",
+          "version": "1.9",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.9"
+              ],
+              "ref": "ghcr.io/verity-org/terraform:1.9",
+              "digest": "sha256:e69b683479274d6617e84d14dcc9ef6eebf3f752456511f63a8a9ae89cc47436",
+              "builtAt": "2026-03-05T05:22:59Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.10",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "1.10"
+              ],
+              "ref": "ghcr.io/verity-org/terraform:1.10",
+              "digest": "sha256:823eb60e9aff601d1098abe6b8fd9023329b15adefbf6246e18eade368b1dd1f",
+              "builtAt": "2026-03-05T05:23:00Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "1.11",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "1",
+                "1.11",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/terraform:1",
-              "digest": "sha256:d9925dba7e993332c41d10468760fbac8e574578644cd7073164dd62b9511575",
-              "builtAt": "2026-03-04T04:50:32Z",
+              "ref": "ghcr.io/verity-org/terraform:1.11",
+              "digest": "sha256:1d000c40ea49352b8065eaec2e5706569283c01a780f56e9c2533ebcdc2be12b",
+              "builtAt": "2026-03-05T05:23:14Z",
               "status": "success"
             }
           ]
@@ -2450,8 +4568,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/thanos:0",
-              "digest": "sha256:97deb2c78758947ef36b7dbfd9f71def64e8ce57506750019b11c158b0eacc46",
-              "builtAt": "2026-03-04T04:50:42Z",
+              "digest": "sha256:793142a7406cdbc5190290bdd3c5ffe083b4d470cd9ff9556f39fc32918dd523",
+              "builtAt": "2026-03-05T05:23:39Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/thanos:latest",
+              "digest": "sha256:b4dcd6b47fe9e492b367b0b76891c06bb504df206a0be54d2650b7119adf5171",
+              "builtAt": "2026-03-05T05:23:35Z",
               "status": "success"
             }
           ]
@@ -2463,18 +4596,63 @@
       "description": "Traefik reverse proxy — Copa can't patch Alpine-based official image; Wolfi rebuild",
       "versions": [
         {
-          "version": "3",
+          "version": "3.3",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.3"
+              ],
+              "ref": "ghcr.io/verity-org/traefik:3.3",
+              "digest": "sha256:bb26f7705105fa9af87c876b9ec712474be9184cae04d125b1ca35e7eff25a7a",
+              "builtAt": "2026-03-05T05:23:54Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.4",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.4"
+              ],
+              "ref": "ghcr.io/verity-org/traefik:3.4",
+              "digest": "sha256:8ed8048d93c93cce5c7b161a8980af23c92d7374137d5a23a02207195948fd27",
+              "builtAt": "2026-03-05T05:23:57Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.5",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "3.5"
+              ],
+              "ref": "ghcr.io/verity-org/traefik:3.5",
+              "digest": "sha256:f83300dc026dc6583f49c3dc6f8f3b7e10d054e084514fb3b9300d3b8e107cbc",
+              "builtAt": "2026-03-05T05:24:02Z",
+              "status": "failure"
+            }
+          ]
+        },
+        {
+          "version": "3.6",
           "latest": true,
           "variants": [
             {
               "type": "default",
               "tags": [
-                "3",
+                "3.6",
                 "latest"
               ],
-              "ref": "ghcr.io/verity-org/traefik:3",
-              "digest": "sha256:031b5c961f98dd8789941cfa9658f7e8345ee5fe650e7babe86d2bfb310f195b",
-              "builtAt": "2026-03-04T04:50:54Z",
+              "ref": "ghcr.io/verity-org/traefik:3.6",
+              "digest": "sha256:ba9681f0e11f0abb07536c747ea84ee2997e469c1dc0bc373574c48bdc9b63cc",
+              "builtAt": "2026-03-05T05:24:18Z",
               "status": "success"
             }
           ]
@@ -2486,31 +4664,6 @@
       "description": "Valkey (Redis fork) — Wolfi rebuild eliminates persistent Debian CVEs",
       "versions": [
         {
-          "version": "8",
-          "variants": [
-            {
-              "type": "default",
-              "tags": [
-                "8"
-              ],
-              "ref": "ghcr.io/verity-org/valkey:8",
-              "digest": "sha256:2fc4885455e128709d08af70cd0a9eecef80c7e675446a03e02ff9c120684c7b",
-              "builtAt": "2026-03-04T04:50:49Z",
-              "status": "success"
-            },
-            {
-              "type": "fips",
-              "tags": [
-                "8-fips"
-              ],
-              "ref": "ghcr.io/verity-org/valkey:8-fips",
-              "digest": "sha256:73259a186059ca09c0b81891f529dffb7b70b6da787cd1425d8c16314ef28bcf",
-              "builtAt": "2026-03-04T04:50:46Z",
-              "status": "success"
-            }
-          ]
-        },
-        {
           "version": "8.1",
           "variants": [
             {
@@ -2519,8 +4672,8 @@
                 "8.1"
               ],
               "ref": "ghcr.io/verity-org/valkey:8.1",
-              "digest": "sha256:31dd6b6145cf3f5b6e05bde0a1ffcef9db05b9594e1b89c8648d8d152a4274cb",
-              "builtAt": "2026-03-04T04:50:49Z",
+              "digest": "sha256:b8d87a3f2161e64614ba7f6634bc24d02f9d70f245a6ab611b06ba8e7bac8664",
+              "builtAt": "2026-03-05T05:24:16Z",
               "status": "success"
             },
             {
@@ -2529,8 +4682,8 @@
                 "8.1-fips"
               ],
               "ref": "ghcr.io/verity-org/valkey:8.1-fips",
-              "digest": "sha256:a1c9dea36a24f21425315dbac5ac822c2946a53d41b57b097be701a62507892a",
-              "builtAt": "2026-03-04T04:51:00Z",
+              "digest": "sha256:70649615472f8ff9ec5f946671bd51f10aa863cd4472d12c4c86c4cddfa12f46",
+              "builtAt": "2026-03-05T05:24:20Z",
               "status": "success"
             }
           ]
@@ -2546,8 +4699,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/valkey:9.0",
-              "digest": "sha256:f451681edf45baa0d7794e85df57d23f1ee6fdf94b62b669bdab2fbea5d2c235",
-              "builtAt": "2026-03-04T04:51:01Z",
+              "digest": "sha256:908baab6fc6dc66daea2cb6bc635689bf57d3c5f74430a8692c1dd9a2456f2b6",
+              "builtAt": "2026-03-05T05:24:28Z",
               "status": "success"
             },
             {
@@ -2557,8 +4710,8 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/valkey:9.0-fips",
-              "digest": "sha256:7357396c1cc9d3b7e298e1a986110a3e9033bd3b02d692de57a346b8fe8c0a8a",
-              "builtAt": "2026-03-04T04:50:52Z",
+              "digest": "sha256:3a3b26809c22b3e8e8b1cc3fdd931d66764598f8b4a8f66612d68ffbac914d5a",
+              "builtAt": "2026-03-05T05:24:31Z",
               "status": "success"
             }
           ]
@@ -2580,8 +4733,8 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/vault:1",
-              "digest": "sha256:64b1ef919a76a29177274db336cdb44671db5a56a57b015c7ed3e9f3836290d5",
-              "builtAt": "2026-03-04T04:51:22Z",
+              "digest": "sha256:d409573c8f636b92883331976de08f767aacfe4cb5786d277e5fd98d4911f27b",
+              "builtAt": "2026-03-05T05:24:38Z",
               "status": "success"
             },
             {
@@ -2591,8 +4744,33 @@
                 "latest-fips"
               ],
               "ref": "ghcr.io/verity-org/vault:1-fips",
-              "digest": "sha256:f9108c5d9d2c69de524060ab1b382a41abb4188508be85a84ec7a5bd8f8f6b0b",
-              "builtAt": "2026-03-04T04:51:10Z",
+              "digest": "sha256:d4a7064f922efa99dbd395b84c831b8047d9075ddb925d89a6bbca219116c4ca",
+              "builtAt": "2026-03-05T05:25:04Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/vault:latest",
+              "digest": "sha256:3cf5be4a2c321fcfc6ad71d4523748d4ec2ceb38b31546a803d674caba468c42",
+              "builtAt": "2026-03-05T05:26:17Z",
+              "status": "success"
+            },
+            {
+              "type": "fips",
+              "tags": [
+                "latest-fips"
+              ],
+              "ref": "ghcr.io/verity-org/vault:latest-fips",
+              "digest": "sha256:f4ada50a77f788ea6f20bd4b8e9849d89cb4aad64861c515702f4f90de5615f7",
+              "builtAt": "2026-03-05T05:26:04Z",
               "status": "success"
             }
           ]
@@ -2614,8 +4792,23 @@
                 "latest"
               ],
               "ref": "ghcr.io/verity-org/vector:0",
-              "digest": "sha256:c9ef80e92a502c0542e49b5e6a8775c6810bcb2ccffe20cbaa33aaa857bced9f",
-              "builtAt": "2026-03-04T04:51:33Z",
+              "digest": "sha256:2cec1905db8312d9b87d35e5b0eabcc2eec9bd9259abe024730859611ca1bcd9",
+              "builtAt": "2026-03-05T05:27:16Z",
+              "status": "success"
+            }
+          ]
+        },
+        {
+          "version": "latest",
+          "variants": [
+            {
+              "type": "default",
+              "tags": [
+                "latest"
+              ],
+              "ref": "ghcr.io/verity-org/vector:latest",
+              "digest": "sha256:1d6aba829ee355bf36427dcb091aa5f3173bbe43d48388013174d09d738b8668",
+              "builtAt": "2026-03-05T05:26:51Z",
               "status": "success"
             }
           ]
