@@ -21,7 +21,7 @@ fi
 CONTENT_FILE=$(mktemp)
 BODY_FILE=$(mktemp)
 trap 'rm -f "$CONTENT_FILE" "$BODY_FILE"' EXIT
-base64 -w0 < "$CATALOG_FILE" > "$CONTENT_FILE"
+base64 -w0 < "$CATALOG_FILE" | tr -d '\n' > "$CONTENT_FILE"
 
 # Fetch existing SHA (needed for update vs create).
 existing_sha=""
