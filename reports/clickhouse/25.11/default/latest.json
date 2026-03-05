@@ -1,0 +1,13 @@
+{
+  "image": "clickhouse",
+  "version": "25.11",
+  "type": "default",
+  "tags": [
+    "25.11"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:032c009396e173d54105c0867d002043a3f3169d5c66c0a5e3aa36b956711b41",
+  "status": "success",
+  "built_at": "2026-03-05T23:40:18Z",
+  "run_id": "22741439533"
+}
