@@ -11,6 +11,7 @@ import (
 
 	"github.com/verity-org/integer/internal/apkindex"
 	"github.com/verity-org/integer/internal/catalog"
+	"github.com/verity-org/integer/internal/eol"
 )
 
 func writeFile(t *testing.T, dir, name, content string) string {
@@ -220,4 +221,88 @@ func TestGenerate_AutoDiscoveredVersion(t *testing.T) {
 
 	// 3 versions should appear
 	assert.Len(t, cat.Images[0].Versions, 3)
+}
+
+type stubEOLFetcher struct {
+	data map[string]eol.EOLData
+}
+
+func (s *stubEOLFetcher) FetchForImage(imageName string) (eol.EOLData, error) {
+	if data, ok := s.data[imageName]; ok {
+		return data, nil
+	}
+	return eol.EOLData{}, nil
+}
+
+func TestGenerate_WithEOLFetcher(t *testing.T) {
+	imagesDir := t.TempDir()
+
+	const nodeNoEOLYAML = `
+name: node
+description: "Node.js runtime"
+upstream:
+  package: "nodejs-{{version}}"
+types:
+  default:
+    base: wolfi-base
+    packages: ["nodejs-{{version}}"]
+    entrypoint: /usr/bin/node
+versions:
+  "22": {}
+  "24":
+    latest: true
+`
+	writeFile(t, imagesDir, "node.yaml", nodeNoEOLYAML)
+
+	fetcher := &stubEOLFetcher{
+		data: map[string]eol.EOLData{
+			"node": {
+				"22": "2027-04-30",
+				"24": "2028-04-30",
+			},
+		},
+	}
+
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, fetcher)
+	require.NoError(t, err)
+
+	require.Len(t, cat.Images, 1)
+	require.Len(t, cat.Images[0].Versions, 2)
+
+	assert.Equal(t, "2027-04-30", cat.Images[0].Versions[0].EOL)
+	assert.Equal(t, "2028-04-30", cat.Images[0].Versions[1].EOL)
+}
+
+func TestGenerate_EOLFetcherOverridesYAML(t *testing.T) {
+	imagesDir := t.TempDir()
+	writeFile(t, imagesDir, "node.yaml", nodeYAML)
+
+	fetcher := &stubEOLFetcher{
+		data: map[string]eol.EOLData{
+			"node": {
+				"22": "2099-12-31",
+			},
+		},
+	}
+
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, fetcher)
+	require.NoError(t, err)
+
+	assert.Equal(t, "2099-12-31", cat.Images[0].Versions[0].EOL)
+	assert.Equal(t, "2028-04-30", cat.Images[0].Versions[1].EOL)
+}
+
+func TestGenerate_EOLFetcherFallsBackToYAML(t *testing.T) {
+	imagesDir := t.TempDir()
+	writeFile(t, imagesDir, "node.yaml", nodeYAML)
+
+	fetcher := &stubEOLFetcher{
+		data: map[string]eol.EOLData{},
+	}
+
+	cat, err := catalog.Generate(imagesDir, "", "ghcr.io/verity-org", testPkgs, fetcher)
+	require.NoError(t, err)
+
+	assert.Equal(t, "2027-04-30", cat.Images[0].Versions[0].EOL)
+	assert.Equal(t, "2028-04-30", cat.Images[0].Versions[1].EOL)
 }

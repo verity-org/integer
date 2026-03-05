@@ -2,6 +2,7 @@ package eol
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -165,4 +166,33 @@ func TestEOLData_LookupEOL(t *testing.T) {
 			t.Errorf("LookupEOL on nil = %q, want empty", got)
 		}
 	})
+}
+
+func TestClient_FailFast(t *testing.T) {
+	client := NewClientWithHTTP(http.DefaultClient, "http://localhost:1")
+
+	_, err1 := client.FetchCycles("go")
+	if err1 == nil {
+		t.Fatal("expected error on first call to unreachable server")
+	}
+
+	_, err2 := client.FetchCycles("python")
+	if err2 == nil {
+		t.Fatal("expected error on second call")
+	}
+	if !errors.Is(err2, ErrAPIUnavailable) {
+		t.Errorf("second call error = %v, want ErrAPIUnavailable", err2)
+	}
+}
+
+func TestNewClientWithHTTP(t *testing.T) {
+	customClient := &http.Client{}
+	client := NewClientWithHTTP(customClient, "https://custom.api")
+
+	if client.httpClient != customClient {
+		t.Error("httpClient not set correctly")
+	}
+	if client.baseURL != "https://custom.api" {
+		t.Errorf("baseURL = %q, want %q", client.baseURL, "https://custom.api")
+	}
 }

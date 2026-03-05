@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -21,8 +22,15 @@ const (
 // ErrHTTPStatus is returned when the API returns an unexpected HTTP status.
 var ErrHTTPStatus = errors.New("unexpected HTTP status")
 
-// ProductMapping maps integer image names to endoflife.date product IDs.
-// Add new mappings here as images are added.
+// ErrAPIUnavailable is returned when the API has already failed and we're failing fast.
+var ErrAPIUnavailable = errors.New("EOL API unavailable")
+
+// Fetcher abstracts EOL data fetching for testability.
+type Fetcher interface {
+	FetchForImage(imageName string) (EOLData, error)
+}
+
+// ProductMapping maps image names to endoflife.date product IDs.
 var ProductMapping = map[string]string{
 	"golang":   "go",
 	"node":     "nodejs",
@@ -81,6 +89,8 @@ func (c *Cycle) IsEOL() bool {
 type Client struct {
 	httpClient *http.Client
 	baseURL    string
+	failedOnce bool
+	failedMu   sync.RWMutex
 }
 
 // NewClient creates a new EOL client.
@@ -91,18 +101,35 @@ func NewClient() *Client {
 	}
 }
 
+// NewClientWithHTTP creates a client with custom HTTP client and base URL (for testing).
+func NewClientWithHTTP(httpClient *http.Client, baseURL string) *Client {
+	return &Client{
+		httpClient: httpClient,
+		baseURL:    baseURL,
+	}
+}
+
 // FetchCycles fetches all release cycles for a product.
 func (c *Client) FetchCycles(product string) ([]Cycle, error) {
+	c.failedMu.RLock()
+	if c.failedOnce {
+		c.failedMu.RUnlock()
+		return nil, ErrAPIUnavailable
+	}
+	c.failedMu.RUnlock()
+
 	url := fmt.Sprintf("%s/%s.json", c.baseURL, product)
 
 	resp, err := c.httpClient.Get(url) //nolint:noctx // CLI tool, URL is constructed internally
 	if err != nil {
+		c.failedMu.Lock()
+		c.failedOnce = true
+		c.failedMu.Unlock()
 		return nil, fmt.Errorf("fetching EOL data for %q: %w", product, err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode == http.StatusNotFound {
-		// Product not in endoflife.date — not an error, just no data
 		return nil, nil
 	}
 
@@ -121,8 +148,7 @@ func (c *Client) FetchCycles(product string) ([]Cycle, error) {
 // EOLData maps version strings to EOL dates.
 type EOLData map[string]string
 
-// FetchForImage fetches EOL data for an integer image name.
-// Returns a map of version → EOL date (empty string if not EOL).
+// FetchForImage fetches EOL data for an image name.
 func (c *Client) FetchForImage(imageName string) (EOLData, error) {
 	product, ok := ProductMapping[imageName]
 	if !ok {

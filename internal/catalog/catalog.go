@@ -60,8 +60,8 @@ type buildReport struct {
 //
 // reportsDir may be empty (all variants get status "unknown").
 // A non-empty reportsDir that does not exist is an error.
-// eolClient may be nil (EOL data falls back to YAML definitions).
-func Generate(imagesDir, reportsDir, registry string, pkgs []apkindex.Package, eolClient *eol.Client) (*Catalog, error) {
+// eolFetcher may be nil (EOL data falls back to YAML definitions).
+func Generate(imagesDir, reportsDir, registry string, pkgs []apkindex.Package, eolFetcher eol.Fetcher) (*Catalog, error) {
 	if reportsDir != "" {
 		if _, err := os.Stat(reportsDir); err != nil {
 			return nil, fmt.Errorf("reports dir %q: %w", reportsDir, err)
@@ -86,7 +86,7 @@ func Generate(imagesDir, reportsDir, registry string, pkgs []apkindex.Package, e
 			return nil, fmt.Errorf("loading %s: %w", defPath, err)
 		}
 
-		img, err := buildImage(def, registry, reportsDir, pkgs, eolClient)
+		img, err := buildImage(def, registry, reportsDir, pkgs, eolFetcher)
 		if err != nil {
 			return nil, fmt.Errorf("building catalog entry for %q: %w", def.Name, err)
 		}
@@ -105,7 +105,7 @@ func Generate(imagesDir, reportsDir, registry string, pkgs []apkindex.Package, e
 	}, nil
 }
 
-func buildImage(def *config.ImageDef, registry, reportsDir string, pkgs []apkindex.Package, eolClient *eol.Client) (Image, error) {
+func buildImage(def *config.ImageDef, registry, reportsDir string, pkgs []apkindex.Package, eolFetcher eol.Fetcher) (Image, error) {
 	img := Image{
 		Name:        def.Name,
 		Description: def.Description,
@@ -113,9 +113,9 @@ func buildImage(def *config.ImageDef, registry, reportsDir string, pkgs []apkind
 
 	// Fetch EOL data from endoflife.date API if client is available.
 	var eolData eol.EOLData
-	if eolClient != nil {
+	if eolFetcher != nil {
 		var err error
-		eolData, err = eolClient.FetchForImage(def.Name)
+		eolData, err = eolFetcher.FetchForImage(def.Name)
 		if err != nil {
 			// Log warning but don't fail — fall back to YAML definitions
 			fmt.Fprintf(os.Stderr, "warning: EOL fetch failed for %s: %v\n", def.Name, err)
