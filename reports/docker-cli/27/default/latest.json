@@ -1,0 +1,14 @@
+{
+  "image": "docker-cli",
+  "version": "27",
+  "type": "default",
+  "tags": [
+    "27",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-05T23:45:11Z",
+  "run_id": "22741455099"
+}
