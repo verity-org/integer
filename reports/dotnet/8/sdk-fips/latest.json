@@ -6,8 +6,8 @@
     "8-sdk-fips"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:8dfeaf079f9b7949f163984e962f6fc64ef4b03f1a884775c3cc9088a4f26f70",
+  "digest": "sha256:c91b9e0348040d3dd7babbc30e248838af81657b59be005405ed43b9c77789d4",
   "status": "success",
-  "built_at": "2026-03-05T04:37:25Z",
-  "run_id": "22702377274"
+  "built_at": "2026-03-05T11:28:11Z",
+  "run_id": "22715721392"
 }
