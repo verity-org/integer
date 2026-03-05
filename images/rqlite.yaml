@@ -9,7 +9,7 @@ types:
     packages: ["rqlite"]
     entrypoint: /usr/bin/rqlited
     paths:
-      - {path: /rqlite/file, type: directory, uid: 65532, gid: 65532, permissions: 0o755}
+      - {path: /rqlite/data, type: directory, uid: 65532, gid: 65532, permissions: 0o755}
 
 versions:
   "8":
