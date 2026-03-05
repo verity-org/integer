@@ -1,0 +1,14 @@
+{
+  "image": "bazel",
+  "version": "9",
+  "type": "default",
+  "tags": [
+    "9",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:8220672877e8ce8b17207bc5f04356213b37ebd089be983d534151e9cbbe084e",
+  "status": "success",
+  "built_at": "2026-03-05T23:33:34Z",
+  "run_id": "22741425794"
+}
