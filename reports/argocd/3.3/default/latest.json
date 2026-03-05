@@ -1,0 +1,14 @@
+{
+  "image": "argocd",
+  "version": "3.3",
+  "type": "default",
+  "tags": [
+    "3.3",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-05T23:31:43Z",
+  "run_id": "22741417614"
+}
