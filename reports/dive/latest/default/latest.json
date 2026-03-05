@@ -1,0 +1,13 @@
+{
+  "image": "dive",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:424b4ca0640321e502bf8e218d9814ca6e9246c5eb826abeb33468f7408a55de",
+  "status": "success",
+  "built_at": "2026-03-05T23:45:20Z",
+  "run_id": "22741454046"
+}
