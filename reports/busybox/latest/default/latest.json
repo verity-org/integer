@@ -1,0 +1,13 @@
+{
+  "image": "busybox",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:6461a4764faaaa2af5533dce5f88a99ef13d17d52dd8279c1b69b97c848d4f05",
+  "status": "success",
+  "built_at": "2026-03-05T23:34:16Z",
+  "run_id": "22741427822"
+}
