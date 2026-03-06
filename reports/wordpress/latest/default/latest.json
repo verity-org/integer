@@ -1,0 +1,13 @@
+{
+  "image": "wordpress",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "",
+  "status": "failure",
+  "built_at": "2026-03-06T00:44:11Z",
+  "run_id": "22741841669"
+}
