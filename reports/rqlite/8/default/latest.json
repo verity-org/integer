@@ -1,0 +1,14 @@
+{
+  "image": "rqlite",
+  "version": "8",
+  "type": "default",
+  "tags": [
+    "8",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:4565ac6ae8becfbd10adb9f41137e19a508b9f507d0fd13e0ae0fd2d45c4eb79",
+  "status": "success",
+  "built_at": "2026-03-06T00:35:13Z",
+  "run_id": "22741783874"
+}
