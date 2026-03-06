@@ -1,0 +1,13 @@
+{
+  "image": "google-cloud-sdk",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:97f829acf0ecb86df445668be9b36ea35e544f430b0d712542156a08a7cc1193",
+  "status": "success",
+  "built_at": "2026-03-06T00:06:30Z",
+  "run_id": "22741518338"
+}
