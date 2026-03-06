@@ -1,0 +1,13 @@
+{
+  "image": "opensearch-dashboards",
+  "version": "2",
+  "type": "default",
+  "tags": [
+    "2"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:63be665f658e0c316ef49fed6a0bc87463cdaabd1453801aa7a4b338fc4d71b2",
+  "status": "failure",
+  "built_at": "2026-03-06T00:27:55Z",
+  "run_id": "22741708296"
+}
