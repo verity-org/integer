@@ -1,0 +1,14 @@
+{
+  "image": "tomcat",
+  "version": "11.0",
+  "type": "default",
+  "tags": [
+    "11.0",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:bc40289c8e0c05ee633b20714367a15f01c84025a695915ee0a3799c1c46e9be",
+  "status": "success",
+  "built_at": "2026-03-06T00:41:45Z",
+  "run_id": "22741825355"
+}
