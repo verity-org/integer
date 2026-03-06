@@ -1,0 +1,13 @@
+{
+  "image": "renovate",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:8b9f93b75e9697dc5fe60dc02ec670e993886dc7c86b8c9ce4497e7ef815dacc",
+  "status": "success",
+  "built_at": "2026-03-06T00:35:49Z",
+  "run_id": "22741782927"
+}
