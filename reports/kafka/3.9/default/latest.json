@@ -1,0 +1,13 @@
+{
+  "image": "kafka",
+  "version": "3.9",
+  "type": "default",
+  "tags": [
+    "3.9"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:4a2827a7a3d5249e73bdc7323088d8435a93c581fa24e6ad8af74575e5683354",
+  "status": "failure",
+  "built_at": "2026-03-06T00:11:57Z",
+  "run_id": "22741553623"
+}
