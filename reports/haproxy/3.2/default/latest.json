@@ -6,8 +6,8 @@
     "3.2"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:1e9ef56b30c074809b50e7c835f61ca95acc2492c3c703089bb79d7508c38c2f",
+  "digest": "sha256:6c3c30f9745af5610a34bc2cabce28e8985c00cffc67d2f036981be72d1b7699",
   "status": "success",
-  "built_at": "2026-03-06T00:08:12Z",
-  "run_id": "22741535188"
+  "built_at": "2026-03-06T04:49:00Z",
+  "run_id": "22749174869"
 }
