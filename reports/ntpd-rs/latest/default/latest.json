@@ -1,0 +1,13 @@
+{
+  "image": "ntpd-rs",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:2b513d9f190ba47a18c42c38469aa18996b724fe7d0b975c0338e58a032da7ba",
+  "status": "success",
+  "built_at": "2026-03-06T00:21:26Z",
+  "run_id": "22741646488"
+}
