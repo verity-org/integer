@@ -1,0 +1,13 @@
+{
+  "image": "gradle",
+  "version": "8",
+  "type": "default",
+  "tags": [
+    "8"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:78c50f18ad6de1484b9cc43b2589856b1895cd1d904a33a8b36dc7af18d819a9",
+  "status": "failure",
+  "built_at": "2026-03-06T00:05:53Z",
+  "run_id": "22741519329"
+}
