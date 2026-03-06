@@ -7,8 +7,8 @@
     "latest-fpm"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:2892ffd4a727f131e35769f03d5836df2301b650495a5b31023fcb38daf46baf",
+  "digest": "sha256:135635e30faccf70aa6735ed3efabc73069b3ff85431945122b384c32d5d812f",
   "status": "success",
-  "built_at": "2026-03-06T00:29:14Z",
-  "run_id": "22741735023"
+  "built_at": "2026-03-06T05:11:05Z",
+  "run_id": "22749343715"
 }
