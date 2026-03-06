@@ -1,0 +1,13 @@
+{
+  "image": "powershell",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:0ba7db42ad0c08b820ce4ffc8e0df976fac90731cc0a263837cc9fdba2027cf1",
+  "status": "success",
+  "built_at": "2026-03-06T00:31:15Z",
+  "run_id": "22741749831"
+}
