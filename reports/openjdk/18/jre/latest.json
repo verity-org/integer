@@ -6,8 +6,8 @@
     "18-jre"
   ],
   "registry": "ghcr.io/verity-org",
-  "digest": "sha256:2fc6882a7332f3a97d5ab55839855a41bf77c5619ad72aa0e1c98c86f3d860fe",
+  "digest": "sha256:7f9086ebd0b905b16e06f726e9b88ff1cd9dacff8b4e838d7685d3b9990229bf",
   "status": "success",
-  "built_at": "2026-03-05T11:51:44Z",
-  "run_id": "22715974362"
+  "built_at": "2026-03-06T00:25:08Z",
+  "run_id": "22741685323"
 }
