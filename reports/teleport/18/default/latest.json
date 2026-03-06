@@ -1,0 +1,13 @@
+{
+  "image": "teleport",
+  "version": "18",
+  "type": "default",
+  "tags": [
+    "18"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:4adb1e143693471f31525a9234dc7b9aa4d93d793d4c804020fa7f64b7228258",
+  "status": "failure",
+  "built_at": "2026-03-06T00:41:34Z",
+  "run_id": "22741817596"
+}
