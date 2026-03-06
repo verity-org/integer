@@ -1,0 +1,13 @@
+{
+  "image": "openbao",
+  "version": "latest",
+  "type": "default",
+  "tags": [
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:765e95529e64e913f1a2ce24c60647fa19b8a27690af3968bf4942cda03faca6",
+  "status": "success",
+  "built_at": "2026-03-06T00:21:40Z",
+  "run_id": "22741648727"
+}
