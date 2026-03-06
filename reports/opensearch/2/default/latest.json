@@ -1,0 +1,13 @@
+{
+  "image": "opensearch",
+  "version": "2",
+  "type": "default",
+  "tags": [
+    "2"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:b298697d9d03042332ffef8ec5d4710b7af069b7b7a1c237178f331bc9f714eb",
+  "status": "failure",
+  "built_at": "2026-03-06T00:27:28Z",
+  "run_id": "22741710024"
+}
