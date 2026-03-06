@@ -1,0 +1,14 @@
+{
+  "image": "zookeeper",
+  "version": "3.9",
+  "type": "default",
+  "tags": [
+    "3.9",
+    "latest"
+  ],
+  "registry": "ghcr.io/verity-org",
+  "digest": "sha256:4af773eadb1815b68ec9b37802db15d42a0cdb35b494bc0031dfd0a7a39e6708",
+  "status": "failure",
+  "built_at": "2026-03-06T00:44:59Z",
+  "run_id": "22741842790"
+}
